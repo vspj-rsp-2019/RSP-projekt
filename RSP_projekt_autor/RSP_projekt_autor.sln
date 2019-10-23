@@ -21,6 +21,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "RSP_projekt_autor", "RSP_pr
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "50913"
+		SlnRelativePath = "RSP_projekt_autor\"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
