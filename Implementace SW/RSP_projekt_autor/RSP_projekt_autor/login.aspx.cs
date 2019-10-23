@@ -23,12 +23,13 @@ public partial class _Default : System.Web.UI.Page
             LB_heslo.Text = "Zadejte heslo";
         }
 
-        Autor autor = new Autor();
-        autor.Email = TB_email.Text;
-        autor.Heslo = TB_heslo.Text;
-        if (autor.Login())
+        User user = new User();
+        user.Email = TB_email.Text;
+        user.Heslo = TB_heslo.Text;
+        if (user.Login())
         {
             Response.Write("<script>alert('login probehl uspesne')</script>");
+            Session["role"] = user.Role;
         }
         else
         {

@@ -8,10 +8,10 @@ using System.Web.UI.WebControls;
 
 public partial class registrAutor : System.Web.UI.Page
 {
-    Autor autor;
+    User autor;
     protected void Page_Load(object sender, EventArgs e)
     {
-        autor = new Autor();
+        autor = new User();
     }
 
 
@@ -71,7 +71,7 @@ public partial class registrAutor : System.Web.UI.Page
             autor.Email = TB_email.Text;
             autor.Heslo = TB_heslo.Text;
 
-            if (autor.register())
+            if (autor.Register())
             {
                 Response.Write("<script>alert('registrace probehla uspesne')</script>");
             }
