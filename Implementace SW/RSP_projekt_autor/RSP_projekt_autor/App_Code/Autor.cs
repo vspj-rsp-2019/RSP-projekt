@@ -32,7 +32,8 @@ public class Autor
     }
     public Boolean register()
     {
-        String hesloHashString = System.Text.Encoding.UTF8.GetString(getHash(this.Heslo));
+        //String hesloHashString = System.Text.Encoding.UTF8.GetString(getHash(this.Heslo));
+        String hesloHashString = Convert.ToBase64String(getHash(this.Heslo));
         String query = @"INSERT INTO Autori(email, jmeno, prijmeni, hesloHash) VALUES
                         (@email,@jmeno,@prijmeni,@hesloHash)";
 
@@ -62,9 +63,10 @@ public class Autor
     }
     public Boolean Login()
     {
-        String hesloHashString = System.Text.Encoding.UTF8.GetString(getHash(this.Heslo));
+        // String hesloHashString = System.Text.Encoding.UTF8.GetString(getHash(this.Heslo));
+        String hesloHashString = Convert.ToBase64String(getHash(this.Heslo));
         String originalHash = "";
-        String query = @"SELECT * FROM Autori WHERE email ='@email'";
+        String query = @"SELECT * FROM Autori WHERE email =@email";
 
         using (SqlConnection conn = new SqlConnection(connString))
         {
@@ -75,7 +77,7 @@ public class Autor
                     conn.Open();
                 }
                 SqlCommand cmnd = new SqlCommand(query, conn);
-               cmnd.Parameters.AddWithValue("@email", this.Email);
+                cmnd.Parameters.AddWithValue("@email", this.Email);
                 
 
                 using(SqlDataReader dr = cmnd.ExecuteReader()){
@@ -106,5 +108,6 @@ public class Autor
     {
         HashAlgorithm algo = SHA256.Create();
         return algo.ComputeHash(Encoding.UTF8.GetBytes(input));
+
     }
 }
