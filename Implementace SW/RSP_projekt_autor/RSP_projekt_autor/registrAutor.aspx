@@ -21,11 +21,11 @@
                 <asp:Label ID="LB_prijmeni" runat="server" ForeColor="Red"></asp:Label>
                 <br />
                 Email<br />
-                <asp:TextBox ID="TB_email" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TB_email" runat="server" TextMode="Email"></asp:TextBox>
                 <asp:Label ID="LB_email" runat="server" ForeColor="Red"></asp:Label>
                 <br />
                 Potvrzení email<br />
-                <asp:TextBox ID="TB_emailConfirm" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TB_emailConfirm" runat="server" TextMode="Email"></asp:TextBox>
                 <asp:Label ID="LB_emailConfirm" runat="server" ForeColor="Red"></asp:Label>
                 <br />
                 Heslo<br />
