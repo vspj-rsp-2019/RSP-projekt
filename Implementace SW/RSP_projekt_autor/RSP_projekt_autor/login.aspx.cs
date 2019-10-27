@@ -22,14 +22,19 @@ public partial class _Default : System.Web.UI.Page
         {
             LB_heslo.Text = "Zadejte heslo";
         }
+        DBHandler dbHandler = new DBHandler(@"Data Source=(LocalDB)\MSSQLLocalDB;
+                                        AttachDbFilename=|DataDirectory|\Database.mdf;
+                                        Integrated Security=True;Connect Timeout=30");
+        User user = dbHandler.loginUser(TB_email.Text, TB_heslo.Text);
 
-        User user = new User();
-        user.Email = TB_email.Text;
-        user.Heslo = TB_heslo.Text;
-        if (user.Login())
+        if (user != null)
         {
             Response.Write("<script>alert('login probehl uspesne')</script>");
-            Session["role"] = user.Role;
+            Session["userObject"] = user;
+            if(user.Role == "autor") {
+                Response.Redirect("mojeClanky.aspx");
+            }
+
         }
         else
         {
