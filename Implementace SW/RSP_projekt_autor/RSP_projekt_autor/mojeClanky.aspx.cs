@@ -25,21 +25,24 @@ public partial class mojeClanky : System.Web.UI.Page
     }
     protected void Upload(object sender, EventArgs a)
     {
-        string fileName = Path.GetFileName(FileUpload.PostedFile.FileName);
-        string contentType = FileUpload.PostedFile.ContentType;
-
-        if(!contentType.Equals("pdf") || !contentType.Equals("doc") || !contentType.Equals("docx"))
+        if(( FileUpload.PostedFile != null ) && (FileUpload.PostedFile.ContentLength > 0))
         {
-            Response.Write("<alert>Soubor musí být ve formatu PDF nebo doc/docx</alert>");
-        }
+            string fileName = System.IO.Path.GetFileName(FileUpload.PostedFile.FileName);
+            string saveLocation = Server.MapPath("Clanky") + "\\" + fileName;
 
-        using(Stream fs = FileUpload.PostedFile.InputStream)
-        {
-            using(BinaryReader br = new BinaryReader(fs))
+            try {
+                FileUpload.PostedFile.SaveAs(saveLocation);
+                dbHandler.uploadFile(user.id, Convert.ToInt32(DDL_vyberVydani.SelectedValue), fileName, saveLocation);
+                Response.Write("Článek byl nahrán");
+                
+            }catch(Exception ex)
             {
-                byte[] bytes = br.ReadBytes((Int32)fs.Length);
-                //dbHandler.uploadFile(user.id, bytes);
+                Response.Write("error: " + ex.Message);
             }
+        }
+        else
+        {
+            Response.Write("Prosím zvolte soubor pro nahrání");
         }
     }
 

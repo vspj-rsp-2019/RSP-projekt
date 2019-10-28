@@ -131,10 +131,31 @@ public class DBHandler
         }
         return logins;
     }
-    public void uploadFile(int userId, string fileName, string contentType, byte[] bytes)
+    public void uploadFile(int userId, int vydaniId, string fileName, string filePath)
     {
-        string query = "INSERT INTO clanky values (@id, @name, @type, @data)";
-        //using()
+        string query = "INSERT INTO Clanky(autor_id, vydani_id, nazev, filePath, Datum) VALUES (@id, @vydani, @name, @path, @date)";
+        
+        using (SqlConnection conn = new SqlConnection(connectionString))
+        {
+            try
+            {
+                if(conn.State == System.Data.ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@id", userId);
+                cmd.Parameters.AddWithValue("@vydani", vydaniId);
+                cmd.Parameters.AddWithValue("@name", fileName);
+                cmd.Parameters.AddWithValue("@path", filePath);
+                cmd.Parameters.AddWithValue("@date", DateTime.Today);
+
+                cmd.ExecuteNonQuery();
+            }catch(Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+        }
     }
     public int pocetClankuVydani(int idVydani)
     {
