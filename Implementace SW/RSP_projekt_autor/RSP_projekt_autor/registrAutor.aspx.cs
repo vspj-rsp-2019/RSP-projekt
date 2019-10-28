@@ -9,9 +9,14 @@ using System.Web.UI.WebControls;
 public partial class registrAutor : System.Web.UI.Page
 {
     User user;
+    DBHandler dbHandler = new DBHandler(@"Data Source=(LocalDB)\MSSQLLocalDB;
+                                        AttachDbFilename=|DataDirectory|\Database.mdf;
+                                        Integrated Security=True;Connect Timeout=30");
+    List<String> usedEmails;
     protected void Page_Load(object sender, EventArgs e)
     {
         user = new User();
+        usedEmails = dbHandler.getAllLogins();
     }
 
 
@@ -71,11 +76,7 @@ public partial class registrAutor : System.Web.UI.Page
             user.Email = TB_email.Text;
             user.Heslo = TB_heslo.Text;
 
-            DBHandler dbHandler = new DBHandler(@"Data Source=(LocalDB)\MSSQLLocalDB;
-                                        AttachDbFilename=|DataDirectory|\Database.mdf;
-                                        Integrated Security=True;Connect Timeout=30");
-
-            List<String> usedEmails = dbHandler.getAllLogins();
+            
             if (usedEmails.Contains(user.Email))
             {
                 LB_email.Text = "Účet s tímto emailem je už zaregistrován";

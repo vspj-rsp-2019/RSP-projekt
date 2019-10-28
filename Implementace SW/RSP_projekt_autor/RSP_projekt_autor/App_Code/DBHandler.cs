@@ -131,6 +131,11 @@ public class DBHandler
         }
         return logins;
     }
+    public void uploadFile(int userId, string fileName, string contentType, byte[] bytes)
+    {
+        string query = "INSERT INTO clanky values (@id, @name, @type, @data)";
+        using()
+    }
     private static byte[] getHash(string input)
     {
         HashAlgorithm algo = SHA256.Create();
