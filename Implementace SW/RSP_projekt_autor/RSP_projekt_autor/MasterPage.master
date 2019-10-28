@@ -1,0 +1,45 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>
+        <asp:ContentPlaceHolder ID="title" runat="server"></asp:ContentPlaceHolder>
+    </title>
+    <link href="Styles/main.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="wrapper">
+        <h1>LOGOS POLYTECHNIKOS</h1> 
+        <div class="menu">
+            
+            <ul>
+                <li class="navigation_first_item"><a href="Default.aspx">O nás</a></li>
+                <li><a href="Aktualni_cislo.aspx">Aktuální číslo časopisu</a></li>
+                <li><a href="Archiv.aspx">Archiv</a></li>
+                <li><a href="Pokyny.aspx">Pokyny pro autory</a></li>
+                <li><a href="Kontakt.aspx">Kontakt</a></li>
+                <li><a href="Navod.aspx">Návod</a></li>
+                <li><a href="Registrace.aspx">Registrace</a></li>
+                <li class="navitem_s"><a href="login.aspx">Přihlášení</a></li>
+            </ul>
+        </div>
+         <div class="clear"></div>
+        <div class="content">
+        <asp:ContentPlaceHolder id="contentBody" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+        <div class="clear"></div>
+        <div class="footer">
+           <h3>Copyright©RSP019</h3>
+        </div>
+     </div>
+    </form>
+</body>
+</html>
