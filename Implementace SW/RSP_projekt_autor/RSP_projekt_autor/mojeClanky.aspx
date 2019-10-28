@@ -5,9 +5,17 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" runat="server">
-        <strong>Nahrát nový článek</strong><br />
+    <div align="center">    <strong>Nahrát nový článek</strong><br />
+        Vydání:
+        <asp:DropDownList ID="DDL_vyberVydani" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="Id" OnSelectedIndexChanged="DDL_vyberVydani_SelectedIndexChanged">
+        </asp:DropDownList>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Vydani]"></asp:SqlDataSource>
         <asp:FileUpload ID="FileUpload" runat="server" />
         <asp:Button ID="BTN_uploadFile" runat="server" Text="Potvrdit" OnClick="Upload" />
+        <br />
+        K vámi vybranému vydání evidujeme: <asp:Label ID="LB_counterClanku" runat="server"></asp:Label>
+&nbsp;podaných článků</div>    
+
         <br />
         <br />
     <div align="center">

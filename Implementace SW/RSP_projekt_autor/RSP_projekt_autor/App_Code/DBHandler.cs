@@ -136,6 +136,35 @@ public class DBHandler
         string query = "INSERT INTO clanky values (@id, @name, @type, @data)";
         //using()
     }
+    public int pocetClankuVydani(int idVydani)
+    {
+        int count = 0;
+        String query = "SELECT COUNT(Id) FROM Clanky WHERE vydani_id=@idVydani";
+        using (SqlConnection conn = new SqlConnection(connectionString))
+        {
+            try
+            {
+                if(conn.State == System.Data.ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+            
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@idVydani", idVydani);
+
+                using (SqlDataReader dr = cmd.ExecuteReader()) {
+                    while (dr.Read())
+                    {
+                        count = dr.GetInt32(0);
+                    }
+                }
+            }catch(Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+        }
+        return count;
+    }
     private static byte[] getHash(string input)
     {
         HashAlgorithm algo = SHA256.Create();

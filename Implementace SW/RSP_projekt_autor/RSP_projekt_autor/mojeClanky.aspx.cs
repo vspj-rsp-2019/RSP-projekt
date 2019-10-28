@@ -9,13 +9,18 @@ using System.IO;
 public partial class mojeClanky : System.Web.UI.Page
 {
     User user;
+    DBHandler dbHandler;
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
         user = (User)Session["userObject"];
+        dbHandler = new DBHandler(@"Data Source=(LocalDB)\MSSQLLocalDB;
+                                        AttachDbFilename=|DataDirectory|\Database.mdf;
+                                        Integrated Security=True;Connect Timeout=30");
         if (user == null)
         {
             Response.Redirect("login.aspx");
-
         }
     }
     protected void Upload(object sender, EventArgs a)
@@ -33,12 +38,18 @@ public partial class mojeClanky : System.Web.UI.Page
             using(BinaryReader br = new BinaryReader(fs))
             {
                 byte[] bytes = br.ReadBytes((Int32)fs.Length);
-                DBHandler dbHandler = new DBHandler(@"Data Source=(LocalDB)\MSSQLLocalDB;
-                                        AttachDbFilename=|DataDirectory|\Database.mdf;
-                                        Integrated Security=True;Connect Timeout=30");
-
                 //dbHandler.uploadFile(user.id, bytes);
             }
         }
+    }
+
+    protected void DDL_vyberVydani_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        updateCounter(DDL_vyberVydani.SelectedItem.Value);
+    }
+
+    protected void updateCounter(string vydani)
+    {
+        LB_counterClanku.Text = Convert.ToString(dbHandler.pocetClankuVydani(Convert.ToInt32(vydani)));
     }
 }
