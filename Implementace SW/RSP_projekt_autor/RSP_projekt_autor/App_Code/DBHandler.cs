@@ -134,7 +134,7 @@ public class DBHandler
     public void uploadFile(int userId, string fileName, string contentType, byte[] bytes)
     {
         string query = "INSERT INTO clanky values (@id, @name, @type, @data)";
-        using()
+        //using()
     }
     private static byte[] getHash(string input)
     {

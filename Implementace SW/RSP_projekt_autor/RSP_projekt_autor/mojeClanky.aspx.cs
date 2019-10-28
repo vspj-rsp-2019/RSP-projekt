@@ -37,7 +37,7 @@ public partial class mojeClanky : System.Web.UI.Page
                                         AttachDbFilename=|DataDirectory|\Database.mdf;
                                         Integrated Security=True;Connect Timeout=30");
 
-                dbHandler.uploadFile(user.id, bytes);
+                //dbHandler.uploadFile(user.id, bytes);
             }
         }
     }

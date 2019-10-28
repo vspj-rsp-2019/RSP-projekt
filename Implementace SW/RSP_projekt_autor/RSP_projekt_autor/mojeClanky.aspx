@@ -1,15 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="mojeClanky.aspx.cs" Inherits="mojeClanky" %>
+﻿<%@ Page Language="C#"  MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="mojeClanky.aspx.cs" Inherits="mojeClanky" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-    <style type="text/css">
-        #form1 {}
-    </style>
-</head>
-<body>
+<asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="contentBody" runat="server">
     <form id="form1" runat="server">
         <strong>Nahrát nový článek</strong><br />
         <asp:FileUpload ID="FileUpload" runat="server" />
@@ -35,5 +30,4 @@
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [nazev], [Datum] FROM [Clanky]"></asp:SqlDataSource>
     </form>
-</body>
-</html>
+</asp:Content>
