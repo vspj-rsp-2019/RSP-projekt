@@ -28,10 +28,10 @@ public partial class mojeClanky : System.Web.UI.Page
         if(( FileUpload.PostedFile != null ) && (FileUpload.PostedFile.ContentLength > 0))
         {
             string fileName = System.IO.Path.GetFileName(FileUpload.PostedFile.FileName);
-            string saveLocation = Server.MapPath("Clanky") + "\\" + fileName;
+            string saveLocation = "~/Clanky/" + fileName;
 
             try {
-                FileUpload.PostedFile.SaveAs(saveLocation);
+                FileUpload.PostedFile.SaveAs(Server.MapPath(saveLocation));
                 dbHandler.uploadFile(user.id, Convert.ToInt32(DDL_vyberVydani.SelectedValue), fileName, saveLocation);
                 Response.Write("Článek byl nahrán");
                 
