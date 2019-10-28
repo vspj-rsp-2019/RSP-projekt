@@ -25,8 +25,8 @@
                 <li><a href="Pokyny.aspx">Pokyny pro autory</a></li>
                 <li><a href="Kontakt.aspx">Kontakt</a></li>
                 <li><a href="Navod.aspx">Návod</a></li>
-                <li><a href="registrAutor.aspx">Registrace</a></li>
-                <li class="navitem_s"><a href="#">Přihlášení</a></li>
+                <li><a href="Registrace.aspx">Registrace</a></li>
+                <li class="navitem_s"><a href="login.aspx">Přihlášení</a></li>
             </ul>
         </div>
          <div class="clear"></div>

@@ -1,0 +1,9 @@
+verze 0.0.4
+----------------------------------------------
+- v MasterPage nastavení stránky "Pøihlášení"
+- registrAutor.apsx nahrazena "Registrace.apsx" ... zavádìjící název .... nemusí se registrovat jen autor
+- Login a Registrace upraveny na design MasterPage
+- login.aspx ... upraveny validace pomocí "RequiredFieldValidator"
+- Registrace.apsx - po úspìšné registraci se vymaže vyplnìný formuláø
+		  - tl "Potvrdit registraci" nejprve vymaže chybové hlášky v textboxech, aby byly zobrazeny jen aktuální
+		  - tl. "Zrušit" vymaže All textbox

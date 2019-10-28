@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class _Default : System.Web.UI.Page
+public partial class Login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -14,14 +14,7 @@ public partial class _Default : System.Web.UI.Page
 
     protected void BT_login_Click(object sender, EventArgs e)
     {
-        if(TB_email.Text == "")
-        {
-            LB_email.Text = "Vyplňte email";
-        }
-        if(TB_heslo.Text == "")
-        {
-            LB_heslo.Text = "Zadejte heslo";
-        }
+     
         DBHandler dbHandler = new DBHandler(@"Data Source=(LocalDB)\MSSQLLocalDB;
                                         AttachDbFilename=|DataDirectory|\Database.mdf;
                                         Integrated Security=True;Connect Timeout=30");
