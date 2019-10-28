@@ -8,7 +8,9 @@ using System.Web.UI.WebControls;
 
 public partial class registrAutor : System.Web.UI.Page
 {
+
     User user;
+
     protected void Page_Load(object sender, EventArgs e)
     {
         user = new User();
