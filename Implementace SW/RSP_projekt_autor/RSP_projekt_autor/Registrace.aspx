@@ -1,14 +1,14 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="registrAutor.aspx.cs" Inherits="registrAutor" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Registrace.aspx.cs" Inherits="registrAutor" %>
 
-<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title>Registrace</title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
+<asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
+</asp:Content>
+  
+<asp:Content ID="Content3" ContentPlaceHolderID="contentBody" Runat="Server">
+    
+        <div align="center">
             <div>
                 &nbsp;<br />
                 Jméno:&nbsp;&nbsp;
@@ -42,6 +42,5 @@
                 <asp:Button ID="BTN_cancel" runat="server" OnClick="BTN_cancel_Click" Text="Zrušit" />
             </div>
         </div>
-    </form>
-</body>
-</html>
+
+</asp:Content>
