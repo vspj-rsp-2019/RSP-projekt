@@ -32,7 +32,7 @@ public partial class Login : System.Web.UI.Page
         }
         else
         {
-            Response.Write("<font color ='red'>Nesedí heslo nebo email</font>");
+            LB_error.Text = "Nesedí heslo nebo login";
         }
     }
 }

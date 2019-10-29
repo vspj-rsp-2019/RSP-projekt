@@ -20,6 +20,7 @@
             <br />   
             <br />
             <br />
+            <asp:Label ID="LB_error" runat="server" ForeColor="Red"></asp:Label>
             <br />
             <table class="auto-style3">
                 

@@ -7,9 +7,8 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" runat="server">
     <div align="center">    <strong>Nahrát nový článek</strong><br />
         Vydání:
-        <asp:DropDownList ID="DDL_vyberVydani" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="Id" OnSelectedIndexChanged="DDL_vyberVydani_SelectedIndexChanged">
+        <asp:DropDownList ID="DDL_vyberVydani" runat="server" AutoPostBack="True" DataTextField="Name" DataValueField="Id" OnSelectedIndexChanged="DDL_vyberVydani_SelectedIndexChanged">
         </asp:DropDownList>
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Vydani]"></asp:SqlDataSource>
         <asp:FileUpload ID="FileUpload" runat="server" />
         <asp:Button ID="BTN_uploadFile" runat="server" Text="Potvrdit" OnClick="Upload" />
         <br />
@@ -20,12 +19,12 @@
         <br />
     <div align="center">
         <strong>Moje články</strong>
-        <asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSource1" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="511px">
+        <asp:GridView ID="GV_clanky" runat="server" DataSourceID="SqlDataSource1" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="511px">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
-                <asp:BoundField DataField="Datum" HeaderText="Datum nahrání" SortExpression="Datum" />
-                <asp:BoundField DataField="nazev" HeaderText="Název članku" SortExpression="nazev" />
-                <asp:BoundField DataField="Name" HeaderText="Název vydání" SortExpression="Name" />
+                <asp:BoundField DataField="Datum" HeaderText="Datum" SortExpression="Datum" />
+                <asp:BoundField DataField="nazev" HeaderText="Název článku" SortExpression="nazev" />
+                <asp:BoundField DataField="Name" HeaderText="Vydání" SortExpression="Name" />
             </Columns>
             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -37,14 +36,11 @@
             <SortedDescendingCellStyle BackColor="#FCF6C0" />
             <SortedDescendingHeaderStyle BackColor="#820000" />
         </asp:GridView>
-        </div>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [Clanky].[nazev], [Clanky].[Datum], [Vydani].[Name]
-FROM [Clanky] 
-JOIN [Vydani] ON [Clanky].[vydani_id]=[Vydani].[Id]
-WHERE [Clanky].[id] = @mojeID">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [nazev], [Datum], [Name] FROM [View] WHERE ([autor_id] = @autor_id)">
             <SelectParameters>
-                <asp:SessionParameter Name="mojeID" SessionField="UserID" />
+                <asp:SessionParameter DefaultValue="-1" Name="autor_id" SessionField="UserID" Type="Int32" />
             </SelectParameters>
         </asp:SqlDataSource>
-
+        </div>
+        
 </asp:Content>
