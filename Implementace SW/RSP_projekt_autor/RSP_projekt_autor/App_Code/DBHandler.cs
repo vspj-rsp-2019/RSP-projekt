@@ -54,6 +54,8 @@ public class DBHandler
         }
         return true;
     }
+
+    //pokus o prihlaseni pri neuspesnem vraci null
     public User loginUser(string login, string password)
     {
         User user = new User();
@@ -105,11 +107,11 @@ public class DBHandler
         List<String> logins = new List<string>();
         String query = "SELECT email FROM Users";
 
-        using(SqlConnection conn = new SqlConnection(connectionString))
+        using (SqlConnection conn = new SqlConnection(connectionString))
         {
             try
             {
-                if(conn.State == System.Data.ConnectionState.Closed)
+                if (conn.State == System.Data.ConnectionState.Closed)
                 {
                     conn.Open();
                 }
@@ -123,13 +125,98 @@ public class DBHandler
                     }
                 }
 
-            }catch(Exception ex)
+            } catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex.Message);
                 return logins;
             }
         }
         return logins;
+    }
+    public void uploadFile(int userId, int vydaniId, string fileName, string filePath)
+    {
+        string query = "INSERT INTO Clanky(autor_id, vydani_id, nazev, filePath, Datum) VALUES (@id, @vydani, @name, @path, @date)";
+
+        using (SqlConnection conn = new SqlConnection(connectionString))
+        {
+            try
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@id", userId);
+                cmd.Parameters.AddWithValue("@vydani", vydaniId);
+                cmd.Parameters.AddWithValue("@name", fileName);
+                cmd.Parameters.AddWithValue("@path", filePath);
+                cmd.Parameters.AddWithValue("@date", DateTime.Today);
+
+                cmd.ExecuteNonQuery();
+            } catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+        }
+    }
+    public int pocetClankuVydani(int idVydani)
+    {
+        int count = 0;
+        string query = "SELECT COUNT(Id) FROM Clanky WHERE vydani_id=@idVydani";
+        using (SqlConnection conn = new SqlConnection(connectionString))
+        {
+            try
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@idVydani", idVydani);
+
+                using (SqlDataReader dr = cmd.ExecuteReader()) {
+                    while (dr.Read())
+                    {
+                        count = dr.GetInt32(0);
+                    }
+                }
+            } catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+        }
+        return count;
+    }
+
+    public List<KeyValuePair<int, string>> getAllVydani(){
+        List<KeyValuePair<int, string>> vydani = new List<KeyValuePair<int, string>>();
+        string query = "SELECT Id,Name FROM Vydani WHERE Archiv=0";
+
+        using(SqlConnection conn = new SqlConnection(connectionString))
+        {
+            try
+            {
+                if(conn.State == System.Data.ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                
+                using(SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        vydani.Add(new KeyValuePair<int, string>(dr.GetInt32(0), dr.GetString(1)));
+                    }
+                }
+            }catch(Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+        }
+        return vydani;
     }
     private static byte[] getHash(string input)
     {

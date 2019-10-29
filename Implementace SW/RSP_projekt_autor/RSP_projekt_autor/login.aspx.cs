@@ -24,6 +24,7 @@ public partial class Login : System.Web.UI.Page
         {
             Response.Write("<script>alert('login probehl uspesne')</script>");
             Session["userObject"] = user;
+            Session["UserId"] = user.id;
             if(user.Role == "autor") {
                 Response.Redirect("mojeClanky.aspx");
             }
@@ -31,7 +32,7 @@ public partial class Login : System.Web.UI.Page
         }
         else
         {
-            Response.Write("<font color ='red'>Nesedí heslo nebo email</font>");
+            LB_error.Text = "Nesedí heslo nebo login";
         }
     }
 }
