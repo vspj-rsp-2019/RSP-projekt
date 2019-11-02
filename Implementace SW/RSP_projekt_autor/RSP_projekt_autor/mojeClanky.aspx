@@ -18,6 +18,7 @@
         <br />
         <br />
     <div align="center">
+        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/RecenzeClankuAutora.aspx">Recenze mých článků</asp:HyperLink> <br />
         <strong>Moje články</strong>
         <asp:GridView ID="GV_clanky" runat="server" DataSourceID="SqlDataSource1" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="511px">
             <AlternatingRowStyle BackColor="White" />
