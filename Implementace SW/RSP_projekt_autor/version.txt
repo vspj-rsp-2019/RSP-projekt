@@ -1,3 +1,9 @@
+verze 0.0.6
+----------------------------------------------
+- do stránky "MojeClanky" pøidan odkaz na zobrazení recenzí na èlánky autora
+- vytvoøena stránka pro zobrazení èlánkù pøihlášeného autora ("RecenzeClankuAutora"), ze které je možné dohledat a stáhnout napsané reecnze na èlánky ve formátu PDF
+
+
 verze 0.0.5
 ----------------------------------------------
 po Adamových úpravách znovu opravena Registrace.apsx / Registrace.aspx.cs
