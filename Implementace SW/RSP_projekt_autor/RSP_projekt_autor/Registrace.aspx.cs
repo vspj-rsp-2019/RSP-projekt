@@ -20,14 +20,50 @@ public partial class registrAutor : System.Web.UI.Page
         usedEmails = dbHandler.getAllLogins();
     }
 
+    /**
+     * vymazání všech LabelBoxů
+     */
+    protected void clearAllLabelBox()
+    {
+        LB_jmeno.Text = "";
+        LB_prijmeni.Text = "";
+        LB_email.Text = "";
+        LB_emailConfirm.Text = "";
+        LB_heslo.Text = "";
+        LB_hesloConfirm.Text = "";
+        LB_emailConfirm.Text = "";
+        LB_hesloConfirm.Text = "";
+    }
 
+    /**
+     *¨vymazání všech Textboxů 
+     */
+    protected void clearAllTextBox()
+    {
+        TB_jmeno.Text = "";
+        TB_prijmeni.Text = "";
+        TB_email.Text = "";
+        TB_emailConfirm.Text = "";
+        TB_heslo.Text = "";
+        TB_hesloConfirm.Text = "";
+        TB_emailConfirm.Text = "";
+        TB_hesloConfirm.Text = "";
 
+    }
+    
+    /**
+     * tlačítko Zrušit vymaže všechny labely a textboxy
+     */
     protected void BTN_cancel_Click(object sender, EventArgs e)
     {
+        clearAllLabelBox();
+        clearAllTextBox();
+        
     }
 
     protected void BTN_registrace_Click(object sender, EventArgs e)
     {
+        clearAllLabelBox();
         Boolean isOk = true;
 
         if(TB_jmeno.Text == "") {
@@ -87,6 +123,7 @@ public partial class registrAutor : System.Web.UI.Page
             else if (dbHandler.registerUser(user))
             {
                 Response.Write("<script>alert('registrace probehla uspesne')</script>");
+                clearAllTextBox();
             }
             else
             {
