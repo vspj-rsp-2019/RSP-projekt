@@ -5,6 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
+        /*styl pro odsazeni textu*/
         .auto-style2 {
             margin-left: 7px;
             margin-right: 7px;
@@ -12,7 +13,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" Runat="Server">
-    <h2 class="auto-style2">Vítáme Vás!</h2>
+    &nbsp;<h2 class="auto-style2">Vítáme Vás!</h2>
     <p class="auto-style2">&nbsp;</p>
 
 <h3 class="auto-style2"> LOGOS POLYTECHNIKOS </h3> 
@@ -34,6 +35,8 @@ je vysokoškolský odborný recenzovaný časopis, který slouží pro publikač
         <h3 class="auto-style2"> V časopise je možné publikovat</h3> 
         <p class="auto-style2">
         odborné články, statě, přehledové studie, recenze a další typy odborných příspěvků v českém, slovenském a anglickém jazyce. Do recenzního řízení jsou přijímány příspěvky tematicky odpovídající zaměření časopisu a formálně upravené dle redakční šablony (viz. <a href="Pokyny.aspx">Pokyny pro autory</a>).</p>
+<p class="auto-style2">
+        &nbsp;</p>
     
 </asp:Content>
 

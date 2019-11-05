@@ -13,11 +13,16 @@ public partial class Default2 : System.Web.UI.Page
     // Vytvori pripojeni k databazi 
     SqlCommand cmd = new SqlCommand();
     SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True;Connect Timeout=30");
-
+    User user;
 
     protected void Page_Load(object sender, EventArgs e)
     {
         // po nacteni  stranky zobrazi do tabulky vsechny autorovy clanky
+        user = (User)Session["userObject"];
+        if (user == null)
+        {
+            Response.Redirect("login.aspx");
+        }
         zobrazVsechnyClanky();
     }
 
