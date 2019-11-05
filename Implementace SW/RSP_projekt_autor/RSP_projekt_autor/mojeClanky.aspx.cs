@@ -17,6 +17,7 @@ public partial class mojeClanky : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        // pokud neni uzivatel prihlasen, dojde k presmerovani na prihlaseni
         user = (User)Session["userObject"];
         if (user == null)
         {
