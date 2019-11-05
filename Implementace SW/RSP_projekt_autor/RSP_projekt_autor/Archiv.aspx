@@ -4,8 +4,15 @@
     Archiv
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
+    <style type="text/css">
+        .auto-style1 {
+            margin-left: 7px;
+            margin-right: 7px;
+        }
+    </style>
 </asp:Content>
+
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" Runat="Server">
-   <h3>Archiv časopisu</h3> 
+   <h3 class="auto-style1">Archiv časopisu</h3> 
 </asp:Content>
 
