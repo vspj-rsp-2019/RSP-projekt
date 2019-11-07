@@ -4,33 +4,51 @@
     Kontakt
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
+    <style type="text/css">
+        .auto-style1 {
+            margin-left: 7px;
+            margin-right: 7px;
+        }
+    </style>
     </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" Runat="Server">
-    <h3>Kontaktní údaje</h3>
-    <p>&nbsp;</p>
-    <h5>Adresa nakladatele: 
+    <h3 class="auto-style1">Kontaktní údaje</h3>
+    <p class="auto-style1">&nbsp;</p>
+    <h5 class="auto-style1">Adresa nakladatele: 
 </h5>
+    <p class="auto-style1">
     <br />
     Vysoká škola polytechnická Jihlava, redakce LOGOS POLYTECHNIKOS, Tolstého 1556/16, 586 01 Jihlava
 
     <br />
     IČ: 71226401 DIČ: CZ71226401<br />
     <br />
-   <h5>Adresa pro odesílání příspěvků:</h5> Primárně přes aplikaci - v případě výpadku na níže uvedený e-mail.
+    </p>
+   <h5 class="auto-style1">Adresa pro odesílání příspěvků:</h5> 
+    <p class="auto-style1">
+        Primárně přes aplikaci - v případě výpadku na níže uvedený e-mail.
     <br />
     <a href="mailto:logos@vspj.cz">logos@vspj.cz</a><br />
     <br />
-    <h5>Kontaktní osoba:</h5>
+    </p>
+    <h5 class="auto-style1">Kontaktní osoba:</h5>
+    
+    <p class="auto-style1">
     
     Bc. Zuzana Mafková: 
     <br />
     <a href="mailto:zuzana.mafkova@vspj.cz">zuzana.mafkova@vspj.cz</a>
     <br />
     <br />
-    <h5>Šéfredaktor</h5> 
+    </p>
+    <h5 class="auto-style1">Šéfredaktor</h5> 
+    <p class="auto-style1">
 doc. Ing. Zdeněk Horák, Ph.D. (Vysoká škola polytechnická Jihlava)<br />
     <br />
-<h5>Redakční rada</h5> 
+    </p>
+<h5 class="auto-style1">Redakční rada</h5> 
+
+    <p class="auto-style1">
 
 prof. PhDr. RNDr. Martin Boltižiar, PhD. (Univerzita Konštantína Filozofa v Nitre)
     <br />
@@ -61,5 +79,6 @@ doc. Dr. Ing. Jan Voráček, CSc. (Vysoká škola polytechnická Jihlava)
 RNDr. PaedDr. Ján Veselovský, PhD. (Univerzita Konštantína Filozofa v Nitre)
      <br />
 doc. Ing. Libor Žídek, Ph.D. (Masarykova univerzita Brno) 
+    </p>
 </asp:Content>
 
