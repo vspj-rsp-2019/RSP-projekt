@@ -30,8 +30,33 @@
             </ul>
         </div>
          <div class="clear"></div>
+                     
+         <%-- Menu dva, umoznuje kdyz je uzivatel prihlasen jeho odhlaseni a take odkazy na dalsi stranky.       --%>
+        <asp:Menu ID="Menu1" runat="server" BackColor="#CC0000" BorderColor="Black" BorderStyle="Solid" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="Small" ForeColor="White" Orientation="Horizontal" RenderingMode="Table" StaticSubMenuIndent="20px" Width="946px" Height="35px">
+        <DynamicHoverStyle BackColor="#990000" ForeColor="White" />
+        <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+        <DynamicMenuStyle BackColor="#FFFBD6" />
+        <DynamicSelectedStyle BackColor="#FFCC66" />
+                <Items>
+                    <asp:MenuItem Text="Články" Value="Články" NavigateUrl="~/mojeClanky.aspx"></asp:MenuItem>
+                    <asp:MenuItem Text="Recenze" Value="Recenze" NavigateUrl="~/RecenzeClankuAutora.aspx"></asp:MenuItem>
+                    <asp:MenuItem Text="Nová položka1" Value="Nová položka1"></asp:MenuItem>
+                    <asp:MenuItem Text="Nová položka2" Value="Nová položka2"></asp:MenuItem>
+                    <asp:MenuItem Text="Odhlásit se" Value="Odhlásit se" NavigateUrl="~/Odhlaseni.aspx"></asp:MenuItem>
+                </Items>
+               <StaticHoverStyle BackColor="#990000" ForeColor="White" />
+        <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+        <StaticSelectedStyle BackColor="#FFCC66" />
+            </asp:Menu>
+        <div class="clear"></div>
+ 
         <div class="content">
         <asp:ContentPlaceHolder id="contentBody" runat="server">
+            <p>
+                <br />
+            </p>
+            <p>
+            </p>
         
         </asp:ContentPlaceHolder>
     </div>

@@ -1,3 +1,17 @@
+verze 0.0.6
+----------------------------------------------
+- do stránky "MojeClanky" pøidan odkaz na zobrazení recenzí na èlánky autora
+- vytvoøena stránka pro zobrazení èlánkù pøihlášeného autora ("RecenzeClankuAutora"), ze které je možné dohledat a stáhnout napsané reecnze na èlánky ve formátu PDF
+
+
+verze 0.0.5
+----------------------------------------------
+po Adamových úpravách znovu opravena Registrace.apsx / Registrace.aspx.cs
+- "Registrace" - po úspìšné registraci se vymaže vyplnìný formuláø
+		  - tl "Potvrdit registraci" nejprve vymaže chybové hlášky v textboxech, aby byly zobrazeny jen aktuální
+		  - tl. "Zrušit" vymaže All textbox
+- do projektu pøidán adrešáø "Clanky" pro archivaci èlánkù
+
 verze 0.0.4
 ----------------------------------------------
 - v MasterPage nastavení stránky "Pøihlášení"
