@@ -1,7 +1,12 @@
+verze 0.0.7
+----------------------------------------------
+Upravena tabulka Recenze - pøidány atributy zohlednujici kritéria hodnocení èlánkù
+Upravení vzhledu a zobrazených dat na stránce RecenzeClankuAutora
+
 verze 0.0.6
 ----------------------------------------------
-- do stránky "MojeClanky" pøidan odkaz na zobrazení recenzí na èlánky autora
-- vytvoøena stránka pro zobrazení èlánkù pøihlášeného autora ("RecenzeClankuAutora"), ze které je možné dohledat a stáhnout napsané reecnze na èlánky ve formátu PDF
+Vytvoøena DB tabulka Recenze
+Vytvoøena stránka pro zobrazení recenzí aktuálnì pøihlášeným autorem
 
 
 verze 0.0.5

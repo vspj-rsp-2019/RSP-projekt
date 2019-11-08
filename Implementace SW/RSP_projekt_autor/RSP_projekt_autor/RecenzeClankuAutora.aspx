@@ -70,18 +70,17 @@
 
     <h2>Přiřazené recenze</h2>
     <br />
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="FilePath" DataSourceID="SqlDataSource1" EmptyDataText="Žádné datové záznamy k zobrazení." CellPadding="4" ForeColor="#333333" GridLines="None">
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" EmptyDataText="Žádné datové záznamy k zobrazení." CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" AllowSorting="True" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
-            <asp:BoundField DataField="FilePath" HeaderText="Recenze" SortExpression="TextRecenze" />
+            <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
+            <asp:BoundField DataField="nazev" HeaderText="Název" SortExpression="nazev" />
             <asp:BoundField DataField="Datum" HeaderText="Datum" SortExpression="Datum" />
-            <asp:BoundField DataField="Recenzent_id" HeaderText="ID recenzenta" SortExpression="Recenzent_id" />
-      
-            <asp:TemplateField>
-                   <ItemTemplate>
-                       <asp:LinkButton ID="LinkButton1" runat="server" Text="Download Link" OnClick="LinkButton1_Click"> </asp:LinkButton>
-                   </ItemTemplate>            
-           </asp:TemplateField>
+            <asp:BoundField DataField="Aktualnost" HeaderText="Aktuálnost" SortExpression="Aktualnost" />
+            <asp:BoundField DataField="Originalita" HeaderText="Originalita" SortExpression="Originalita" />
+            <asp:BoundField DataField="OdbornaUroven" HeaderText="Odborná úroveň" SortExpression="OdbornaUroven" />
+            <asp:BoundField DataField="JazykovaUroven" HeaderText="Jazyková úroveň" SortExpression="JazykovaUroven" />
+            <asp:CommandField ShowSelectButton="True" />
 
         </Columns>
                 <FooterStyle BackColor="#990000" ForeColor="White" Font-Bold="True" />
@@ -94,7 +93,8 @@
                 <SortedDescendingCellStyle BackColor="#FCF6C0" />
                 <SortedDescendingHeaderStyle BackColor="#820000" />
     </asp:GridView>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM [Recenze] WHERE [Id] = @Id" InsertCommand="INSERT INTO [Recenze] ([Clanek_id], [Recenzent_id], [Datum], [TextRecenze]) VALUES (@Clanek_id, @Recenzent_id, @Datum, @TextRecenze)" SelectCommand="SELECT * FROM [Recenze] WHERE ([Clanek_id] = @Clanek_id)" UpdateCommand="UPDATE [Recenze] SET [Clanek_id] = @Clanek_id, [Recenzent_id] = @Recenzent_id, [Datum] = @Datum, [TextRecenze] = @TextRecenze WHERE [Id] = @Id">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM [Recenze] WHERE [Id] = @Id" InsertCommand="INSERT INTO [Recenze] ([Clanek_id], [Recenzent_id], [Datum], [TextRecenze]) VALUES (@Clanek_id, @Recenzent_id, @Datum, @TextRecenze)" SelectCommand="SELECT Recenze.Id, Recenze.Clanek_id, Recenze.Recenzent_id, Recenze.Datum, Recenze.Aktualnost, Recenze.Originalita, Recenze.OdbornaUroven, Recenze.JazykovaUroven, Clanky.nazev FROM Recenze INNER JOIN Clanky ON Recenze.Clanek_id = Clanky.Id
+WHERE ([Clanek_id] = @Clanek_id) AND Recenze.Zverejneno = 1" UpdateCommand="UPDATE [Recenze] SET [Clanek_id] = @Clanek_id, [Recenzent_id] = @Recenzent_id, [Datum] = @Datum, [TextRecenze] = @TextRecenze WHERE [Id] = @Id">
         <DeleteParameters>
             <asp:Parameter Name="Id" Type="Int32" />
         </DeleteParameters>
@@ -105,7 +105,7 @@
             <asp:Parameter Name="TextRecenze" Type="String" />
         </InsertParameters>
         <SelectParameters>
-            <asp:ControlParameter ControlID="gv_recenze" Name="Clanek_id" PropertyName="SelectedValue" Type="Int32" />
+            <asp:ControlParameter ControlID="gv_recenze" Name="Clanek_id" PropertyName="SelectedValue" />
         </SelectParameters>
         <UpdateParameters>
             <asp:Parameter Name="Clanek_id" Type="Int32" />
@@ -115,6 +115,12 @@
             <asp:Parameter Name="Id" Type="Int32" />
         </UpdateParameters>
     </asp:SqlDataSource>
+        <br />
+        <h2>Text recenze </h2>
+        (Vyberte recenzi pro zobrazení textu)<br />
+        <asp:TextBox ID="TB_textRecenze" runat="server" Height="111px" TextMode="MultiLine" Width="500px"></asp:TextBox>
+        <br />
+        <br />
     <br />
 
 </div>
