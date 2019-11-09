@@ -28,6 +28,10 @@ public partial class Login : System.Web.UI.Page
             if(user.Role == "autor") {
                 Response.Redirect("mojeClanky.aspx");
             }
+            if (user.Role == "redaktor")
+            {
+                Response.Redirect("PrideleniRecenzi.aspx");
+            }
 
         }
         else
