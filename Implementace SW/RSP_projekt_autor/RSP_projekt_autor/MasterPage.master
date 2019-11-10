@@ -40,7 +40,7 @@
                 <Items>
                     <asp:MenuItem Text="Články" Value="Články" NavigateUrl="~/mojeClanky.aspx"></asp:MenuItem>
                     <asp:MenuItem Text="Recenze" Value="Recenze" NavigateUrl="~/RecenzeClankuAutora.aspx"></asp:MenuItem>
-                    <asp:MenuItem Text="Nová položka1" Value="Nová položka1"></asp:MenuItem>
+                    <asp:MenuItem Text="Termíny" Value="Nová položka1"></asp:MenuItem>
                     <asp:MenuItem Text="Nová položka2" Value="Nová položka2"></asp:MenuItem>
                     <asp:MenuItem Text="Odhlásit se" Value="Odhlásit se" NavigateUrl="~/Odhlaseni.aspx"></asp:MenuItem>
                 </Items>
