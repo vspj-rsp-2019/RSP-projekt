@@ -35,6 +35,7 @@
     <p class="auto-style2"> 
         &nbsp;</p>
     <p class="auto-style3"> 
+        <%--tabulka zobrazujici aktualni cisla casopisu a jejich zamereni a uzaverky--%>
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SQL_temataZamereni" ForeColor="#333333" GridLines="None">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
