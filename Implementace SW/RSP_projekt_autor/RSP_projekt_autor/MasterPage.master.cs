@@ -22,6 +22,9 @@ public partial class MasterPage : System.Web.UI.MasterPage
             // pokud neni prihlasen, menu nebude zobrazeno
             Menu1.Visible = false;
         }
+        else
+            //lb_userName.Text = "přihlášený uživatel";
+            lb_userName.Text = " Login:  " + user.Prijmeni + " " + user.Jmeno;
 
 
     }

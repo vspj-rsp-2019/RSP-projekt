@@ -11,11 +11,33 @@
     <link href="Styles/main.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style3 {
+            width: 290px;
+        }
+        .auto-style4 {
+            width: 317px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
     <div class="wrapper">
-        <h1>LOGOS POLYTECHNIKOS</h1> 
+        
+            <Table >
+                <tr> <td class="auto-style3"></td>                
+                    <td > <h1>LOGOS POLYTECHNIKOS</h1> </td>
+                    
+                </tr>
+                <tr>
+                    
+                    <td class="auto-style3"></td>
+                    <td></td><td></td>
+                    <td class="auto-style4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lb_userName" runat="server"></asp:Label></td>
+
+                </tr>
+            </Table>
+                
         <div class="menu">
             
             <ul>
@@ -40,8 +62,8 @@
                 <Items>
                     <asp:MenuItem Text="Články" Value="Články" NavigateUrl="~/mojeClanky.aspx"></asp:MenuItem>
                     <asp:MenuItem Text="Recenze" Value="Recenze" NavigateUrl="~/RecenzeClankuAutora.aspx"></asp:MenuItem>
-                    <asp:MenuItem Text="Termíny" Value="Nová položka1"></asp:MenuItem>
-                    <asp:MenuItem Text="Nová položka2" Value="Nová položka2"></asp:MenuItem>
+                    <asp:MenuItem Text="Termíny" Value="Termíny" NavigateUrl="~/Terminy.aspx"></asp:MenuItem>
+                    <asp:MenuItem Text="Admin" Value="Admin" NavigateUrl="~/adminPage.aspx"></asp:MenuItem>
                     <asp:MenuItem Text="Odhlásit se" Value="Odhlásit se" NavigateUrl="~/Odhlaseni.aspx"></asp:MenuItem>
                 </Items>
                <StaticHoverStyle BackColor="#990000" ForeColor="White" />
@@ -51,6 +73,7 @@
         <div class="clear"></div>
  
         <div class="content">
+
         <asp:ContentPlaceHolder id="contentBody" runat="server">
             <p>
                 <br />
