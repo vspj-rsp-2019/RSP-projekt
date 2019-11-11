@@ -16,6 +16,9 @@
         .auto-style4 {
             text-align: center;
         }
+    .auto-style5 {
+        width: 481px;
+    }
     </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" Runat="Server">
@@ -28,7 +31,7 @@
             <asp:Label ID="LB_error" runat="server" ForeColor="Red"></asp:Label>
             <br />
             
-            <table class="auto-style3">
+            <table class="auto-style5">
                 
                 <tr>
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
