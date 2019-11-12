@@ -22,6 +22,18 @@
             margin-left: 7px;
             margin-right: 7px;
         }
+    .auto-style5 {
+        text-align: left;
+        width: 581px;
+        margin-left: 7px;
+        margin-right: 7px;
+    }
+    .auto-style6 {
+        text-align: left;
+        width: 746px;
+        margin-left: 7px;
+        margin-right: 7px;
+    }
     </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" Runat="Server">
@@ -29,30 +41,31 @@
        Aktuální datum: <asp:Label ID="lbl_AktualDate" runat="server"></asp:Label>
 </p>
    
-        <h4 class="auto-style3">Upozornění na končící datum vypracování posudku od recenzentů:</h4>
-    <p>&nbsp;</p>
-        <div class="auto-style2">
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="CheckTermin_1" ForeColor="#333333" GridLines="None" EmptyDataText="Aktuálně neevidujeme končící termíny.">
-            <AlternatingRowStyle BackColor="White" />
-            <Columns>
-                <asp:BoundField DataField="Datum_vypracovani" HeaderText="Datum vypracování" SortExpression="Datum_vypracovani" />
-                <asp:BoundField DataField="id" HeaderText="ID recenzenta" InsertVisible="False" ReadOnly="True" SortExpression="id" />
-                <asp:BoundField DataField="jmeno" HeaderText="Jméno" SortExpression="jmeno" />
-                <asp:BoundField DataField="prijmeni" HeaderText="Příjmení" SortExpression="prijmeni" />
-                <asp:BoundField DataField="Id_Clanku" HeaderText="ID článku" SortExpression="Id_Clanku" />
-                <asp:BoundField DataField="nazev" HeaderText="Název článku" SortExpression="nazev" />
-            </Columns>
-            <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
-            <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
-            <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
-            <SortedAscendingCellStyle BackColor="#FDF5AC" />
-            <SortedAscendingHeaderStyle BackColor="#4D0000" />
-            <SortedDescendingCellStyle BackColor="#FCF6C0" />
-            <SortedDescendingHeaderStyle BackColor="#820000" />
-        </asp:GridView>
-        </div>
+    <h4 class="auto-style5">Upozornění na končící datum vypracování posudku od recenzentů:</h4>
+<p>
+    &nbsp;</p>
+<div class="auto-style2">
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="CheckTermin_1" ForeColor="#333333" GridLines="None" EmptyDataText="Aktuálně neevidujeme končící termíny.">
+        <AlternatingRowStyle BackColor="White" />
+        <Columns>
+            <asp:BoundField DataField="Datum_vypracovani" HeaderText="Datum vypracování" SortExpression="Datum_vypracovani" />
+            <asp:BoundField DataField="id" HeaderText="ID recenzenta" InsertVisible="False" ReadOnly="True" SortExpression="id" />
+            <asp:BoundField DataField="jmeno" HeaderText="Jméno" SortExpression="jmeno" />
+            <asp:BoundField DataField="prijmeni" HeaderText="Příjmení" SortExpression="prijmeni" />
+            <asp:BoundField DataField="Id_Clanku" HeaderText="ID článku" SortExpression="Id_Clanku" />
+            <asp:BoundField DataField="nazev" HeaderText="Název článku" SortExpression="nazev" />
+        </Columns>
+        <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+        <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+        <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+        <SortedAscendingCellStyle BackColor="#FDF5AC" />
+        <SortedAscendingHeaderStyle BackColor="#4D0000" />
+        <SortedDescendingCellStyle BackColor="#FCF6C0" />
+        <SortedDescendingHeaderStyle BackColor="#820000" />
+    </asp:GridView>
+</div>
         <%--Zobrazi jen hodnoty, kdy datum vypracovani posudku vyprsi za 3 nebo mene dni.--%>
         <asp:SqlDataSource ID="CheckTermin_1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT PrideleneClanky.Datum_vypracovani, Users.id, Users.jmeno, Users.prijmeni, 
 PrideleneClanky.Id_Clanku, Clanky.nazev
@@ -60,45 +73,43 @@ FROM PrideleneClanky
 INNER JOIN Users ON PrideleneClanky.Id_Recenzenta = Users.id 
 INNER JOIN Clanky ON PrideleneClanky.ID_Clanku = Clanky.Id
 WHERE (Users.role = 'recenzent') AND DATEDIFF (DAY, GETDATE(), PrideleneClanky.Datum_vypracovani) &lt;= 3;"></asp:SqlDataSource>
-
-    <p class="auto-style3">
-        <asp:Button ID="btn_zobrazVsechnyPosudky" runat="server" OnClick="Button2_Click" Text="Zobrazit všechny posudky" />
-    </p>
 <p class="auto-style3">
-        <asp:Button ID="btn_skryAllPosudky" runat="server" CausesValidation="False" OnClick="btn_skryAllPosudky_Click" Text="Skrýt všechny posudky" Visible="False" />
-    </p>
-    <p>
+    <asp:Button ID="btn_zobrazVsechnyPosudky" runat="server" OnClick="Button2_Click" Text="Zobrazit všechny posudky" />
+</p>
+<p class="auto-style3">
+    <asp:Button ID="btn_skryAllPosudky" runat="server" CausesValidation="False" OnClick="btn_skryAllPosudky_Click" Text="Skrýt všechny posudky" Visible="False" />
+</p>
+<p>
         &nbsp;</p>
-    <p>
-        <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="Vsechny_Posudky" ForeColor="#333333" GridLines="None" Visible="False">
-            <AlternatingRowStyle BackColor="White" />
-            <Columns>
-                <asp:BoundField DataField="Datum_vypracovani" HeaderText="Datum vypracování" SortExpression="Datum_vypracovani" />
-                <asp:BoundField DataField="id" HeaderText="ID recenzenta" InsertVisible="False" ReadOnly="True" SortExpression="id" />
-                <asp:BoundField DataField="jmeno" HeaderText="Jméno" SortExpression="jmeno" />
-                <asp:BoundField DataField="prijmeni" HeaderText="Příjmení" SortExpression="prijmeni" />
-                <asp:BoundField DataField="Id_Clanku" HeaderText="ID článku" SortExpression="Id_Clanku" />
-                <asp:BoundField DataField="nazev" HeaderText="Název článku" SortExpression="nazev" />
-            </Columns>
-            <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
-            <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
-            <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
-            <SortedAscendingCellStyle BackColor="#FDF5AC" />
-            <SortedAscendingHeaderStyle BackColor="#4D0000" />
-            <SortedDescendingCellStyle BackColor="#FCF6C0" />
-            <SortedDescendingHeaderStyle BackColor="#820000" />
-        </asp:GridView>
-        <asp:SqlDataSource ID="Vsechny_Posudky" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT PrideleneClanky.Datum_vypracovani, Users.id, Users.jmeno, Users.prijmeni, 
+<p>
+    <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="Vsechny_Posudky" ForeColor="#333333" GridLines="None" Visible="False">
+        <AlternatingRowStyle BackColor="White" />
+        <Columns>
+            <asp:BoundField DataField="Datum_vypracovani" HeaderText="Datum vypracování" SortExpression="Datum_vypracovani" />
+            <asp:BoundField DataField="id" HeaderText="ID recenzenta" InsertVisible="False" ReadOnly="True" SortExpression="id" />
+            <asp:BoundField DataField="jmeno" HeaderText="Jméno" SortExpression="jmeno" />
+            <asp:BoundField DataField="prijmeni" HeaderText="Příjmení" SortExpression="prijmeni" />
+            <asp:BoundField DataField="Id_Clanku" HeaderText="ID článku" SortExpression="Id_Clanku" />
+            <asp:BoundField DataField="nazev" HeaderText="Název článku" SortExpression="nazev" />
+        </Columns>
+        <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+        <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+        <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+        <SortedAscendingCellStyle BackColor="#FDF5AC" />
+        <SortedAscendingHeaderStyle BackColor="#4D0000" />
+        <SortedDescendingCellStyle BackColor="#FCF6C0" />
+        <SortedDescendingHeaderStyle BackColor="#820000" />
+    </asp:GridView>
+    <asp:SqlDataSource ID="Vsechny_Posudky" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT PrideleneClanky.Datum_vypracovani, Users.id, Users.jmeno, Users.prijmeni, 
 PrideleneClanky.Id_Clanku, Clanky.nazev
 FROM PrideleneClanky 
 INNER JOIN Users ON PrideleneClanky.Id_Recenzenta = Users.id 
 INNER JOIN Clanky ON PrideleneClanky.ID_Clanku = Clanky.Id
 WHERE (Users.role = 'recenzent')"></asp:SqlDataSource>
-    </p>
-    <h4 class="auto-style3">&nbsp;</h4>
-    <h4 class="auto-style3">Upozornění na končící datum uzávěrky pro sběr příspěvků do jednotlivých čísel časopisu:</h4>
+</p>
+    <h4 class="auto-style6">Upozornění na končící datum uzávěrky pro sběr příspěvků do jednotlivých čísel časopisu:</h4>
     <p class="auto-style3">&nbsp;</p>
     <p class="auto-style3">
         <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="Check_Uzaverka_prispevky" ForeColor="#333333" GridLines="None" EmptyDataText="Aktuálně neevidujeme končící termíny.">
