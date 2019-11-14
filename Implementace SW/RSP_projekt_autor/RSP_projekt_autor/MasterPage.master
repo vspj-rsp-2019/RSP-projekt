@@ -11,11 +11,33 @@
     <link href="Styles/main.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style3 {
+            width: 290px;
+        }
+        .auto-style4 {
+            width: 317px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
     <div class="wrapper">
-        <h1>LOGOS POLYTECHNIKOS</h1> 
+        
+            <Table >
+                <tr> <td class="auto-style3"></td>                
+                    <td > <h1>LOGOS POLYTECHNIKOS</h1> </td>
+                    
+                </tr>
+                <tr>
+                    
+                    <td class="auto-style3"></td>
+                    <td></td><td></td>
+                    <td class="auto-style4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lb_userName" runat="server"></asp:Label></td>
+
+                </tr>
+            </Table>
+                
         <div class="menu">
             
             <ul>
@@ -35,22 +57,35 @@
         <asp:Menu ID="Menu1" runat="server" BackColor="#CC0000" BorderColor="Black" BorderStyle="Solid" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="Small" ForeColor="White" Orientation="Horizontal" RenderingMode="Table" StaticSubMenuIndent="20px" Width="946px" Height="35px">
         <DynamicHoverStyle BackColor="#990000" ForeColor="White" />
         <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
-        <DynamicMenuStyle BackColor="#FFFBD6" />
-        <DynamicSelectedStyle BackColor="#FFCC66" />
+        <DynamicMenuStyle BackColor="Red" />
+        <DynamicSelectedStyle BackColor="Maroon" />
                 <Items>
-                    <asp:MenuItem Text="Články" Value="Články" NavigateUrl="~/mojeClanky.aspx"></asp:MenuItem>
-                    <asp:MenuItem Text="Recenze" Value="Recenze" NavigateUrl="~/RecenzeClankuAutora.aspx"></asp:MenuItem>
-                    <asp:MenuItem Text="Nová položka1" Value="Nová položka1"></asp:MenuItem>
-                    <asp:MenuItem Text="Nová položka2" Value="Nová položka2"></asp:MenuItem>
+                    <asp:MenuItem Text="Články" Value="Články" NavigateUrl="~/mojeClanky.aspx">
+                        <asp:MenuItem NavigateUrl="~/NoveClanky.aspx" Text="Nové články" Value="Nové články"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/KDoreseni.aspx" Text="K dořešení" Value="Nová položka"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/SchvaleneClanky.aspx" Text="Schválené články" Value="Nová položka"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/ZamitnuteClanky.aspx" Text="Zamítnuté články" Value="Zamítnuté články"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/VyhledatClanek.aspx" Text="Vyhledat článek" Value="Vyhledat článek"></asp:MenuItem>
+                    </asp:MenuItem>
+                    <asp:MenuItem Text="Recenze" Value="Recenze" NavigateUrl="~/RecenzeClankuAutora.aspx">
+                        <asp:MenuItem NavigateUrl="~/RecenzniRizeni.aspx" Text="Recenzní řízení" Value="Recenzní řízení"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/UkoncenaRRizeni.aspx" Text="Ukončená recenzní řízení" Value="Ukončená recenzní řízení"></asp:MenuItem>
+                    </asp:MenuItem>
+                    <asp:MenuItem Text="Termíny" Value="Termíny" NavigateUrl="~/Terminy.aspx">
+                        <asp:MenuItem NavigateUrl="~/Posudky.aspx" Text="Posudky" Value="Posudky"></asp:MenuItem>
+                        <asp:MenuItem Text="Uzávěrky" Value="Uzávěrky" NavigateUrl="~/Uzaverky.aspx"></asp:MenuItem>
+                    </asp:MenuItem>
+                    <asp:MenuItem Text="Admin" Value="Admin" NavigateUrl="~/adminPage.aspx"></asp:MenuItem>
                     <asp:MenuItem Text="Odhlásit se" Value="Odhlásit se" NavigateUrl="~/Odhlaseni.aspx"></asp:MenuItem>
                 </Items>
                <StaticHoverStyle BackColor="#990000" ForeColor="White" />
         <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
-        <StaticSelectedStyle BackColor="#FFCC66" />
+        <StaticSelectedStyle BackColor="#990000" />
             </asp:Menu>
         <div class="clear"></div>
  
         <div class="content">
+
         <asp:ContentPlaceHolder id="contentBody" runat="server">
             <p>
                 <br />

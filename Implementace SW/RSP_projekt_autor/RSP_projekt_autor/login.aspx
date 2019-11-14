@@ -13,16 +13,25 @@
         .auto-style3 {
             width: 61%;
         }
+        .auto-style4 {
+            text-align: center;
+        }
+    .auto-style5 {
+        width: 481px;
+    }
     </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" Runat="Server">
     <div align="center">
+            <p class="auto-style4">
+                <asp:Label ID="Ibl_User" runat="server" ForeColor="#3333CC"></asp:Label>  </p>
             <br />   
             <br />
             <br />
             <asp:Label ID="LB_error" runat="server" ForeColor="Red"></asp:Label>
             <br />
-            <table class="auto-style3">
+            
+            <table class="auto-style5">
                 
                 <tr>
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>

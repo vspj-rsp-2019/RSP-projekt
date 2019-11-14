@@ -1,7 +1,31 @@
+verze 0.0.9
+----------------------------------------------
+upravena MasterPage - po pøihlášení je vidìt jémo toho kdo je pøihlášen
+		    - položce menu "Termíny" nastavena stránka Terminy.aspx
+		    - pøidána položka menu "Admin", která se korektnì zobrazí jen adminovi
+login.aspx.cs - upraveno - pøi pøihlášení uživatele, který není "autor" nebo " redaktor" se zobrazí "Default.aspx"
+vytvoøena "adminPage.aspx" - kde je výpis registrovaných uživatelù z db 
+			   - zobrazeno korektnì jen adminovi
+			   - lze editovat zadané údaje, mìnit role
+			   - nelze editovat "hesloHash" - pole je read-only
+
+verze 0.0.8
+----------------------------------------------
+v Masterpage pøidána položka menu: Termíny  
+pøidána nová tabulka: Uzaverka (pole: id, termin, id vydani, vychazí), propojena FK s tabulkou vydani  
+upravena tabulka Vydani (pøidáno pole Popis - urèuje zamìøení èísla èasopisu)  
+pøidána nová èísla dle zadání (Èíslo 1,2,3) - které jsou navázané na tabulku Uzaverka  
+vytvoøenanová stránka Terminy.aspx  
+
+verze 0.0.7
+----------------------------------------------
+Upravena tabulka Recenze - pøidány atributy zohlednujici kritéria hodnocení èlánkù
+Upravení vzhledu a zobrazených dat na stránce RecenzeClankuAutora
+
 verze 0.0.6
 ----------------------------------------------
-- do stránky "MojeClanky" pøidan odkaz na zobrazení recenzí na èlánky autora
-- vytvoøena stránka pro zobrazení èlánkù pøihlášeného autora ("RecenzeClankuAutora"), ze které je možné dohledat a stáhnout napsané reecnze na èlánky ve formátu PDF
+Vytvoøena DB tabulka Recenze
+Vytvoøena stránka pro zobrazení recenzí aktuálnì pøihlášeným autorem
 
 
 verze 0.0.5
