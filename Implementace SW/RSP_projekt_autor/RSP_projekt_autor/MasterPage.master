@@ -61,7 +61,7 @@
         <DynamicSelectedStyle BackColor="Maroon" />
                 <Items>
                     <asp:MenuItem Text="Články" Value="Články" NavigateUrl="~/mojeClanky.aspx">
-                        <asp:MenuItem NavigateUrl="~/NoveClanky.aspx" Text="Nové články" Value="Nové články"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/NoveClanky.aspx"  Text="Nové články" Value="Nové články"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/KDoreseni.aspx" Text="K dořešení" Value="Nová položka"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/SchvaleneClanky.aspx" Text="Schválené články" Value="Nová položka"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/ZamitnuteClanky.aspx" Text="Zamítnuté články" Value="Zamítnuté články"></asp:MenuItem>

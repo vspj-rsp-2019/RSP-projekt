@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="PrideleniRecenzi.aspx.cs" Inherits="PrideleniRecenzi" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
+    Přidělení recenzí
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">

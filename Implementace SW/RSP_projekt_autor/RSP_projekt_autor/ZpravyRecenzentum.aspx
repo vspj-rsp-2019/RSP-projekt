@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="ZpravyRecenzentum.aspx.cs" Inherits="Recenze_ZpravyRecenzentum" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
+    Zprávy recenzentům
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
