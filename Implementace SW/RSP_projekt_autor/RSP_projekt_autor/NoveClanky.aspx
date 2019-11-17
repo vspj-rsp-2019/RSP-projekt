@@ -29,6 +29,7 @@
                 <asp:BoundField DataField="prijmeni" HeaderText="Příjmení autora" SortExpression="prijmeni" />
                 <asp:BoundField DataField="datum_zah_rec_riz" HeaderText="Datum zahájení RR" SortExpression="datum_zah_rec_riz" />
                 <asp:BoundField DataField="Expr1" HeaderText="Stav" SortExpression="Expr1" />
+                <asp:HyperLinkField DataNavigateUrlFields="filePath" DataTextField="filePath" DataTextFormatString="Otevřít" HeaderText="Článek" NavigateUrl="filePath" Target="_blank" />
             </Columns>
             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -40,11 +41,10 @@
             <SortedDescendingCellStyle BackColor="#FCF6C0" />
             <SortedDescendingHeaderStyle BackColor="#820000" />
         </asp:GridView>
-        <asp:SqlDataSource ID="NoveClankyRedaktorovi" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT Clanky.Datum, Users.jmeno, Users.prijmeni, Clanky.datum_zah_rec_riz, Clanky.Id, Clanky_Status.nazev AS Expr1 FROM Clanky INNER JOIN Clanky_Status ON Clanky.status_clanek = Clanky_Status.Id_cl_status INNER JOIN Users ON Clanky.autor_id = Users.id WHERE (Clanky_Status.Id_cl_status = 0)"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="NoveClankyRedaktorovi" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT Clanky.Datum, Users.jmeno, Users.prijmeni, Clanky.filePath, Clanky.datum_zah_rec_riz, Clanky.Id, Clanky_Status.nazev AS Expr1 FROM Clanky INNER JOIN Clanky_Status ON Clanky.status_clanek = Clanky_Status.Id_cl_status INNER JOIN Users ON Clanky.autor_id = Users.id WHERE (Clanky_Status.Id_cl_status = 0)"></asp:SqlDataSource>
     </p>
     <p class="auto-style1">
-        <asp:Button ID="btn_zobraz_pdf" runat="server" OnClick="btn_zobraz_pdf_Click" Text="Button" />
-    </p>
+        &nbsp;</p>
     <p class="auto-style1">
         &nbsp;<p class="auto-style1">
         &nbsp;</p>

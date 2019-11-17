@@ -41,10 +41,5 @@ public partial class NoveClanky : System.Web.UI.Page
 
     protected void btn_zobraz_pdf_Click(object sender, EventArgs e)
     {
-        GridView1.SelectedValue
-        sql = ""
-        Response.Redirect()
-
-
     }
 }
