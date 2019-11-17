@@ -15,8 +15,16 @@ public partial class Login : System.Web.UI.Page
         User user = dbHandler.loginUser(TB_email.Text, TB_heslo.Text);
 
         if (Session["UserId"] != null)
+        {
 
-            Ibl_User.Text = " Uživatel č. " + Session["UserID"] +" je aktuálně přihlášen." ;
+            Ibl_User.Text = "Aktuálně jste přihlášen. Pro nové přihlášení se nejprve odhlaště!";
+            
+            TB_email.Enabled = false;
+            TB_heslo.Enabled = false;
+            BT_login.Enabled = false;
+            
+
+        }
 
     }
 
