@@ -1,0 +1,11 @@
+Meeting dne: 16.11.2019, 12:00 - 14:00 
+Úèast: Medlíková, Zápaøka, Musil, Prokop, Bártek
+
+- ukázány nefungující èásti - diskuze s Adamem
+- ošetøit pøípad, kdy je vložen èlánek - docx apod, který má velikost 0, tedy error hlášku.
+- ošetøit v admin módu èást, kdy mìní admin user tabulku - aby nesmìl vložit hodnoty, které nesplòují kritéria atributù (napø. NULL hodnota v heslu, nebo v roli).
+- ošetøit možnost, aby byly vybráni maximálnì k jednomu èlánku 2 recenzenti.
+- ošetøit možnost, aby když budu pøihlášen jako admin, nevidìl jsem se v tabulce se zmìnou na admin práva.
+
+- s panem doktorem Smrèkou probírány možnosti zveøejnìní webu tak, aby fungovala i databáze mdf na hostingu.
+
