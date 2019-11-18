@@ -106,7 +106,7 @@ public partial class mojeClanky : System.Web.UI.Page
     {
         Boolean isValid = false;
 
-        if(extension.Equals(".pdf") || extension.Equals(".doc") || extension.Equals(".docx"))
+        if(extension.ToLower().Equals(".pdf") || extension.ToLower().Equals(".doc") || extension.ToLower().Equals(".docx"))
         {
             isValid = true;
         }
