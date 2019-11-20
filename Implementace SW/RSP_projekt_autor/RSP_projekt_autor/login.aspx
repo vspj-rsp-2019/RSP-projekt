@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="login.aspx.cs" Inherits="Login" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
+    Přihlášení
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
@@ -31,7 +32,7 @@
             <asp:Label ID="LB_error" runat="server" ForeColor="Red"></asp:Label>
             <br />
             
-            <table class="auto-style5">
+            <table ID="tb_prihlaseni" class="auto-style5">
                 
                 <tr>
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>

@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#"  MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="mojeClanky.aspx.cs" Inherits="mojeClanky" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
+    Moje články
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
