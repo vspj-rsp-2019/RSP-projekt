@@ -1,3 +1,10 @@
+verze 0.0.11
+----------------------------------------------
+Upravena stranka PrideleniRecenzi
+- Nyni jiz neni mozne priradit vice nez 2 recenzenty jednomu clanku.
+- Neni take mozne nastzavit datum pro vypracovani recenze na mensi nez aktualni den.
+
+
 verze 0.0.10
 ----------------------------------------------
 Pøidání stránky pro zasílání zpráv od redaktora recenzentùm (ZpravyRecenzentum)

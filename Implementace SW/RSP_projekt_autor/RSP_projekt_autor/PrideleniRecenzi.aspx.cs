@@ -31,42 +31,74 @@ public partial class PrideleniRecenzi : System.Web.UI.Page
      */
     protected void Calendar1_SelectionChanged(object sender, EventArgs e)
     {
-        Lbl_datum.Text = Calendar1.SelectedDate.ToString();
+        Lbl_datum.Text = Calendar1.SelectedDate.ToShortDateString();
     }
 
     /*
-     * Priradi vybrany clanek (ze seznamu) vybranemu recenzentovi  
+     * Priradi vybrany clanek (ze seznamu) vybranemu recenzentovi
+     * Nejprve dojde ke kontrole poctu recenzentu prirazenych clanku a vyplneny potrebnych udaju
      */
     protected void Btn_priradRecenzenta_Click(object sender, EventArgs e)
     {
-        if ((GridView1.SelectedIndex >= 0) && (GridView2.SelectedIndex >= 0) && (Lbl_datum.Text.Length > 1))
-        {
-            sql = "insert into PrideleneClanky (Id_Clanku, Id_Recenzenta, Datum_vypracovani)values(@idClanku, @idRecenzenta, @datumVypracovani)";
-            try
+        Lbl_zprava.Text = " ";
+
+
+        if (Lbl_pocPridRecenzentu.Text != "2") {
+            if ((GridView1.SelectedIndex >= 0) && (GridView2.SelectedIndex >= 0) && (Lbl_datum.Text.Length > 1))
             {
-                con.Open();
-                sqlCmd = new SqlCommand(sql, con);
+                if (DateTime.Now.Date > Calendar1.SelectedDate.Date)
+                {
+                    Lbl_zprava.Text = "Vybrané datum je menší než aktuální!";
+                }
+                else
+                {
+                    sql = "insert into PrideleneClanky (Id_Clanku, Id_Recenzenta, Datum_vypracovani)values(@idClanku, @idRecenzenta, @datumVypracovani)";
+                    try
+                    {
+                        con.Open();
+                        sqlCmd = new SqlCommand(sql, con);
 
-                sqlCmd.Parameters.AddWithValue("@idClanku", GridView1.SelectedRow.Cells[0].Text);
-                sqlCmd.Parameters.AddWithValue("@idRecenzenta", GridView2.SelectedRow.Cells[0].Text);
-                sqlCmd.Parameters.AddWithValue("@datumVypracovani", Calendar1.SelectedDate.ToString("MM/dd/yyyy"));
+                        sqlCmd.Parameters.AddWithValue("@idClanku", GridView1.SelectedRow.Cells[0].Text);
+                        sqlCmd.Parameters.AddWithValue("@idRecenzenta", GridView2.SelectedRow.Cells[0].Text);
+                        sqlCmd.Parameters.AddWithValue("@datumVypracovani", Calendar1.SelectedDate.ToString("MM/dd/yyyy"));
 
-                sqlCmd.ExecuteNonQuery();
+                        sqlCmd.ExecuteNonQuery();
 
-                sqlCmd.Dispose();
-                con.Close();
-                Lbl_zprava.Text = "Recenze přiřazena.";
+                        sqlCmd.Dispose();
+                        con.Close();
+                        Lbl_zprava.Text = "Recenze přiřazena.";
+                        SqlDataAdapter da = new SqlDataAdapter("select count(*) from PrideleneClanky where Id_Clanku='" + GridView1.SelectedRow.Cells[0].Text + "'", con);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        Lbl_pocPridRecenzentu.Text = dt.Rows[0][0].ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        // Lbl_zprava.Text = ex.ToString();
+                        Lbl_zprava.Text = "Tento recenzent je již přiřazen (nelze vícekrát)!";
+                    }
+                }
             }
-            catch (Exception ex)
+            else
             {
-                // Lbl_zprava.Text = ex.ToString();
-                Lbl_zprava.Text = "Recenze je již přiřazena (nelze vícekrát)!";
+                Lbl_zprava.Text = "Některá z hodnot nebyla vybrána!";
             }
-        }
-        else
+        } else
         {
-            Lbl_zprava.Text = "Některá z hodnot nebyla vybrána!";
+            Lbl_zprava.Text = "Článek má již přiděleny 2 recenzenty!";
         }
+     }
+    
 
+    /*
+     * Po vybrani pozadovaneho clanku spocita a zobrazi pocet jiz pridelenych recenzentu k clanku 
+     */
+    protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        SqlDataAdapter da = new SqlDataAdapter("select count(*) from PrideleneClanky where Id_Clanku='" + GridView1.SelectedRow.Cells[0].Text + "'", con);
+        DataTable dt = new DataTable();
+        da.Fill(dt);
+        Lbl_pocPridRecenzentu.Text = "0";
+        Lbl_pocPridRecenzentu.Text = dt.Rows[0][0].ToString();
     }
 }

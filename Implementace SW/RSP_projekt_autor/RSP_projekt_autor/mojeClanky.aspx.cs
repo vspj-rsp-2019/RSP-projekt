@@ -34,33 +34,39 @@ public partial class mojeClanky : System.Web.UI.Page
      */
     protected void Upload(object sender, EventArgs a)
     {
-        if(( FileUpload.PostedFile != null ) && (FileUpload.PostedFile.ContentLength > 0))
+        if ((FileUpload.PostedFile != null) && (FileUpload.PostedFile.ContentLength > 0))
         {
             string fileType = System.IO.Path.GetExtension(FileUpload.FileName);
             string fileName = System.IO.Path.GetFileName(FileUpload.PostedFile.FileName);
             string saveLocation = "~/Clanky/" + fileName;
 
-            if( !isValidType(fileType) )
+            if (!isValidType(fileType))
             {
                 Response.Write("<script>alert('Zvolte soubor typu pdf nebo doc/docx')</script>");
                 return;
             }
-            if(DDL_vyberVydani.SelectedIndex == 0)
+            if (DDL_vyberVydani.SelectedIndex == 0)
             {
                 Response.Write("<script>alert('Zvolte vydani')</script>");
                 return;
             }
 
-            try {
+            try
+            {
                 FileUpload.PostedFile.SaveAs(Server.MapPath(saveLocation));
                 dbHandler.uploadFile(user.id, Convert.ToInt32(DDL_vyberVydani.SelectedValue), fileName, saveLocation);
                 Response.Write("Článek byl nahrán");
                 GV_clanky.DataBind();
-                
-            }catch(Exception ex)
+
+            }
+            catch (Exception ex)
             {
                 Response.Write("error: " + ex.Message);
             }
+        }
+        else if (FileUpload.PostedFile.ContentLength == 0)
+        {
+            Response.Write("Zvolený soubor má nulovou velikost");
         }
         else
         {
@@ -106,7 +112,7 @@ public partial class mojeClanky : System.Web.UI.Page
     {
         Boolean isValid = false;
 
-        if(extension.Equals(".pdf") || extension.Equals(".doc") || extension.Equals(".docx"))
+        if(extension.ToLower().Equals(".pdf") || extension.ToLower().Equals(".doc") || extension.ToLower().Equals(".docx"))
         {
             isValid = true;
         }
