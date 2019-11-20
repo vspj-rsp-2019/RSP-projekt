@@ -1,3 +1,17 @@
+verze 0.0.11
+----------------------------------------------
+Upravena stranka PrideleniRecenzi
+- Nyni jiz neni mozne priradit vice nez 2 recenzenty jednomu clanku.
+- Neni take mozne nastzavit datum pro vypracovani recenze na mensi nez aktualni den.
+
+
+verze 0.0.10
+----------------------------------------------
+Pøidání stránky pro zasílání zpráv od redaktora recenzentùm (ZpravyRecenzentum)
+Pøidání stránky pro zasílání odpovìdí na zprávy od redaktora (ZpravyOdRedaktora)
+Pøidání chybové stránky pro pøesmìrování v pøípadì, že se na stránky ZpravyRecenzentum a ZpravyOdRedaktora pokusí dostat nìkdo s rolí, která nemá mít na stránky pøístup.
+Úprava menu v MasterPage (pøidání odkazù na ZpravyRecenzentum a ZpravyOdRedaktora do menu Recenze; vytvoøení podmenu pro Zprávy)
+
 verze 0.0.9
 ----------------------------------------------
 upravena MasterPage - po pøihlášení je vidìt jémo toho kdo je pøihlášen

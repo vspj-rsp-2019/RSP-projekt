@@ -61,7 +61,8 @@
         <DynamicSelectedStyle BackColor="Maroon" />
                 <Items>
                     <asp:MenuItem Text="Články" Value="Články" NavigateUrl="~/mojeClanky.aspx">
-                        <asp:MenuItem NavigateUrl="~/NoveClanky.aspx" Text="Nové články" Value="Nové články"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/mojeClanky.aspx" Text="Moje články" Value="Moje články"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/NoveClanky.aspx"  Text="Nové články" Value="Nové články"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/KDoreseni.aspx" Text="K dořešení" Value="Nová položka"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/SchvaleneClanky.aspx" Text="Schválené články" Value="Nová položka"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/ZamitnuteClanky.aspx" Text="Zamítnuté články" Value="Zamítnuté články"></asp:MenuItem>
@@ -70,6 +71,11 @@
                     <asp:MenuItem Text="Recenze" Value="Recenze" NavigateUrl="~/RecenzeClankuAutora.aspx">
                         <asp:MenuItem NavigateUrl="~/RecenzniRizeni.aspx" Text="Recenzní řízení" Value="Recenzní řízení"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/UkoncenaRRizeni.aspx" Text="Ukončená recenzní řízení" Value="Ukončená recenzní řízení"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/PrideleniRecenzi.aspx" Text="Přidělení recenzí" Value="Ukončená recenzní řízení"></asp:MenuItem>
+                    </asp:MenuItem>
+                    <asp:MenuItem Text="Zprávy" Value="Zprávy" NavigateUrl="~/Default.aspx">
+                        <asp:MenuItem NavigateUrl="~/ZpravyRecenzentum.aspx" Text="Zprávy recenzentům" Value="Zprávy recenzentům"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/ZpravyOdRedaktora.aspx" Text="Zprávy od redaktora" Value="Zprávy od redaktora"></asp:MenuItem>
                     </asp:MenuItem>
                     <asp:MenuItem Text="Termíny" Value="Termíny" NavigateUrl="~/Terminy.aspx">
                         <asp:MenuItem NavigateUrl="~/Posudky.aspx" Text="Posudky" Value="Posudky"></asp:MenuItem>
