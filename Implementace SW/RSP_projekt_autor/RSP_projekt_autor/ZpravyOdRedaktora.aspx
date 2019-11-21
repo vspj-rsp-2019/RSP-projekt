@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="ZpravyOdRedaktora.aspx.cs" Inherits="ZpravyOdRedaktora" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" MaintainScrollPositionOnPostback="true" AutoEventWireup="true" CodeFile="ZpravyOdRedaktora.aspx.cs" Inherits="ZpravyOdRedaktora" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
     Zprávy od redaktora
