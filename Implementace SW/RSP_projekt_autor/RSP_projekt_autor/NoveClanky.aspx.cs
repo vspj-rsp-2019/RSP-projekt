@@ -16,8 +16,19 @@ public partial class NoveClanky : System.Web.UI.Page
     SqlCommand sqlCmd;
     string sql = null;
 
+    User user;
+    DBHandler dbHandler = new DBHandler(@"Data Source=(LocalDB)\MSSQLLocalDB;
+                                        AttachDbFilename=|DataDirectory|\Database.mdf;
+                                        Integrated Security=True;Connect Timeout=30");
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        //kontrola na přihlášeného uživatele
+        user = (User)Session["userObject"];
+        if (user == null)
+        {
+            Response.Redirect("login.aspx");
+        }
 
     }
 
@@ -66,7 +77,7 @@ public partial class NoveClanky : System.Web.UI.Page
        
     }
 
-    //predat clanek do recenzniho rizeni
+    //predat clanek do zahajeni recenzniho rizeni
     protected void btn_odeslat_do_RR_Click(object sender, EventArgs e)
     {
         sql = "UPDATE Clanky SET status_clanek = 2 WHERE Id = @Id";

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="ZpravyRecenzentum.aspx.cs" Inherits="Recenze_ZpravyRecenzentum" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" MaintainScrollPositionOnPostback="true" AutoEventWireup="true" CodeFile="ZpravyRecenzentum.aspx.cs" Inherits="Recenze_ZpravyRecenzentum" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
     Zprávy recenzentům
