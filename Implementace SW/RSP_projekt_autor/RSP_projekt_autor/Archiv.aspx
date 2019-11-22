@@ -13,6 +13,10 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" Runat="Server">
-   <h3 class="auto-style1">Archiv časopisu</h3> 
+    <h3 class="auto-style1">Archiv časopisu</h3>
+    <p class="auto-style1">&nbsp;</p>
+    <p class="auto-style1">
+        <asp:HyperLink ID="hpl_archivCislo" runat="server" NavigateUrl="~/2019_Rocnik10_Cislo2.pdf">2019/Ročník 10/Číslo1</asp:HyperLink>
+    </p> 
 </asp:Content>
 

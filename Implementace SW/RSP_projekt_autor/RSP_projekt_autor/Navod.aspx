@@ -13,6 +13,8 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" Runat="Server">
-    <h3 class="auto-style1">Návody pro aplikaci LOGOS POLYTECHNIKOS</h3> 
+    <h3 class="auto-style1">Návody pro aplikaci LOGOS POLYTECHNIKOS</h3>
+    <p class="auto-style1">&nbsp;</p>
+    <p class="auto-style1"><em>&nbsp;Stránky jsou ve výstavbě.&nbsp;</em></p> 
 </asp:Content>
 
