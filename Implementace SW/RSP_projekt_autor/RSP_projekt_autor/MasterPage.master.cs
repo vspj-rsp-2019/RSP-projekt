@@ -67,6 +67,25 @@ public partial class MasterPage : System.Web.UI.MasterPage
             Menu1.Items[2].ChildItems[1].Text = ""; // 
             }
 
-    }
+            if (user.Role == "autor")
+            {
+
+                // schovani podmenu zamitnute clanky
+                Menu1.Items[0].ChildItems[4].Enabled = false;
+                Menu1.Items[0].ChildItems[4].Text = "";
+
+                //schovani v menu sekce terminy
+          
+                Menu1.Items[3].Enabled = false;
+                Menu1.Items[3].Text = "";
+                
+
+                //schovani v menu sekce admin
+                Menu1.Items[4].Enabled = false;
+                Menu1.Items[4].Text = "";
+
+            }
+
+        }
     }
 }

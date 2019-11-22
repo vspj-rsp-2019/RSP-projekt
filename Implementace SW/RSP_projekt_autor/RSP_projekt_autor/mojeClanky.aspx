@@ -4,9 +4,14 @@
     Moje články
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
+    <style type="text/css">
+        .auto-style6 {
+            font-size: medium;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" runat="server">
-    <div align="center">    <strong>Nahrát nový článek</strong><br />
+    <div align="center">    <strong><span class="auto-style6">Nahrát nový článek</span></strong><br />
         Vydání:
         <asp:DropDownList ID="DDL_vyberVydani" runat="server" AutoPostBack="True" DataTextField="Name" DataValueField="Id" OnSelectedIndexChanged="DDL_vyberVydani_SelectedIndexChanged">
         </asp:DropDownList>
@@ -43,6 +48,40 @@
                 <asp:SessionParameter DefaultValue="-1" Name="autor_id" SessionField="UserID" Type="Int32" />
             </SelectParameters>
         </asp:SqlDataSource>
+        <br />
+        <span class="auto-style6">
+        <strong>Přijaté články od redaktora</strong></span>
+        <br />
+        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" DataSourceID="SqlDataSource2" EmptyDataText="Neevidujeme žádné články." ForeColor="#333333" GridLines="None">
+            <AlternatingRowStyle BackColor="White" />
+            <Columns>
+                <asp:BoundField DataField="Id" HeaderText="ID článku" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
+                <asp:BoundField DataField="Datum" HeaderText="Datum" SortExpression="Datum" />
+                <asp:BoundField DataField="nazev" HeaderText="Název článku" SortExpression="nazev" />
+                <asp:BoundField DataField="Expr1" HeaderText="Status článku" SortExpression="Expr1" />
+            </Columns>
+            <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+            <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+            <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+            <SortedAscendingCellStyle BackColor="#FDF5AC" />
+            <SortedAscendingHeaderStyle BackColor="#4D0000" />
+            <SortedDescendingCellStyle BackColor="#FCF6C0" />
+            <SortedDescendingHeaderStyle BackColor="#820000" />
+        </asp:GridView>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT Clanky.Datum, Clanky.nazev, Users.jmeno, Users.prijmeni, 
+Clanky.filePath, Clanky.datum_zah_rec_riz, Clanky.Id, 
+Clanky_Status.nazev AS Expr1 FROM Clanky 
+INNER JOIN Clanky_Status ON Clanky.status_clanek = Clanky_Status.Id_cl_status 
+INNER JOIN Users ON Clanky.autor_id = Users.id 
+WHERE  (autor_id = @autor_id) AND (Clanky_Status.Id_cl_status = 2) ">
+            <SelectParameters>
+                <asp:SessionParameter DefaultValue="-1" Name="autor_id" SessionField="UserID" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+        <br />
+
         </div>
         
 </asp:Content>
