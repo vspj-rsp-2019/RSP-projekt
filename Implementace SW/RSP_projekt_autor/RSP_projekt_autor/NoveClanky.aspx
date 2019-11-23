@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="NoveClanky.aspx.cs" Inherits="NoveClanky" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" MaintainScrollPositionOnPostback="true" AutoEventWireup="true" CodeFile="NoveClanky.aspx.cs" Inherits="NoveClanky" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
     Nové články
@@ -8,6 +8,11 @@
         .auto-style1 {
             margin-left: 7px;
             margin-right: 7px;
+        }
+        .auto-style5 {
+            margin-left: 7px;
+            margin-right: 7px;
+            text-align: center;
         }
         </style>
   
@@ -46,8 +51,18 @@
     <p class="auto-style1">
         &nbsp;</p>
     <p class="auto-style1">
-        &nbsp;<p class="auto-style1">
+        <asp:Button ID="btn_zmenaStatusu_formD" runat="server" OnClick="btn_zmenaStatusu_Click" Text="Předat k formálnímu doplnění" BackColor="#FFFF66" OnCommand="Page_Load" />
+        <asp:Button ID="btn_odeslat_do_RR" runat="server" BackColor="#66FF33" OnClick="btn_odeslat_do_RR_Click" Text="Odeslat do recenzního řízení" />
+        <asp:Button ID="btn_zamitnoutcl" runat="server" BackColor="Red" OnClick="btn_zamitnoutcl_Click" Text="Zamítnout článek" />
+    </p>
+    <p class="auto-style1">
         &nbsp;</p>
+    <p class="auto-style5">
+        <asp:Label ID="lbl_stav" runat="server" ForeColor="#66FF33" Text="sss" Visible="False"></asp:Label>
+    </p>
+    <p>
+        &nbsp;</p>
+     
     <p>
         &nbsp;</p>
     <p>

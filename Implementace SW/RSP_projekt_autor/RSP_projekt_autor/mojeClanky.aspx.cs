@@ -19,11 +19,18 @@ public partial class mojeClanky : System.Web.UI.Page
     {
         // pokud neni uzivatel prihlasen, dojde k presmerovani na prihlaseni
         user = (User)Session["userObject"];
+
+        
+
         if (user == null)
         {
             Response.Redirect("login.aspx");
         }
 
+        if (user.Role == "redaktor")
+        {
+            Response.Redirect("NoveClanky.aspx");
+        }
         //nacteni vsech vydani pro naplneni dropdown listu
         vydaniList = dbHandler.getAllVydani();
         naplnitDDL();
