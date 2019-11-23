@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="adminPage.aspx.cs" Inherits="adminPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
-    Administrátorská stránka
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -20,7 +19,7 @@
                 <asp:BoundField DataField="email" HeaderText="email" SortExpression="email" />
                 <asp:BoundField DataField="jmeno" HeaderText="jmeno" SortExpression="jmeno" />
                 <asp:BoundField DataField="prijmeni" HeaderText="prijmeni" SortExpression="prijmeni" />
-                <asp:BoundField DataField="hesloHash" HeaderText="hesloHash" SortExpression="hesloHash" ReadOnly="True" />
+                <asp:BoundField DataField="hesloHash" HeaderText="hesloHash" SortExpression="hesloHash" />
             </Columns>
             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
