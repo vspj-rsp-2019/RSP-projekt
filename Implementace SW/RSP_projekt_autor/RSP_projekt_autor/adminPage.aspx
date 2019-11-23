@@ -10,7 +10,7 @@
         <asp:Label ID="lb_premission" runat="server" Font-Bold="True" Font-Size="XX-Large" ForeColor="Red"></asp:Label>
     </p>
     <p> 
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Visible="False">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Visible="False" AllowPaging="True">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowSelectButton="True" />
@@ -31,7 +31,7 @@
             <SortedDescendingCellStyle BackColor="#FCF6C0" />
             <SortedDescendingHeaderStyle BackColor="#820000" />
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM [Users] WHERE [id] = @id" InsertCommand="INSERT INTO [Users] ([role], [email], [jmeno], [prijmeni], [hesloHash]) VALUES (@role, @email, @jmeno, @prijmeni, @hesloHash)" SelectCommand="SELECT * FROM [Users]" UpdateCommand="UPDATE [Users] SET [role] = @role, [email] = @email, [jmeno] = @jmeno, [prijmeni] = @prijmeni, [hesloHash] = @hesloHash WHERE [id] = @id">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM [Users] WHERE [id] = @id" InsertCommand="INSERT INTO [Users] ([role], [email], [jmeno], [prijmeni], [hesloHash]) VALUES (@role, @email, @jmeno, @prijmeni, @hesloHash)" SelectCommand="SELECT * FROM [Users] WHERE ([id] &lt;&gt; @id)" UpdateCommand="UPDATE [Users] SET [role] = @role, [email] = @email, [jmeno] = @jmeno, [prijmeni] = @prijmeni, [hesloHash] = @hesloHash WHERE [id] = @id">
             <DeleteParameters>
                 <asp:Parameter Name="id" Type="Int32" />
             </DeleteParameters>
@@ -42,6 +42,9 @@
                 <asp:Parameter Name="prijmeni" Type="String" />
                 <asp:Parameter Name="hesloHash" Type="String" />
             </InsertParameters>
+            <SelectParameters>
+                <asp:SessionParameter Name="id" SessionField="UserID" Type="Int32" />
+            </SelectParameters>
             <UpdateParameters>
                 <asp:Parameter Name="role" Type="String" />
                 <asp:Parameter Name="email" Type="String" />
