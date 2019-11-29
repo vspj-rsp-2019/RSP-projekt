@@ -1,3 +1,9 @@
+verze 0.0.12
+----------------------------------------------
+oprava adminPage - již lze upravovat uživatele
+		 - aktuálnì pøihlášený admin není vidìt v tabulce, aby nemohl mìnit sám sebe
+
+
 verze 0.0.11
 ----------------------------------------------
 Upravena stranka PrideleniRecenzi

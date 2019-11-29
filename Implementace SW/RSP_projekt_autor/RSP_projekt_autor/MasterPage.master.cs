@@ -33,12 +33,12 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 // v pripade prohlaseni uzivatele s roli vyse, nebudou dostupne a viditelne polozky menu
 
                 // schovani podmenu nove clanky
-                Menu1.Items[0].ChildItems[0].Enabled = false;
-                Menu1.Items[0].ChildItems[0].Text = ""; 
+                Menu1.Items[0].ChildItems[1].Enabled = false;
+                Menu1.Items[0].ChildItems[1].Text = ""; 
 
                 // schovani podmenu k doreseni
-                Menu1.Items[0].ChildItems[1].Enabled = false;
-                Menu1.Items[0].ChildItems[1].Text = "";
+                Menu1.Items[0].ChildItems[2].Enabled = false;
+                Menu1.Items[0].ChildItems[2].Text = "";
 
                 // schvoani v podmenu prideleni recenzi
                 Menu1.Items[1].ChildItems[2].Enabled = false;
@@ -47,10 +47,45 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 // schovani v podmenu zpravy od redaktora
                 Menu1.Items[2].ChildItems[0].Enabled = false;
                 Menu1.Items[2].ChildItems[0].Text = ""; // 
-                               
 
+             
+
+           
 
             }
+            // v pripade prohlaseni uzivatele s roli vyse, nebudou dostupne a viditelne polozky menu
+
+            if (user.Role == "redaktor")
+            {
+
+                // schovani podmenu moje články
+                Menu1.Items[0].ChildItems[0].Enabled = false;
+                Menu1.Items[0].ChildItems[0].Text = "";
+
+            // schovani v podmenu zpravy od redaktora
+            Menu1.Items[2].ChildItems[1].Enabled = false;
+            Menu1.Items[2].ChildItems[1].Text = ""; // 
+            }
+
+            if (user.Role == "autor")
+            {
+
+                // schovani podmenu zamitnute clanky
+                Menu1.Items[0].ChildItems[4].Enabled = false;
+                Menu1.Items[0].ChildItems[4].Text = "";
+
+                //schovani v menu sekce terminy
+          
+                Menu1.Items[3].Enabled = false;
+                Menu1.Items[3].Text = "";
+                
+
+                //schovani v menu sekce admin
+                Menu1.Items[4].Enabled = false;
+                Menu1.Items[4].Text = "";
+
+            }
+
         }
     }
 }

@@ -16,7 +16,7 @@ public partial class Login : System.Web.UI.Page
 
         if (Session["UserId"] != null)
         {
-
+            //v pripade prihlaseneho uzivatele neni k dispozici nove prihlaseni
             Ibl_User.Text = "Aktuálně jste přihlášen. Pro nové přihlášení se nejprve odhlaště!";
             
             TB_email.Enabled = false;
@@ -45,10 +45,10 @@ public partial class Login : System.Web.UI.Page
                 Response.Redirect("mojeClanky.aspx");
             }
             else
-                
+                //v pripade role redaktora - presmerovani na NoveClanky ke zpracovani.
             if (user.Role == "redaktor")
             {
-                Response.Redirect("PrideleniRecenzi.aspx");
+                Response.Redirect("NoveClanky.aspx");
             }
             else Response.Redirect("Default.aspx");
 

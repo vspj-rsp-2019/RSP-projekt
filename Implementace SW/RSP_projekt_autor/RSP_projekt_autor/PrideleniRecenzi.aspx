@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="PrideleniRecenzi.aspx.cs" Inherits="PrideleniRecenzi" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" MaintainScrollPositionOnPostback="true" AutoEventWireup="true" CodeFile="PrideleniRecenzi.aspx.cs" Inherits="PrideleniRecenzi" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
     Přidělení recenzí
