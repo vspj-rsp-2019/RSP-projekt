@@ -13,7 +13,7 @@ public partial class Default2 : System.Web.UI.Page
 
     // Vytvori pripojeni k databazi 
     SqlCommand cmd = new SqlCommand();
-    //  SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True;Connect Timeout=30");
+    //  SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Databaze.mdf;Integrated Security=True;Connect Timeout=30");
     SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
     User user;
 
