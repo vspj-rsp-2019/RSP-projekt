@@ -10,7 +10,7 @@ public partial class mojeClanky : System.Web.UI.Page
 {
     User user;
     DBHandler dbHandler = new DBHandler(@"Data Source=(LocalDB)\MSSQLLocalDB;
-                                        AttachDbFilename=|DataDirectory|\Database.mdf;
+                                        AttachDbFilename=|DataDirectory|\Databaze.mdf;
                                         Integrated Security=True;Connect Timeout=30");
 
     List<KeyValuePair<int, string>> vydaniList;
