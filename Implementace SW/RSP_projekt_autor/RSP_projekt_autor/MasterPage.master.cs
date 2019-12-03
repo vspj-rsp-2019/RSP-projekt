@@ -11,7 +11,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
 {
     User user;
     DBHandler dbHandler = new DBHandler(@"Data Source=(LocalDB)\MSSQLLocalDB;
-                                        AttachDbFilename=|DataDirectory|\Databaze.mdf;
+                                        AttachDbFilename=|DataDirectory|\Database.mdf;
                                         Integrated Security=True;Connect Timeout=30");
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -65,6 +65,10 @@ public partial class MasterPage : System.Web.UI.MasterPage
             // schovani v podmenu zpravy od redaktora
             Menu1.Items[2].ChildItems[1].Enabled = false;
             Menu1.Items[2].ChildItems[1].Text = ""; // 
+
+                // schovani podmenu vlozeni upraveneho clanku clanku
+                Menu1.Items[0].ChildItems[7].Enabled = false;
+                Menu1.Items[0].ChildItems[7].Text = "";
             }
 
             if (user.Role == "autor")
@@ -74,8 +78,12 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 Menu1.Items[0].ChildItems[4].Enabled = false;
                 Menu1.Items[0].ChildItems[4].Text = "";
 
+                // schovani podmenu archivace clanku
+                Menu1.Items[0].ChildItems[6].Enabled = false;
+                Menu1.Items[0].ChildItems[6].Text = "";
+
                 //schovani v menu sekce terminy
-          
+
                 Menu1.Items[3].Enabled = false;
                 Menu1.Items[3].Text = "";
                 
@@ -84,6 +92,13 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 Menu1.Items[4].Enabled = false;
                 Menu1.Items[4].Text = "";
 
+            }
+
+            if (user.Role == "admin")
+            {
+                // schovani podmenu vlozeni upraveneho clanku clanku
+                Menu1.Items[0].ChildItems[7].Enabled = false;
+                Menu1.Items[0].ChildItems[7].Text = "";
             }
 
         }
