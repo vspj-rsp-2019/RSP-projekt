@@ -80,7 +80,14 @@ public partial class ArchivaceClanku : System.Web.UI.Page
             con.Close();
             Lb_stav.Visible = true;
             GridView1.DataBind();
-            Lb_stav.Text = "Upravy provedeny.";
+            if (DDL_stavClanku.SelectedValue != "8")
+            {
+                Lb_stav.Text = "Upravy neprovedeny.";
+            }
+            else
+            {
+                Lb_stav.Text = "Upravy provedeny.";
+            }
         }
         catch (Exception)
         {
