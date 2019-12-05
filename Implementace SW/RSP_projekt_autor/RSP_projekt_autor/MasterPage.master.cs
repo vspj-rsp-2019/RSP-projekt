@@ -82,6 +82,10 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 Menu1.Items[0].ChildItems[6].Enabled = false;
                 Menu1.Items[0].ChildItems[6].Text = "";
 
+                // schovani podmenu vlozeni vydani cisla do archivu
+                Menu1.Items[0].ChildItems[8].Enabled = false;
+                Menu1.Items[0].ChildItems[8].Text = "";
+
                 //schovani v menu sekce terminy
 
                 Menu1.Items[3].Enabled = false;
