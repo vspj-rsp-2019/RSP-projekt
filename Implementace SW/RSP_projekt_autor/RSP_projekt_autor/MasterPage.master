@@ -69,6 +69,7 @@
                         <asp:MenuItem NavigateUrl="~/VyhledatClanek.aspx" Text="Vyhledat článek" Value="Vyhledat článek"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/ArchivaceClanku.aspx" Text="Archivace článků" Value="Archivace článků"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/UpraveneClanky.aspx" Text="Vložit uparvený článek" Value="Vložit uparvený článek"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/NahratVydani.aspx" Text="Nahrát vydání časopisu" Value="Nahrát vydání časopisu"></asp:MenuItem>
                     </asp:MenuItem>
                     <asp:MenuItem Text="Recenze" Value="Recenze" NavigateUrl="~/RecenzeClankuAutora.aspx">
                         <asp:MenuItem NavigateUrl="~/RecenzniRizeni.aspx" Text="Recenzní řízení" Value="Recenzní řízení"></asp:MenuItem>
