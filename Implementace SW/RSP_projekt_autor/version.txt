@@ -1,3 +1,19 @@
+verze 0.0.14
+----------------------------------------------
+- pridani atributu filePath do DB tabulky Vydani pro ulozeni cesty k archivu i aktualnimu cislu vydani v PDF souboru
+- vytvoreni slozky Vydani pro ulozeni jednotlivych vydani
+- uprava stranky Archiv.aspx pro zobrazeni vsech archivovanych cisel casopisu vsemi navstevniky webu
+- vytvoreni stranky NahratVydani.aspx pro nahrani (archivovaneho) cisla casopisu
+- uprava MasterPage (doplneni o odkaz na nahrani (archivovaneho) vydani) do podmenu Clanky vlozen odkaz pro redaktora
+
+verze 0.0.13
+----------------------------------------------
+- pridan stav clanku (clanek archivovan) do DB tabulky Clanky_status
+- pridana DB tabulka ClankyArchiv pro ulozeni verzi clanku
+- pridana stranka ArchivaceClanku.aspx prisupna pro redaktora a admina (umoznuje vkladani schvalenych clanku do archivu a zpet zmenou stavu clanku a umoznuje prochazeni pripadnych ulozenych verzi clanku)
+- pridana stranka UpraveneClanky.aspx pro autora (umoznuje pro autora vlozit upravenou verzi k puvodnimu clanku - hodnoty v DB tabulce Clanky se prenastavi na hodnoty upravenho clanku a puvodni clanek se pridana do DB tabulky ClankyArchiv spolu s novou upravenou verzi)
+- upravena stranka MasterPage.master (pridany odkazy na nove vytvorene stranky do podmenu Clanky)
+
 verze 0.0.12
 ----------------------------------------------
 oprava adminPage - již lze upravovat uživatele
