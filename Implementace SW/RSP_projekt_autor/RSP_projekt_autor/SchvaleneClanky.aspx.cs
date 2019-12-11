@@ -10,7 +10,7 @@ public partial class SchvaleneClanky : System.Web.UI.Page
 
     User user;
     DBHandler dbHandler = new DBHandler(@"Data Source=(LocalDB)\MSSQLLocalDB;
-                                        AttachDbFilename=|DataDirectory|\Database.mdf;
+                                        AttachDbFilename=|DataDirectory|\Databaze.mdf;
                                         Integrated Security=True;Connect Timeout=30");
 
     protected void Page_Load(object sender, EventArgs e)

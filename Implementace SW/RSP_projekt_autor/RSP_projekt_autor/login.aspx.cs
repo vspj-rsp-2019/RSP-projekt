@@ -10,7 +10,7 @@ public partial class Login : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         DBHandler dbHandler = new DBHandler(@"Data Source=(LocalDB)\MSSQLLocalDB;
-                                        AttachDbFilename=|DataDirectory|\Database.mdf;
+                                        AttachDbFilename=|DataDirectory|\Databaze.mdf;
                                         Integrated Security=True;Connect Timeout=30");
         User user = dbHandler.loginUser(TB_email.Text, TB_heslo.Text);
 
@@ -32,7 +32,7 @@ public partial class Login : System.Web.UI.Page
     {
      
         DBHandler dbHandler = new DBHandler(@"Data Source=(LocalDB)\MSSQLLocalDB;
-                                        AttachDbFilename=|DataDirectory|\Database.mdf;
+                                        AttachDbFilename=|DataDirectory|\Databaze.mdf;
                                         Integrated Security=True;Connect Timeout=30");
         User user = dbHandler.loginUser(TB_email.Text, TB_heslo.Text);
 
