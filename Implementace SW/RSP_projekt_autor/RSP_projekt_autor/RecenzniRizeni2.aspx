@@ -1,4 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="RecenzniRizeni2.aspx.cs" Inherits="RecenzniRizeni2" %>
+﻿
+
+<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="RecenzniRizeni2.aspx.cs" Inherits="RecenzniRizeni2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
     Recenzní řízení
