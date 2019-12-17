@@ -79,6 +79,8 @@
                     <asp:MenuItem Text="Zprávy" Value="Zprávy" Selectable="False">
                         <asp:MenuItem NavigateUrl="~/ZpravyRecenzentum.aspx" Text="Zprávy recenzentům" Value="Zprávy recenzentům"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/ZpravyOdRedaktora.aspx" Text="Zprávy od redaktora" Value="Zprávy od redaktora"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/ZpravyAutorum.aspx" Text="Zprávy autorům" Value="Zprávy autorům"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/ZpravyOdRedaktoraAutorovi.aspx" Text="Zprávy redaktora" Value="Zprávy redaktora"></asp:MenuItem>
                     </asp:MenuItem>
                     <asp:MenuItem Text="Termíny" Value="Termíny" NavigateUrl="~/Terminy.aspx">
                         <asp:MenuItem NavigateUrl="~/Posudky.aspx" Text="Posudky" Value="Posudky"></asp:MenuItem>

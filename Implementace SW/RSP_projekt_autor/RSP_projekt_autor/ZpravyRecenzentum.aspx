@@ -45,13 +45,10 @@
     <br />
 
        <div class="auto-style11">
-
-
         <br />
     <table class="auto-style5" align="center">
             <tr>
                 <td>
-
                     <div class="auto-style1">
 
         <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSource2" EmptyDataText="Žádné datové záznamy k zobrazení." AllowPaging="True" AllowSorting="True" CellPadding="4" ForeColor="#333333" GridLines="None" Width="423px" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
