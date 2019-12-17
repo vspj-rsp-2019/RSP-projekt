@@ -72,13 +72,15 @@
                         <asp:MenuItem NavigateUrl="~/NahratVydani.aspx" Text="Nahrát vydání časopisu" Value="Nahrát vydání časopisu"></asp:MenuItem>
                     </asp:MenuItem>
                     <asp:MenuItem Text="Recenze" Value="Recenze" NavigateUrl="~/RecenzeClankuAutora.aspx">
-                        <asp:MenuItem NavigateUrl="~/RecenzniRizeni.aspx" Text="Recenzní řízení" Value="Recenzní řízení"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/RecenzniRizeni2.aspx" Text="Recenzní řízení" Value="Recenzní řízení"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/UkoncenaRRizeni.aspx" Text="Ukončená recenzní řízení" Value="Ukončená recenzní řízení"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/PrideleniRecenzi.aspx" Text="Přidělení recenzí" Value="Ukončená recenzní řízení"></asp:MenuItem>
                     </asp:MenuItem>
                     <asp:MenuItem Text="Zprávy" Value="Zprávy" Selectable="False">
                         <asp:MenuItem NavigateUrl="~/ZpravyRecenzentum.aspx" Text="Zprávy recenzentům" Value="Zprávy recenzentům"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/ZpravyOdRedaktora.aspx" Text="Zprávy od redaktora" Value="Zprávy od redaktora"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/ZpravyAutorum.aspx" Text="Zprávy autorům" Value="Zprávy autorům"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/ZpravyOdRedaktoraAutorovi.aspx" Text="Zprávy redaktora" Value="Zprávy redaktora"></asp:MenuItem>
                     </asp:MenuItem>
                     <asp:MenuItem Text="Termíny" Value="Termíny" NavigateUrl="~/Terminy.aspx">
                         <asp:MenuItem NavigateUrl="~/Posudky.aspx" Text="Posudky" Value="Posudky"></asp:MenuItem>
