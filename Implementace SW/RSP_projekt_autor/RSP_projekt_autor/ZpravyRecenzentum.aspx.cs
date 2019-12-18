@@ -90,7 +90,7 @@ public partial class Recenze_ZpravyRecenzentum : System.Web.UI.Page
 
     /*
      * Pokud dojde k výběru některého z řádků tabulky pro zobrazení zpráv pro recenzenty,
-     * upraví se obsah formulářových oken pro zobrazení zprývy pro recenzenta a jeho odpovědi na zprávu.
+     * upraví se obsah formulářových oken pro zobrazení zprávy pro recenzenta a jeho odpovědi na zprávu.
      */
     protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
     {
