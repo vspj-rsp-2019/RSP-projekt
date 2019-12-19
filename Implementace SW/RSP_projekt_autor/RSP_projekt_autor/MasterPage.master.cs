@@ -67,6 +67,10 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 // schovani v podmenu zpravy od redaktora autorovi
                 Menu1.Items[2].ChildItems[3].Enabled = false;
                 Menu1.Items[2].ChildItems[3].Text = ""; // 
+
+                // schovani v podmenu vypracovani recenzi
+                Menu1.Items[1].ChildItems[3].Enabled = false;
+                Menu1.Items[1].ChildItems[3].Text = ""; // 
             }
 
 
@@ -103,6 +107,10 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 // schovani v podmenu zpravy od redaktora
                 Menu1.Items[2].ChildItems[1].Enabled = false;
                 Menu1.Items[2].ChildItems[1].Text = ""; // 
+
+                // schovani v podmenu vypracovani recenzi
+                Menu1.Items[1].ChildItems[3].Enabled = false;
+                Menu1.Items[1].ChildItems[3].Text = ""; // 
 
             }
 
