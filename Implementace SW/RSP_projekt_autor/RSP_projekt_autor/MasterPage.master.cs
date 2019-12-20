@@ -41,7 +41,9 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 // schvoani v podmenu prideleni recenzi
                 Menu1.Items[1].ChildItems[2].Enabled = false;
                 Menu1.Items[1].ChildItems[2].Text = ""; // 
+
                
+
                 // schovani v podmenu zpravy od redaktora
                 Menu1.Items[2].ChildItems[0].Enabled = false;
                 Menu1.Items[2].ChildItems[0].Text = ""; // 
@@ -71,6 +73,12 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 // schovani v podmenu vypracovani recenzi
                 Menu1.Items[1].ChildItems[3].Enabled = false;
                 Menu1.Items[1].ChildItems[3].Text = ""; // 
+
+                // presmerovani do prislusneho menu uzivatele
+                //Menu1.Items[1].Enabled = true;
+                Menu1.Items[1].NavigateUrl = ("PrideleniRecenzi.aspx");
+
+
             }
 
 
@@ -111,6 +119,10 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 // schovani v podmenu vypracovani recenzi
                 Menu1.Items[1].ChildItems[3].Enabled = false;
                 Menu1.Items[1].ChildItems[3].Text = ""; // 
+                                                       
+                // schovani v podmenu recenze recenzni rizeni
+                Menu1.Items[1].ChildItems[0].Enabled = false;
+                Menu1.Items[1].ChildItems[0].Text = ""; //
 
             }
 
@@ -149,6 +161,16 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 // schovani v podmenu moje clanky
                 Menu1.Items[0].ChildItems[0].Enabled = false;
                 Menu1.Items[0].ChildItems[0].Text = ""; // 
+
+                // schovani v podmenu recenze recenzni rizeni
+                Menu1.Items[1].ChildItems[0].Enabled = false;
+                Menu1.Items[1].ChildItems[0].Text = ""; // 
+
+                // presmerovani do prislusneho menu uzivatele
+                Menu1.Items[1].NavigateUrl = ("VypracovaniRecenze.aspx");
+                // presmerovani do prislusneho menu uzivatele
+                Menu1.Items[0].NavigateUrl = ("VyhledatClanek.aspx");
+
             }
 
         }

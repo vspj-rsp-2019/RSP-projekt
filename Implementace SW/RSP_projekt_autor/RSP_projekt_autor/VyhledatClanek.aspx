@@ -60,6 +60,7 @@
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" DataSourceID="VyhledatClanekdleID" EmptyDataText="Článek nenalezen." ForeColor="#333333" GridLines="None" HorizontalAlign="Center" Visible="False">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
+            <asp:CommandField ShowSelectButton="True" />
             <asp:BoundField DataField="Id" HeaderText="ID článku" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
             <asp:BoundField DataField="Datum" HeaderText="Datum vložení" SortExpression="Datum" />
             <asp:BoundField DataField="autor_id" HeaderText="ID autora" SortExpression="autor_id" />
@@ -97,6 +98,12 @@ WHERE (Clanky.Id = @Id)">
 <p class="auto-style10">
     <asp:Label ID="lbl_chyba" runat="server" ForeColor="Red" Text="Nastala chyba. Kontaktujte helpdesk." Visible="False"></asp:Label>
 </p>
+    <p class="auto-style10">
+        &nbsp;</p>
+    <p class="auto-style10">
+        &nbsp;</p>
+    <p class="auto-style10">
+        &nbsp;</p>
 
    
 

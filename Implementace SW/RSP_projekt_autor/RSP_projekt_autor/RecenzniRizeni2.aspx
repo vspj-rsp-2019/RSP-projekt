@@ -1,10 +1,9 @@
 ﻿
 
-<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="RecenzniRizeni2.aspx.cs" Inherits="RecenzniRizeni2" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" MaintainScrollPositionOnPostback="true" AutoEventWireup="true" CodeFile="RecenzniRizeni2.aspx.cs" Inherits="RecenzniRizeni2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
-    Recenzní řízení
-</asp:Content>
+    Recenzní řízení</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
         .auto-style1 {
@@ -14,6 +13,11 @@
     .auto-style5 {
         margin-right: 0px;
     }
+        .auto-style6 {
+            margin-left: 7px;
+            margin-right: 7px;
+            text-align: center;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" Runat="Server">
@@ -119,6 +123,7 @@ WHERE (Clanky_Status.Id_cl_status = 3)"></asp:SqlDataSource>
          <asp:GridView ID="GridView3" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" DataSourceID="SqlDataSource3" EmptyDataText="Aktuálně nejsou žádné data k zobrazení." ForeColor="#333333" GridLines="None">
              <AlternatingRowStyle BackColor="White" />
              <Columns>
+                 <asp:CommandField ShowSelectButton="True" />
                  <asp:BoundField DataField="Id" HeaderText="Id článku" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
                  <asp:BoundField DataField="Datum" HeaderText="Datum" SortExpression="Datum" />
                  <asp:BoundField DataField="jmeno" HeaderText="Jméno autora" SortExpression="jmeno" />
@@ -146,9 +151,49 @@ Clanky_Status.nazev AS Expr1 FROM Clanky
 INNER JOIN Clanky_Status ON Clanky.status_clanek = Clanky_Status.Id_cl_status 
 INNER JOIN Users ON Clanky.autor_id = Users.id 
 WHERE (Clanky_Status.Id_cl_status = 4)"></asp:SqlDataSource>
-     </p> 
-    <p class="auto-style1">&nbsp;</p>
-
+     </p>
+     <p class="auto-style1">
+         &nbsp;</p>
+     <p class="auto-style1">
+         <asp:GridView ID="GridView4" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" DataSourceID="SqlDataSource4" EmptyDataText="Aktuálně nejsou žádné data k zobrazení." ForeColor="#333333" GridLines="None">
+             <AlternatingRowStyle BackColor="White" />
+             <Columns>
+                 <asp:BoundField DataField="Id" HeaderText="Id recenze" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
+                 <asp:BoundField DataField="Clanek_id" HeaderText="Id článku" SortExpression="Clanek_id" />
+                 <asp:BoundField DataField="Recenzent_id" HeaderText="Id recenzenta" SortExpression="Recenzent_id" />
+                 <asp:BoundField DataField="Zaver" HeaderText="Závěr" SortExpression="Zaver" />
+                 <asp:BoundField DataField="Datum" HeaderText="Datum" SortExpression="Datum" />
+             </Columns>
+             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+             <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+             <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+             <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+             <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+             <SortedAscendingCellStyle BackColor="#FDF5AC" />
+             <SortedAscendingHeaderStyle BackColor="#4D0000" />
+             <SortedDescendingCellStyle BackColor="#FCF6C0" />
+             <SortedDescendingHeaderStyle BackColor="#820000" />
+         </asp:GridView>
+         <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [Id], [Clanek_id], [Recenzent_id], [Zaver], [Datum] FROM [Recenze] WHERE ([Clanek_id] = @Id)">
+             <SelectParameters>
+                 <asp:ControlParameter ControlID="GridView3" Name="Id" PropertyName="SelectedValue" />
+             </SelectParameters>
+         </asp:SqlDataSource>
+     </p>
+     <p class="auto-style1">
+         &nbsp;</p>
+     <p class="auto-style1">
+         <asp:Button ID="btn_schvalit" runat="server" BackColor="#33CC33" OnClick="btn_schvalit_Click" Text="Schválit článek" Width="373px" />
+         <asp:Button ID="btn_zamitnout" runat="server" BackColor="#CC0000" Text="Zamítnout článek" OnClick="btn_zamitnout_Click" Width="355px" />
+     </p>
+     <p class="auto-style6">
+         <asp:Label ID="lbl_zprava3" runat="server"></asp:Label>
+     </p>
+     <p class="auto-style1">
+         &nbsp;</p>
+     <p class="auto-style1">
+         &nbsp;</p>
+  
 
 </asp:Content>
 

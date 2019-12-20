@@ -100,7 +100,47 @@ INNER JOIN Clanky_Status ON Clanky.status_clanek = Clanky_Status.Id_cl_status
 INNER JOIN Users ON Clanky.autor_id = Users.id 
 WHERE (Clanky_Status.Id_cl_status = 1 OR Clanky_Status.Id_cl_status = 9)"></asp:SqlDataSource>
     <br />
+    <br />
+    <h4 class="auto-style5">Články u nichž je zapotřebí dořešit úpravu textu u zpracované recenze:</h4>
+    <p class="auto-style5">
+        <asp:GridView ID="GridView3" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Height="335px" Width="892px">
+            <AlternatingRowStyle BackColor="White" />
+            <Columns>
+                <asp:CommandField ShowSelectButton="True" />
+                <asp:BoundField DataField="Clanek_id" HeaderText="ID Článku" SortExpression="Clanek_id" />
+                <asp:BoundField DataField="Id" HeaderText="Id recenze" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
+                <asp:BoundField DataField="Recenzent_id" HeaderText="Id recenzenta" SortExpression="Recenzent_id" />
+                <asp:BoundField DataField="Zaver" HeaderText="Závěr" SortExpression="Zaver" />
+                <asp:BoundField DataField="Datum" HeaderText="Datum" SortExpression="Datum" />
+                <asp:CheckBoxField DataField="Zverejneno" HeaderText="Zverejneno" SortExpression="Zverejneno" />
+            </Columns>
+            <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+            <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+            <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+            <SortedAscendingCellStyle BackColor="#FDF5AC" />
+            <SortedAscendingHeaderStyle BackColor="#4D0000" />
+            <SortedDescendingCellStyle BackColor="#FCF6C0" />
+            <SortedDescendingHeaderStyle BackColor="#820000" />
+        </asp:GridView>
     </p>
+    <p class="auto-style5">&nbsp;<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [Clanek_id], [Id], [Recenzent_id], [Zaver], [Datum], [Zverejneno]
+FROM Recenze
+ORDER BY Clanek_id ASC
+
+"></asp:SqlDataSource>
+    </p>
+    <p class="auto-style5"><em>K uprave textu zvolte pouze ten článek, u něhož jsou vytvořeny obě recenze a je nutné upravit alespoň u jedné text!</em></p>
+    <p class="auto-style5">
+        <asp:Button ID="btn_kUpraveTextu" runat="server" BackColor="#FFFF66" OnClick="btn_kUpraveTextu_Click" Text="Odeslat k úpravě textu" />
+    </p>
+    <p class="auto-style5">
+        <asp:Label ID="lbl_zprava2" runat="server"></asp:Label>
+    </p>
+    <p class="auto-style5">&nbsp;</p>
+
+
 
 
     

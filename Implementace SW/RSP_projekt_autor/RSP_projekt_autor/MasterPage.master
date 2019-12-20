@@ -73,7 +73,7 @@
                     </asp:MenuItem>
                     <asp:MenuItem Text="Recenze" Value="Recenze" NavigateUrl="~/RecenzeClankuAutora.aspx">
                         <asp:MenuItem NavigateUrl="~/RecenzniRizeni2.aspx" Text="Recenzní řízení" Value="Recenzní řízení"></asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/UkoncenaRRizeni.aspx" Text="Ukončená recenzní řízení" Value="Ukončená recenzní řízení"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/UkoncenaRR2.aspx" Text="Ukončená recenzní řízení" Value="Ukončená recenzní řízení"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/PrideleniRecenzi.aspx" Text="Přidělení recenzí" Value="Přidělení recenzí"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/VypracovaniRecenze.aspx" Text="Vypracování recenze" Value="Vypracování recenze"></asp:MenuItem>
                     </asp:MenuItem>

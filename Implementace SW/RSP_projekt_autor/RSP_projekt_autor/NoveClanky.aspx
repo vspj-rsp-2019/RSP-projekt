@@ -1,8 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" MaintainScrollPositionOnPostback="true" AutoEventWireup="true" CodeFile="NoveClanky.aspx.cs" Inherits="NoveClanky" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
-    Nové články
-</asp:Content>
+    Nové články</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
         .auto-style1 {
@@ -60,6 +59,10 @@
     <p class="auto-style5">
         <asp:Label ID="lbl_stav" runat="server" ForeColor="#66FF33" Text="sss" Visible="False"></asp:Label>
     </p>
+<p class="auto-style5">
+        &nbsp;</p>
+<p class="auto-style5">
+        &nbsp;</p>
     <p>
         &nbsp;</p>
      
