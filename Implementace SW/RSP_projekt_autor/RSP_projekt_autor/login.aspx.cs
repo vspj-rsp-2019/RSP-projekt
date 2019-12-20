@@ -46,8 +46,20 @@ public partial class Login : System.Web.UI.Page
             {
                 Response.Redirect("NoveClanky.aspx");
             }
-            else Response.Redirect("Default.aspx");
+            
+            // v pripade recenzenta smerovano do vypracovani recenzi
+            if (user.Role == "recenzent")
+            {
+                Response.Redirect("VypracovaniRecenze.aspx");
+            }
+            //  v pripade admina smerovano na admin page
+            if (user.Role == "admin")
+            {
+                Response.Redirect("adminPage.aspx");
+            }
 
+            // ostatni na default stranku
+            else Response.Redirect("Default.aspx");
 
 
         }

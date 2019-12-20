@@ -156,4 +156,34 @@ public partial class KDoreseni : System.Web.UI.Page
             lb_stav.Visible = true;
         }
     }
+
+    protected void btn_kUpraveTextu_Click(object sender, EventArgs e)
+    {
+        // presun clanku do stavu 9
+        sql = "UPDATE Clanky SET status_clanek = 9 WHERE Id = @Clanek_id";
+
+        try
+        {
+            con.Open();
+            sqlCmd = new SqlCommand(sql, con);
+
+            sqlCmd.Parameters.AddWithValue("@Clanek_id", GridView3.SelectedValue);
+
+            sqlCmd.ExecuteNonQuery();
+
+            sqlCmd.Dispose();
+            con.Close();
+         lbl_zprava2.ForeColor = System.Drawing.ColorTranslator.FromHtml("#66FF33");
+            lbl_zprava2.Visible = true;
+            lbl_zprava2.Text = "Úspěšně uloženo.";
+            Response.Redirect(Request.RawUrl);
+
+
+        }
+        catch (Exception ex)
+        {
+            lbl_zprava2.Text = "Změna neproběhla.";
+            lbl_zprava2.Visible = true;
+        }
+    }
 }

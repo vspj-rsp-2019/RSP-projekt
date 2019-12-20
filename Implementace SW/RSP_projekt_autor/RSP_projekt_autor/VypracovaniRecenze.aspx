@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="VypracovaniRecenze.aspx.cs" Inherits="VypracovaniRecenze" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" MaintainScrollPositionOnPostback="true" AutoEventWireup="true" CodeFile="VypracovaniRecenze.aspx.cs" Inherits="VypracovaniRecenze" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
     Vypracování recenze
@@ -14,7 +14,7 @@
         .auto-style6 {
             margin-left: 7px;
             margin-right: 7px;
-            text-align: center;
+            text-align: right;
         }
          .auto-style7 {
              text-align: justify;
@@ -25,7 +25,7 @@
          }
          .auto-style9 {
              text-align: left;
-             height: 365px;
+             height: 438px;
              width: 618px;
          }
          .auto-style10 {
@@ -36,8 +36,9 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" Runat="Server">
-    <h4 class="auto-style5">Ke zpracování:</h4>
+    <h3 class="auto-style5">Ke zpracování:</h3>
     <p class="auto-style6">
+        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Aktualizovat</asp:LinkButton>
      <div class="auto-style10"><asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" DataKeyNames="Id_Clanku,Id_Recenzenta" EmptyDataText="Aktuálně neevidujeme žádné záznamy.">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
@@ -58,7 +59,7 @@
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [Id_Clanku], [Datum_vypracovani], [Id_Recenzenta] 
 FROM [PrideleneClanky] 
-WHERE ([Id_Recenzenta] = @Id_Recenzenta)">
+WHERE ([Id_Recenzenta] = @Id_Recenzenta AND Zpracovano = 0)">
             <SelectParameters>
                 <asp:SessionParameter Name="Id_Recenzenta" SessionField="UserID" Type="Int32" />
             </SelectParameters>
@@ -68,7 +69,7 @@ WHERE ([Id_Recenzenta] = @Id_Recenzenta)">
          <div class="auto-style8">
              <br />
              <strong>Vyberte článek a zvolte hodnocení:</strong></div>
-         <asp:Panel ID="Panel1" runat="server" CssClass="auto-style7" Height="374px" Width="619px">
+         <asp:Panel ID="Panel1" runat="server" CssClass="auto-style7" Height="418px" Width="619px">
              <div class="auto-style9">
                  <br />
                  Aktuálnost:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -116,6 +117,13 @@ WHERE ([Id_Recenzenta] = @Id_Recenzenta)">
                  <br />
                  <asp:Label ID="lbl_recenzentID" runat="server" Visible="False"></asp:Label>
                  <br />
+                 <strong>Závěřečné rozhodnutí:</strong><br />
+                 <asp:DropDownList ID="ddl_zaver" runat="server">
+                     <asp:ListItem>doporučeno</asp:ListItem>
+                     <asp:ListItem>nedoporučeno</asp:ListItem>
+                     <asp:ListItem>přepracovat</asp:ListItem>
+                 </asp:DropDownList>
+                 <br />
                  <br />
                  <asp:Button ID="btn_odeslatRecenzi" runat="server" OnClick="btn_odeslatRecenzi_Click" Text="Odeslat recenzi" Width="288px" />
                  <br />
@@ -124,7 +132,6 @@ WHERE ([Id_Recenzenta] = @Id_Recenzenta)">
              </div>
          </asp:Panel>
          <div class="auto-style8">
-             <br />
             <h4>Zpracované recenze:</h4>
              <br />
              <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" DataSourceID="SqlDataSource2" ForeColor="#333333" GridLines="None" AllowPaging="True" AllowSorting="True" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
@@ -140,6 +147,7 @@ WHERE ([Id_Recenzenta] = @Id_Recenzenta)">
                      <asp:BoundField DataField="OdbornaUroven" HeaderText="OdbornaUroven" SortExpression="OdbornaUroven" />
                      <asp:BoundField DataField="JazykovaUroven" HeaderText="JazykovaUroven" SortExpression="JazykovaUroven" />
                      <asp:BoundField DataField="filePath" HeaderText="filePath" SortExpression="filePath" />
+                     <asp:BoundField DataField="Zaver" HeaderText="Zaver" SortExpression="Zaver" />
                  </Columns>
                  <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                  <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -151,7 +159,7 @@ WHERE ([Id_Recenzenta] = @Id_Recenzenta)">
                  <SortedDescendingCellStyle BackColor="#FCF6C0" />
                  <SortedDescendingHeaderStyle BackColor="#820000" />
              </asp:GridView>
-             <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [Id], [Clanek_id], [Datum], [Zverejneno], [Aktualnost], [Originalita], [OdbornaUroven], [JazykovaUroven], [filePath] FROM [Recenze] WHERE ([Recenzent_id] = @Recenzent_id)">
+             <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [Id], [Clanek_id], [Datum], [Zverejneno], [Aktualnost], [Originalita], [OdbornaUroven], [JazykovaUroven], [filePath], [Zaver] FROM [Recenze] WHERE ([Recenzent_id] = @Recenzent_id)">
                  <SelectParameters>
                      <asp:SessionParameter Name="Recenzent_id" SessionField="UserID" Type="Int32" />
                  </SelectParameters>

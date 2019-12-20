@@ -1,8 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="RecenzeClankuAutora.aspx.cs" Inherits="Default2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
-    Recenze článku autora
-</asp:Content>
+    Recenze článku autora</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
         .auto-style1 {

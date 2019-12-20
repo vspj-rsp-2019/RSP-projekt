@@ -20,7 +20,8 @@ public partial class Odhlaseni : System.Web.UI.Page
 
     protected void btn_odhlaseni_Click(object sender, EventArgs e)
     {
-        //odhlaseni uzivatele a presmerovani na login page
+       //odhlaseni uzivatele a presmerovani na login page
+        
         Session.Abandon();
         Response.Redirect("login.aspx");
     }

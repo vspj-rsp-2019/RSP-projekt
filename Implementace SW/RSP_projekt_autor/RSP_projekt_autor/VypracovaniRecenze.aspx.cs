@@ -17,6 +17,7 @@ public partial class VypracovaniRecenze : System.Web.UI.Page
     User user;
     SqlCommand sqlCmd;
     string sql = null;
+    string sql2 = null;
 
 
     protected void Page_Load(object sender, EventArgs e)
@@ -54,20 +55,21 @@ public partial class VypracovaniRecenze : System.Web.UI.Page
 
     protected void btn_odeslatRecenzi_Click(object sender, EventArgs e)
     {
-        if ((GridView1.SelectedIndex >= 0)){
+        if ((GridView1.SelectedIndex >= 0) && (tbx_komentarRecenze.Text.Length > 1))
+        {
 
             //sql = "UPDATE Recenze set Recenze.Datum=@Datum, Recenze.TextRecenze=@TextRecenze, Recenze.Aktualnost=@Aktualnost, Recenze.Originalita=@Originalita, Recenze.OdbornaUroven=@OdbornaUroven, Recenze.JazykovaUroven=@JazykovaUroven FROM Recenze INNER JOIN PrideleneClanky ON PrideleneClanky.Id_Clanku = Recenze.Clanek_id WHERE [Clanek_id] = @Clanek_id AND Recenze.Recenzent_id = @Recenzent_id";
-            sql = "insert into Recenze (Clanek_id, Recenzent_id, Datum, Zverejneno, TextRecenze, Aktualnost, Originalita, OdbornaUroven, JazykovaUroven) values (@Id_Clanku, @Id_Recenzenta, @Datum, @Zverejneno, @TextRecenze, @Aktualnost, @Originalita, @OdbornaUroven, @JazykovaUroven)";
-
+            sql = "insert into Recenze (Clanek_id, Recenzent_id, Datum, Zverejneno, TextRecenze, Aktualnost, Originalita, OdbornaUroven, JazykovaUroven, Zaver) values (@Id_Clanku, @Id_Recenzenta, @Datum, @Zverejneno, @TextRecenze, @Aktualnost, @Originalita, @OdbornaUroven, @JazykovaUroven, @Zaver)";
+            sql2 = "update PrideleneClanky set Zpracovano = 1 where (Id_Clanku=@Id_clanku AND Id_Recenzenta=@Id_Recenzenta)";
             try
             {
                 con.Open();
                 sqlCmd = new SqlCommand(sql, con);
-                string Datum = DateTime.Now.ToString("yyyy-MM-dd");
                 
 
-             
-
+                string Datum = DateTime.Now.ToString("yyyy-MM-dd");
+                
+                
                 sqlCmd.Parameters.AddWithValue("@Datum", Datum);
                 sqlCmd.Parameters.AddWithValue("@TextRecenze", tbx_komentarRecenze.Text);
                 sqlCmd.Parameters.AddWithValue(@"Zverejneno", 0);
@@ -77,15 +79,28 @@ public partial class VypracovaniRecenze : System.Web.UI.Page
                 sqlCmd.Parameters.AddWithValue("@JazykovaUroven", ddl_jazykuroven.SelectedValue);
                 sqlCmd.Parameters.AddWithValue("@Id_Clanku", GridView1.SelectedRow.Cells[1].Text);
                 sqlCmd.Parameters.AddWithValue("@Id_Recenzenta", GridView1.SelectedRow.Cells[3].Text);
+                sqlCmd.Parameters.AddWithValue("@Zaver", ddl_zaver.SelectedValue);
 
+                
+                sqlCmd.ExecuteNonQuery();
 
+               
+                sqlCmd.Dispose();
+                con.Close();
+
+                lbl_potvrzeni.ForeColor = System.Drawing.ColorTranslator.FromHtml("#33CC33");
+                lbl_potvrzeni.Text = "Recenze uložena.";
+                //GridView1.DataBind();
+
+                con.Open();
+                sqlCmd = new SqlCommand(sql2, con);
+                sqlCmd.Parameters.AddWithValue("@Id_Clanku", GridView1.SelectedRow.Cells[1].Text);
+                sqlCmd.Parameters.AddWithValue("@Id_Recenzenta", GridView1.SelectedRow.Cells[3].Text);
                 sqlCmd.ExecuteNonQuery();
 
                 sqlCmd.Dispose();
                 con.Close();
-                lbl_potvrzeni.ForeColor = System.Drawing.ColorTranslator.FromHtml("#33CC33");
-                lbl_potvrzeni.Text = "Recenze uložena.";
-                //GridView1.DataBind();
+
 
             }
             catch (Exception ex)
@@ -95,5 +110,21 @@ public partial class VypracovaniRecenze : System.Web.UI.Page
             }
 
         }
+
+        else
+        {
+            lbl_potvrzeni.Text = "Některá z hodnot nebyla vybrána!";
+            lbl_potvrzeni.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FF3300");
+        }
+    }
+
+    protected void lbl_aktualizovat_DataBinding(object sender, EventArgs e)
+    {
+       
+    }
+
+    protected void LinkButton1_Click(object sender, EventArgs e)
+    {
+        Response.Redirect(Request.RawUrl);
     }
 }
