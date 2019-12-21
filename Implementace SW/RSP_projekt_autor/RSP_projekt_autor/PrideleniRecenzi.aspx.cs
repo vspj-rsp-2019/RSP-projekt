@@ -16,6 +16,7 @@ public partial class PrideleniRecenzi : System.Web.UI.Page
     SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
     SqlCommand sqlCmd;
     string sql = null;
+    string sql2 = null;
     User user;
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -53,14 +54,21 @@ public partial class PrideleniRecenzi : System.Web.UI.Page
                 else
                 {
                     sql = "insert into PrideleneClanky (Id_Clanku, Id_Recenzenta, Datum_vypracovani)values(@idClanku, @idRecenzenta, @datumVypracovani)";
+                    sql2 = "UPDATE Clanky SET status_clanek = 4 WHERE Id = @Id";
+                    //výše umožní, že se článek přesune do statusu č.4 probiha RR
                     try
                     {
                         con.Open();
                         sqlCmd = new SqlCommand(sql, con);
+                        // sqlCmd = new SqlCommand(sql2, con);
 
                         sqlCmd.Parameters.AddWithValue("@idClanku", GridView1.SelectedRow.Cells[0].Text);
+                        sqlCmd.Parameters.AddWithValue("@status_clanek", 4);
+                        sqlCmd.Parameters.AddWithValue("@Id", GridView1.SelectedValue);
                         sqlCmd.Parameters.AddWithValue("@idRecenzenta", GridView2.SelectedRow.Cells[0].Text);
                         sqlCmd.Parameters.AddWithValue("@datumVypracovani", Calendar1.SelectedDate.ToString("MM/dd/yyyy"));
+
+                        
 
                         sqlCmd.ExecuteNonQuery();
 
@@ -71,6 +79,29 @@ public partial class PrideleniRecenzi : System.Web.UI.Page
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         Lbl_pocPridRecenzentu.Text = dt.Rows[0][0].ToString();
+
+                        // v připade, že jsou prirazeni dva recenzenti, tak se článek překlopí již do stavu č. 4 probiha RR
+                        if (Lbl_pocPridRecenzentu.Text == "2")
+                        {
+
+                            try
+                            {
+                                con.Open();
+                            sqlCmd = new SqlCommand(sql2, con);
+                            sqlCmd.Parameters.AddWithValue("@Id", GridView1.SelectedValue);
+                            sqlCmd.ExecuteNonQuery();
+
+                            sqlCmd.Dispose();
+                            con.Close();
+                            }
+                            catch
+                            {
+                                // Lbl_zprava.Text = ex.ToString();
+                                Lbl_zprava.Text = "Nastala chyba!";
+                            }
+                        }
+
+
                     }
                     catch (Exception ex)
                     {

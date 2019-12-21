@@ -11,9 +11,7 @@ public partial class VyhledatClanek : System.Web.UI.Page
 {
 
     User user;
-    DBHandler dbHandler = new DBHandler(@"Data Source=(LocalDB)\MSSQLLocalDB;
-                                        AttachDbFilename=|DataDirectory|\Databaze.mdf;
-                                        Integrated Security=True;Connect Timeout=30");
+    DBHandler dbHandler = new DBHandler(@"Data Source = SQL5044.site4now.net; Initial Catalog = DB_A50E52_rsp019; User Id = DB_A50E52_rsp019_admin; Password=Voracek2019;");
     protected void Page_Load(object sender, EventArgs e)
     {
         //kontrola na přihlášeného uživatele
@@ -21,6 +19,21 @@ public partial class VyhledatClanek : System.Web.UI.Page
         if (user == null)
         {
             Response.Redirect("login.aspx");
+        }
+
+        if (user.Role == "redaktor")
+        {
+            GridView2.Visible = true;
+        }
+
+        if (user.Role == "recenzent")
+        {
+            GridView2.Visible = true;
+        }
+
+        if (user.Role == "admin")
+        {
+            GridView2.Visible = true;
         }
 
     }

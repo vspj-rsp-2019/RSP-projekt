@@ -9,9 +9,7 @@ public partial class Login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        DBHandler dbHandler = new DBHandler(@"Data Source=(LocalDB)\MSSQLLocalDB;
-                                        AttachDbFilename=|DataDirectory|\Databaze.mdf;
-                                        Integrated Security=True;Connect Timeout=30");
+        DBHandler dbHandler = new DBHandler(@"Data Source = SQL5044.site4now.net; Initial Catalog = DB_A50E52_rsp019; User Id = DB_A50E52_rsp019_admin; Password=Voracek2019;");
         User user = dbHandler.loginUser(TB_email.Text, TB_heslo.Text);
 
         if (Session["UserId"] != null)
@@ -31,9 +29,7 @@ public partial class Login : System.Web.UI.Page
     protected void BT_login_Click(object sender, EventArgs e)
     {
      
-        DBHandler dbHandler = new DBHandler(@"Data Source=(LocalDB)\MSSQLLocalDB;
-                                        AttachDbFilename=|DataDirectory|\Databaze.mdf;
-                                        Integrated Security=True;Connect Timeout=30");
+        DBHandler dbHandler = new DBHandler(@"Data Source = SQL5044.site4now.net; Initial Catalog = DB_A50E52_rsp019; User Id = DB_A50E52_rsp019_admin; Password=Voracek2019;");
         User user = dbHandler.loginUser(TB_email.Text, TB_heslo.Text);
 
         if (user != null)
@@ -50,8 +46,20 @@ public partial class Login : System.Web.UI.Page
             {
                 Response.Redirect("NoveClanky.aspx");
             }
-            else Response.Redirect("Default.aspx");
+            
+            // v pripade recenzenta smerovano do vypracovani recenzi
+            if (user.Role == "recenzent")
+            {
+                Response.Redirect("VypracovaniRecenze.aspx");
+            }
+            //  v pripade admina smerovano na admin page
+            if (user.Role == "admin")
+            {
+                Response.Redirect("adminPage.aspx");
+            }
 
+            // ostatni na default stranku
+            else Response.Redirect("Default.aspx");
 
 
         }

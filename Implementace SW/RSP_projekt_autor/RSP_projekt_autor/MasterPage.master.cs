@@ -10,9 +10,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
 {
     User user;
-    DBHandler dbHandler = new DBHandler(@"Data Source=(LocalDB)\MSSQLLocalDB;
-                                        AttachDbFilename=|DataDirectory|\Database.mdf;
-                                        Integrated Security=True;Connect Timeout=30");
+    DBHandler dbHandler = new DBHandler(@"Data Source = SQL5044.site4now.net; Initial Catalog = DB_A50E52_rsp019; User Id = DB_A50E52_rsp019_admin; Password=Voracek2019;");
     protected void Page_Load(object sender, EventArgs e)
     {
         //kontrola na prihlaseneho uzivatele
@@ -30,7 +28,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
         if (user.Role != "redaktor")
         {
-                // v pripade prohlaseni uzivatele s roli vyse, nebudou dostupne a viditelne polozky menu
+                // v pripade prihlaseni uzivatele s roli vyse, nebudou dostupne a viditelne polozky menu
 
                 // schovani podmenu nove clanky
                 Menu1.Items[0].ChildItems[1].Enabled = false;
@@ -43,17 +41,15 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 // schvoani v podmenu prideleni recenzi
                 Menu1.Items[1].ChildItems[2].Enabled = false;
                 Menu1.Items[1].ChildItems[2].Text = ""; // 
+
                
+
                 // schovani v podmenu zpravy od redaktora
                 Menu1.Items[2].ChildItems[0].Enabled = false;
                 Menu1.Items[2].ChildItems[0].Text = ""; // 
 
-             
-
-           
-
             }
-            // v pripade prohlaseni uzivatele s roli vyse, nebudou dostupne a viditelne polozky menu
+            // v pripade prihlaseni uzivatele s roli vyse, nebudou dostupne a viditelne polozky menu
 
             if (user.Role == "redaktor")
             {
@@ -62,14 +58,30 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 Menu1.Items[0].ChildItems[0].Enabled = false;
                 Menu1.Items[0].ChildItems[0].Text = "";
 
-            // schovani v podmenu zpravy od redaktora
-            Menu1.Items[2].ChildItems[1].Enabled = false;
-            Menu1.Items[2].ChildItems[1].Text = ""; // 
+                // schovani v podmenu zpravy od redaktora
+                Menu1.Items[2].ChildItems[1].Enabled = false;
+                Menu1.Items[2].ChildItems[1].Text = ""; // 
 
                 // schovani podmenu vlozeni upraveneho clanku clanku
                 Menu1.Items[0].ChildItems[7].Enabled = false;
                 Menu1.Items[0].ChildItems[7].Text = "";
+
+                // schovani v podmenu zpravy od redaktora autorovi
+                Menu1.Items[2].ChildItems[3].Enabled = false;
+                Menu1.Items[2].ChildItems[3].Text = ""; // 
+
+                // schovani v podmenu vypracovani recenzi
+                Menu1.Items[1].ChildItems[3].Enabled = false;
+                Menu1.Items[1].ChildItems[3].Text = ""; // 
+
+                // presmerovani do prislusneho menu uzivatele
+                //Menu1.Items[1].Enabled = true;
+                Menu1.Items[1].NavigateUrl = ("PrideleniRecenzi.aspx");
+
+
             }
+
+
 
             if (user.Role == "autor")
             {
@@ -96,6 +108,22 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 Menu1.Items[4].Enabled = false;
                 Menu1.Items[4].Text = "";
 
+                // schovani v podmenu zpravy od autora
+                Menu1.Items[2].ChildItems[1].Enabled = false;
+                Menu1.Items[2].ChildItems[2].Text = ""; // 
+
+                // schovani v podmenu zpravy od redaktora
+                Menu1.Items[2].ChildItems[1].Enabled = false;
+                Menu1.Items[2].ChildItems[1].Text = ""; // 
+
+                // schovani v podmenu vypracovani recenzi
+                Menu1.Items[1].ChildItems[3].Enabled = false;
+                Menu1.Items[1].ChildItems[3].Text = ""; // 
+                                                       
+                // schovani v podmenu recenze recenzni rizeni
+                Menu1.Items[1].ChildItems[0].Enabled = false;
+                Menu1.Items[1].ChildItems[0].Text = ""; //
+
             }
 
             if (user.Role == "admin")
@@ -103,6 +131,46 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 // schovani podmenu vlozeni upraveneho clanku clanku
                 Menu1.Items[0].ChildItems[7].Enabled = false;
                 Menu1.Items[0].ChildItems[7].Text = "";
+            }
+
+            if (user.Role == "recenzent")
+            {
+                // schovani v podmenu zpravy od autora
+                Menu1.Items[2].ChildItems[2].Enabled = false;
+                Menu1.Items[2].ChildItems[2].Text = ""; // 
+
+                // schovani v podmenu zpravy od recenzentů
+                Menu1.Items[2].ChildItems[0].Enabled = false;
+                Menu1.Items[2].ChildItems[0].Text = ""; // 
+
+                // schovani v podmenu zpravy od redaktora autorovi
+                Menu1.Items[2].ChildItems[3].Enabled = false;
+                Menu1.Items[2].ChildItems[3].Text = ""; // 
+
+                // schovani podmenu nahrani vydani cisla do archivu
+                Menu1.Items[0].ChildItems[8].Enabled = false;
+                Menu1.Items[0].ChildItems[8].Text = "";
+                // schovani podmenu vlozeni upraveny clanek
+                Menu1.Items[0].ChildItems[7].Enabled = false;
+                Menu1.Items[0].ChildItems[7].Text = "";
+
+                // schovani podmenu archivace clanku
+                Menu1.Items[0].ChildItems[6].Enabled = false;
+                Menu1.Items[0].ChildItems[6].Text = "";
+
+                // schovani v podmenu moje clanky
+                Menu1.Items[0].ChildItems[0].Enabled = false;
+                Menu1.Items[0].ChildItems[0].Text = ""; // 
+
+                // schovani v podmenu recenze recenzni rizeni
+                Menu1.Items[1].ChildItems[0].Enabled = false;
+                Menu1.Items[1].ChildItems[0].Text = ""; // 
+
+                // presmerovani do prislusneho menu uzivatele
+                Menu1.Items[1].NavigateUrl = ("VypracovaniRecenze.aspx");
+                // presmerovani do prislusneho menu uzivatele
+                Menu1.Items[0].NavigateUrl = ("VyhledatClanek.aspx");
+
             }
 
         }
