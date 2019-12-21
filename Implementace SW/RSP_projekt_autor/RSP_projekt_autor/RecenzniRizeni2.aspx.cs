@@ -63,7 +63,7 @@ public partial class RecenzniRizeni2 : System.Web.UI.Page
 
                     sqlCmd.Dispose();
                     con.Close();
-                    lbl_potvrzeni.Text = "Recenze přiřazena.";
+                    lbl_potvrzeni.Text = "Status článku změněn";
                    
                 }
                 catch (Exception ex)
@@ -93,7 +93,7 @@ public partial class RecenzniRizeni2 : System.Web.UI.Page
             {
 
                 con.Open();
-                sqlCmd = new SqlCommand(sql, con);
+                sqlCmd = new SqlCommand(sql2, con);
 
                 sqlCmd.Parameters.AddWithValue("@Id", GridView3.SelectedValue);
 
@@ -103,7 +103,7 @@ public partial class RecenzniRizeni2 : System.Web.UI.Page
 
                 sqlCmd.Dispose();
                 con.Close();
-                lbl_zprava3.Text = "Recenze přiřazena.";
+                lbl_zprava3.Text = "Status článku změněn.";
 
             }
             catch (Exception ex)
@@ -128,14 +128,14 @@ public partial class RecenzniRizeni2 : System.Web.UI.Page
         if ((GridView3.SelectedIndex >= 0))
         {
 
-            sql2 = "UPDATE Clanky SET status_clanek = 7, datum_uk_rec_riz = @datumUkonceniRR WHERE Id = @Id";
+            sql3 = "UPDATE Clanky SET status_clanek = 7, datum_uk_rec_riz = @datumUkonceniRR WHERE Id = @Id";
             string Datum = DateTime.Now.ToString("yyyy-MM-dd");
 
             try
             {
 
                 con.Open();
-                sqlCmd = new SqlCommand(sql, con);
+                sqlCmd = new SqlCommand(sql3, con);
 
                 sqlCmd.Parameters.AddWithValue("@Id", GridView3.SelectedValue);
 
@@ -145,7 +145,7 @@ public partial class RecenzniRizeni2 : System.Web.UI.Page
 
                 sqlCmd.Dispose();
                 con.Close();
-                lbl_zprava3.Text = "Recenze přiřazena.";
+                lbl_zprava3.Text = "Status článku změněn.";
 
             }
             catch (Exception ex)
