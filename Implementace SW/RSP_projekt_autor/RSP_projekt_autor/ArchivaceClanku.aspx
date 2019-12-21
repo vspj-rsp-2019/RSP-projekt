@@ -81,7 +81,7 @@
              <asp:Button ID="Btn_archivovatClanky" runat="server" Text="Archivovat schválené články" BackColor="#CCFF33" ForeColor="Black" OnClick="Btn_archivovatClanky_Click" Width="253px" />
                     </td>
                     <td>
-                        <asp:Button ID="Btn_vyjmoutZarchivu" runat="server" BackColor="#FF6666" OnClick="Btn_vyjmoutZarchivu_Click" Text="Vyjmout článek z archivu do  schválených" Width="254px" />
+                        <asp:Button ID="Btn_vyjmoutZarchivu" runat="server" BackColor="#FF6666" OnClick="Btn_vyjmoutZarchivu_Click" Text="Vyjmout článek z archivu do  schválených" Width="314px" />
                     </td>
                 </tr>
             </table>

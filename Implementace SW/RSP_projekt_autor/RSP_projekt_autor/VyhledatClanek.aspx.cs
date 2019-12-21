@@ -21,6 +21,21 @@ public partial class VyhledatClanek : System.Web.UI.Page
             Response.Redirect("login.aspx");
         }
 
+        if (user.Role == "redaktor")
+        {
+            GridView2.Visible = true;
+        }
+
+        if (user.Role == "recenzent")
+        {
+            GridView2.Visible = true;
+        }
+
+        if (user.Role == "admin")
+        {
+            GridView2.Visible = true;
+        }
+
     }
     // vyhledani clanku dle id clanku
     protected void btn_vyhledat_Click(object sender, EventArgs e)

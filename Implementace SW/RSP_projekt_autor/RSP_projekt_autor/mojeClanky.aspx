@@ -26,11 +26,12 @@
     <div align="center">
         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/RecenzeClankuAutora.aspx">Recenze mých článků</asp:HyperLink> <br />
         <strong>Moje články</strong>
-        <asp:GridView ID="GV_clanky" runat="server" DataSourceID="SqlDataSource1" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="511px">
+        <asp:GridView ID="GV_clanky" runat="server" DataSourceID="SqlDataSource1" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="511px" DataKeyNames="Id">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
+                <asp:BoundField DataField="Id" HeaderText="Id článku" SortExpression="Id" ReadOnly="True" />
+                <asp:BoundField DataField="nazev" HeaderText="Název čl." SortExpression="nazev" />
                 <asp:BoundField DataField="Datum" HeaderText="Datum" SortExpression="Datum" />
-                <asp:BoundField DataField="nazev" HeaderText="Název článku" SortExpression="nazev" />
                 <asp:BoundField DataField="Name" HeaderText="Vydání" SortExpression="Name" />
             </Columns>
             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -43,7 +44,7 @@
             <SortedDescendingCellStyle BackColor="#FCF6C0" />
             <SortedDescendingHeaderStyle BackColor="#820000" />
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [nazev], [Datum], [Name] FROM [View] WHERE ([autor_id] = @autor_id)">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT Id, [nazev], [Datum], [Name] FROM [View] WHERE ([autor_id] = @autor_id)">
             <SelectParameters>
                 <asp:SessionParameter DefaultValue="-1" Name="autor_id" SessionField="UserID" Type="Int32" />
             </SelectParameters>

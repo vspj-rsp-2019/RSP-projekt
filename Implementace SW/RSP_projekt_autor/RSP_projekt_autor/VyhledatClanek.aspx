@@ -101,6 +101,37 @@ WHERE (Clanky.Id = @Id)">
     <p class="auto-style10">
         &nbsp;</p>
     <p class="auto-style10">
+        <asp:GridView ID="GridView2" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="ClanekId,VerzeId" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Visible="False" Width="930px">
+            <AlternatingRowStyle BackColor="White" />
+            <Columns>
+                <asp:BoundField DataField="ClanekId" HeaderText="Id článku" ReadOnly="True" SortExpression="ClanekId" />
+                <asp:BoundField DataField="VerzeId" HeaderText="Verze článku" ReadOnly="True" SortExpression="VerzeId" />
+                <asp:BoundField DataField="Stav" HeaderText="Stav ID" SortExpression="Stav" />
+                <asp:BoundField DataField="Expr1" HeaderText="Název čl." SortExpression="Expr1" />
+                <asp:BoundField DataField="Datum" HeaderText="Datum" SortExpression="Datum" />
+                <asp:BoundField DataField="Expr2" HeaderText="Status čl." SortExpression="Expr2" />
+                <asp:HyperLinkField DataNavigateUrlFields="filePath" DataTextField="filePath" DataTextFormatString="Otevřít" NavigateUrl="filePath" Target="_blank" />
+            </Columns>
+            <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+            <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+            <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+            <SortedAscendingCellStyle BackColor="#FDF5AC" />
+            <SortedAscendingHeaderStyle BackColor="#4D0000" />
+            <SortedDescendingCellStyle BackColor="#FCF6C0" />
+            <SortedDescendingHeaderStyle BackColor="#820000" />
+        </asp:GridView>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT ClankyArchiv.ClanekId, ClankyArchiv.VerzeId, ClankyArchiv.Stav, ClankyArchiv.FilePath, 
+ClankyArchiv.Nazev AS Expr1, ClankyArchiv.Datum, Clanky_Status.nazev AS Expr2 FROM ClankyArchiv 
+INNER JOIN Clanky_Status ON ClankyArchiv.Stav = Clanky_Status.Id_cl_status 
+WHERE ([ClanekId] = @ClanekId)">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="GridView1" Name="ClanekId" PropertyName="SelectedValue" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+    </p>
+    <p class="auto-style10">
         &nbsp;</p>
     <p class="auto-style10">
         &nbsp;</p>
