@@ -1,8 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" MaintainScrollPositionOnPostback="true" AutoEventWireup="true" CodeFile="PrideleniRecenzi.aspx.cs" Inherits="PrideleniRecenzi" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
-    Přidělení recenzí
-</asp:Content>
+    Přidělení recenzí</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
         .auto-style1 {
@@ -75,10 +74,11 @@
         <Columns>
             <asp:BoundField DataField="Id" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
             <asp:BoundField DataField="nazev" HeaderText="Název článku" SortExpression="nazev" />
-            <asp:BoundField DataField="status_clanek" HeaderText="Stav" SortExpression="status_clanek" />
-            <asp:BoundField DataField="Name" HeaderText="Vydání" SortExpression="Name" />
-            <asp:BoundField DataField="prijmeni" HeaderText="Příjmení au." SortExpression="prijmeni" />
-            <asp:BoundField DataField="jmeno" HeaderText="Jméno au." SortExpression="jmeno" />
+            <asp:BoundField DataField="status_clanek" HeaderText="Stav čl." SortExpression="status_clanek" />
+            <asp:BoundField DataField="vydani_id" HeaderText="Vydání" SortExpression="vydani_id" />
+            <asp:BoundField DataField="autor_id" HeaderText="autor_id" SortExpression="autor_id" />
+            <asp:BoundField DataField="prijmeni" HeaderText="Příjmení autora" SortExpression="prijmeni" />
+            <asp:BoundField DataField="jmeno" HeaderText="Jméno" SortExpression="jmeno" />
             <asp:CommandField ShowSelectButton="True" />
         </Columns>
         <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -94,7 +94,7 @@
     </asp:GridView>
     </div>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM [Clanky] WHERE [Id] = @Id" InsertCommand="INSERT INTO [Clanky] ([autor_id], [vydani_id], [nazev], [filePath], [Datum], [status_clanek]) VALUES (@autor_id, @vydani_id, @nazev, @filePath, @Datum, @status_clanek)" SelectCommand="SELECT Clanky.Id, Clanky.autor_id, Clanky.vydani_id, Clanky.nazev, Clanky.filePath, Clanky.Datum, Clanky.status_clanek, Vydani.Name, Users.jmeno, Users.prijmeni, Users.role FROM Vydani INNER JOIN Clanky ON Clanky.vydani_id = Vydani.Id INNER JOIN Users ON Clanky.autor_id = Users.id
-WHERE ([Name] = @Name)" UpdateCommand="UPDATE [Clanky] SET [autor_id] = @autor_id, [vydani_id] = @vydani_id, [nazev] = @nazev, [filePath] = @filePath, [Datum] = @Datum, [status_clanek] = @status_clanek WHERE [Id] = @Id">
+WHERE ([Name] = @Name AND Clanky.status_clanek = 3)" UpdateCommand="UPDATE [Clanky] SET [autor_id] = @autor_id, [vydani_id] = @vydani_id, [nazev] = @nazev, [filePath] = @filePath, [Datum] = @Datum, [status_clanek] = @status_clanek WHERE [Id] = @Id">
         <DeleteParameters>
             <asp:Parameter Name="Id" Type="Int32" />
         </DeleteParameters>

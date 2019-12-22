@@ -24,14 +24,14 @@
     <h4 class="auto-style5">Kontrola termínů - Upozornění na končící datum vypracování posudku od recenzentů</h4>
     <p class="auto-style5">&nbsp;</p>
     <p class="auto-style5">
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="CheckTerminy2" ForeColor="#333333" GridLines="None" EmptyDataText="Aktuálně neevidujeme končící termíny.">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="CheckTerminy2" ForeColor="#333333" GridLines="None" EmptyDataText="Aktuálně neevidujeme končící termíny." AllowPaging="True" AllowSorting="True">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="Datum_vypracovani" HeaderText="Datum vypracování" SortExpression="Datum_vypracovani" />
-                <asp:BoundField DataField="id" HeaderText="ID recenzenta" InsertVisible="False" ReadOnly="True" SortExpression="id" />
-                <asp:BoundField DataField="jmeno" HeaderText="Jméno recenzenta" SortExpression="jmeno" />
-                <asp:BoundField DataField="prijmeni" HeaderText="Příjmení recenzenta" SortExpression="prijmeni" />
-                <asp:BoundField DataField="Id_Clanku" HeaderText="ID článku" SortExpression="Id_Clanku" />
+                <asp:BoundField DataField="id" HeaderText="Id recenzenta" InsertVisible="False" ReadOnly="True" SortExpression="id" />
+                <asp:BoundField DataField="jmeno" HeaderText="Jméno" SortExpression="jmeno" />
+                <asp:BoundField DataField="prijmeni" HeaderText="Příjmení" SortExpression="prijmeni" />
+                <asp:BoundField DataField="Id_Clanku" HeaderText="Id článku" SortExpression="Id_Clanku" />
                 <asp:BoundField DataField="nazev" HeaderText="Název článku" SortExpression="nazev" />
             </Columns>
             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -49,7 +49,7 @@ PrideleneClanky.Id_Clanku, Clanky.nazev
 FROM PrideleneClanky 
 INNER JOIN Users ON PrideleneClanky.Id_Recenzenta = Users.id 
 INNER JOIN Clanky ON PrideleneClanky.ID_Clanku = Clanky.Id
-WHERE (Users.role = 'recenzent') AND DATEDIFF (DAY, GETDATE(), PrideleneClanky.Datum_vypracovani) &lt;= 3;"></asp:SqlDataSource>
+WHERE (Users.role = 'recenzent') AND Zpracovano = 0 AND DATEDIFF (DAY, GETDATE(), PrideleneClanky.Datum_vypracovani) &lt;= 3;"></asp:SqlDataSource>
     </p>
     <p class="auto-style5">
         <asp:Button ID="btn_zobrPos" runat="server" OnClick="btn_zobrPos_Click" Text="Zobrazit všechny posudky" Width="280px" />
@@ -59,13 +59,14 @@ WHERE (Users.role = 'recenzent') AND DATEDIFF (DAY, GETDATE(), PrideleneClanky.D
     </p>
     <p class="auto-style5">&nbsp;</p>
     <p class="auto-style5">
-        <asp:GridView ID="GridView2_VsechnyPos" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="vsechnyposudky" ForeColor="#333333" GridLines="None" Visible="False">
+        <asp:GridView ID="GridView2_VsechnyPos" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="vsechnyposudky" ForeColor="#333333" GridLines="None" Visible="False" AllowPaging="True" AllowSorting="True">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="Datum_vypracovani" HeaderText="Datum vypracování" SortExpression="Datum_vypracovani" />
-                <asp:BoundField DataField="id" HeaderText="ID recenzenta" InsertVisible="False" ReadOnly="True" SortExpression="id" />
+                <asp:CheckBoxField DataField="Zpracovano" HeaderText="Zpracovano" SortExpression="Zpracovano" />
+                <asp:BoundField DataField="id" HeaderText="Id recenzenta" InsertVisible="False" ReadOnly="True" SortExpression="id" />
                 <asp:BoundField DataField="jmeno" HeaderText="Jméno recenzenta" SortExpression="jmeno" />
-                <asp:BoundField DataField="prijmeni" HeaderText="Příjmení recenzenta" SortExpression="prijmeni" />
+                <asp:BoundField DataField="prijmeni" HeaderText="Příjmení" SortExpression="prijmeni" />
                 <asp:BoundField DataField="Id_Clanku" HeaderText="ID článku" SortExpression="Id_Clanku" />
                 <asp:BoundField DataField="nazev" HeaderText="Název článku" SortExpression="nazev" />
             </Columns>
@@ -79,7 +80,7 @@ WHERE (Users.role = 'recenzent') AND DATEDIFF (DAY, GETDATE(), PrideleneClanky.D
             <SortedDescendingCellStyle BackColor="#FCF6C0" />
             <SortedDescendingHeaderStyle BackColor="#820000" />
         </asp:GridView>
-        <asp:SqlDataSource ID="vsechnyposudky" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT PrideleneClanky.Datum_vypracovani, Users.id, Users.jmeno, Users.prijmeni, 
+        <asp:SqlDataSource ID="vsechnyposudky" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT PrideleneClanky.Datum_vypracovani, PrideleneClanky.Zpracovano, Users.id, Users.jmeno, Users.prijmeni, 
 PrideleneClanky.Id_Clanku, Clanky.nazev
 FROM PrideleneClanky 
 INNER JOIN Users ON PrideleneClanky.Id_Recenzenta = Users.id 
