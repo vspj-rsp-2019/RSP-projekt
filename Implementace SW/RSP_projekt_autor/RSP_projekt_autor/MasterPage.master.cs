@@ -78,6 +78,9 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 //Menu1.Items[1].Enabled = true;
                 Menu1.Items[1].NavigateUrl = ("PrideleniRecenzi.aspx");
 
+                //schovani v menu sekce admin
+                Menu1.Items[4].Enabled = false;
+                Menu1.Items[4].Text = "";
 
             }
 
@@ -131,6 +134,25 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 // schovani podmenu vlozeni upraveneho clanku clanku
                 Menu1.Items[0].ChildItems[7].Enabled = false;
                 Menu1.Items[0].ChildItems[7].Text = "";
+
+                // schovani podmenu moje články
+                Menu1.Items[0].ChildItems[0].Enabled = false;
+                Menu1.Items[0].ChildItems[0].Text = "";
+
+                // schovani v podmenu zpravy od autora
+                Menu1.Items[2].ChildItems[1].Enabled = false;
+                Menu1.Items[2].ChildItems[2].Text = ""; // 
+
+                // schovani v podmenu zpravy od redaktora
+                Menu1.Items[2].ChildItems[1].Enabled = false;
+                Menu1.Items[2].ChildItems[1].Text = ""; //
+
+                //schovani nahrani vydani
+                Menu1.Items[0].ChildItems[8].Enabled = false;
+                Menu1.Items[0].ChildItems[8].Text = "";
+
+                Menu1.Items[2].Enabled = false;
+                Menu1.Items[2].Text = "";
             }
 
             if (user.Role == "recenzent")
@@ -171,6 +193,9 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 // presmerovani do prislusneho menu uzivatele
                 Menu1.Items[0].NavigateUrl = ("VyhledatClanek.aspx");
 
+                //schovani v menu sekce admin
+                Menu1.Items[4].Enabled = false;
+                Menu1.Items[4].Text = "";
             }
 
         }
