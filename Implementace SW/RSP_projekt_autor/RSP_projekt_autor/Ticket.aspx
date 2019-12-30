@@ -9,9 +9,16 @@
     <br />
     <br />
     <strong>Moje Tickety<br />
+    <asp:ListBox ID="LB_ticket" runat="server" Height="126px" Width="120px"></asp:ListBox>
     </strong>
-    <asp:ListView ID="LV_tickets" runat="server">
-    </asp:ListView>
+
+    &nbsp;<asp:Button ID="BT_zobrazit" runat="server" OnClick="BT_zobrazit_Click" Text="Zobrazit" />
     <br />
+&nbsp;&nbsp;&nbsp; Text ticketu<br />
+&nbsp;&nbsp;&nbsp;
+    <asp:TextBox ID="TB_text" runat="server" Height="70px" ReadOnly="True" TextMode="MultiLine" Width="900px"></asp:TextBox>
+    &nbsp;&nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp; Odpověď<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="TB_reply" runat="server" Height="68px" ReadOnly="True" TextMode="MultiLine" Width="900px"></asp:TextBox>
 </asp:Content>
 

@@ -35,10 +35,10 @@ public partial class NovyTicket : System.Web.UI.Page
         }
         else
         {
-            TicketClass ticket = new TicketClass(user.id, TB_textTicket.Text, "",
+            TicketClass ticket = new TicketClass(user.id, TB_title.Text, TB_textTicket.Text, "",
                                         DDL_cil.SelectedValue.ToString());
 
-            String query = "INSERT INTO Tickets(id_autor, role_cil, text) VALUES(@id, @cil, @text);";
+            String query = "INSERT INTO Tickets(id_autor, role_cil, titul, text) VALUES(@id, @cil,@titul, @text);";
             try
             {
                 con.Open();
@@ -46,6 +46,7 @@ public partial class NovyTicket : System.Web.UI.Page
                 cmd.Parameters.AddWithValue("@id", ticket.autor);
                 cmd.Parameters.AddWithValue("@text", ticket.text);
                 cmd.Parameters.AddWithValue("@cil", ticket.cil);
+                cmd.Parameters.AddWithValue("@titul", ticket.titulek);
 
                 cmd.ExecuteNonQuery();
                 lb_error.Text = "Ticket odeslán";
@@ -55,5 +56,10 @@ public partial class NovyTicket : System.Web.UI.Page
                 lb_error.Text = ex.Message;
             }
         }
+    }
+
+    protected void BT_zpet_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Ticket.aspx");
     }
 }

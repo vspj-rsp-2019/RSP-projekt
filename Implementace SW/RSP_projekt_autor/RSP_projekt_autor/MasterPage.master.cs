@@ -111,6 +111,10 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 Menu1.Items[4].Enabled = false;
                 Menu1.Items[4].Text = "";
 
+                //schovani v menu neodpoveyene tickety
+                Menu1.Items[5].ChildItems[0].Enabled = false;
+                Menu1.Items[5].ChildItems[0].Text = "";
+
                 // schovani v podmenu zpravy od autora
                 Menu1.Items[2].ChildItems[1].Enabled = false;
                 Menu1.Items[2].ChildItems[2].Text = ""; // 
