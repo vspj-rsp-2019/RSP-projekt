@@ -8,15 +8,16 @@ using System.Web;
 /// </summary>
 public class TicketClass
 {
+    public int id { get; set; }
     public int autor { get; set;}
     public String text { get; set; }
     public String titulek { get; set; }
     public String odpoved { get; set; }
     public String cil { get; set; }
     public bool odpovezeno { get; set; }
-    public TicketClass(int id, String tit, String t, String o, String c, bool r = false)
+    public TicketClass(int id_autor, String tit, String t, String o, String c, bool r = false)
     {
-        autor = id;
+        autor = id_autor;
         titulek = tit;
         text = t;
         odpoved = o;
