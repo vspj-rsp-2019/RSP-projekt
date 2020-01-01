@@ -22,6 +22,8 @@
         &nbsp;&nbsp;<asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="https://github.com/vspj-rsp-2019/RSP-projekt/raw/master/U%C5%BEivatelsk%C3%A1%20dokumentace/Uziv_Dokumentace_Komunikace_s_recenzentem.pdf">Příručka pro autora</asp:HyperLink><br>
         &nbsp;&nbsp;<asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="https://github.com/vspj-rsp-2019/RSP-projekt/raw/master/U%C5%BEivatelsk%C3%A1%20dokumentace/U%C5%BEivatelsk%C3%A1%20p%C5%99%C3%ADru%C4%8Dka_Recenzent.pdf">Příručka recenzenta</asp:HyperLink><br>
         &nbsp;&nbsp;<asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="https://github.com/vspj-rsp-2019/RSP-projekt/raw/master/U%C5%BEivatelsk%C3%A1%20dokumentace/U%C5%BEivatelsk%C3%A1%20p%C5%99%C3%ADru%C4%8Dka_Redaktor.pdf">Příručka pro redaktora</asp:HyperLink><br><br>
+        &nbsp;&nbsp;<asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="https://github.com/vspj-rsp-2019/RSP-projekt/raw/master/U%C5%BEivatelsk%C3%A1%20dokumentace/Doku_ticket.pdf">Tiketovací systém</asp:HyperLink><br>
+        
 </p>
 </asp:Content>
 
