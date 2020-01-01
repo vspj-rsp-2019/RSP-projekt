@@ -33,7 +33,7 @@
                     
                     <td class="auto-style3"></td>
                     <td></td><td></td>
-                    <td class="auto-style4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lb_userName" runat="server"></asp:Label></td>
+                    <td class="auto-style4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lb_userName" runat="server"></asp:Label><br /><asp:Label ID="LB_ticket" runat="server"></asp:Label></td>
 
                 </tr>
             </Table>
@@ -88,6 +88,10 @@
                         <asp:MenuItem Text="Uzávěrky" Value="Uzávěrky" NavigateUrl="~/Uzaverky.aspx"></asp:MenuItem>
                     </asp:MenuItem>
                     <asp:MenuItem Text="Admin" Value="Admin" NavigateUrl="~/adminPage.aspx"></asp:MenuItem>
+                    <asp:MenuItem Text="Ticket" Value="Ticket" NavigateUrl="~/ticket.aspx">
+                        <asp:MenuItem Text="Nezodpovězené tickety" NavigateUrl="~/odpovedTicket.aspx"></asp:MenuItem>
+                    </asp:MenuItem>
+
                     <asp:MenuItem Text="Odhlásit se" Value="Odhlásit se" NavigateUrl="~/Odhlaseni.aspx"></asp:MenuItem>
                 </Items>
                <StaticHoverStyle BackColor="#990000" ForeColor="White" />
