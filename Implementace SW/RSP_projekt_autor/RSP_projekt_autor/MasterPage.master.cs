@@ -69,6 +69,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 {
                     LB_ticket.Text = "Máte nezodpovězené tickety";
                 }
+            }
                 if (user.Role != "redaktor")
                 {
                     // v pripade prihlaseni uzivatele s roli vyse, nebudou dostupne a viditelne polozky menu
@@ -248,4 +249,3 @@ public partial class MasterPage : System.Web.UI.MasterPage
             }
         }
     }
-}
