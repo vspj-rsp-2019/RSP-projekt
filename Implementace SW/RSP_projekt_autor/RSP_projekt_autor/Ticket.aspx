@@ -13,7 +13,8 @@
     </strong>
 
     &nbsp;<asp:Button ID="BT_zobrazit" runat="server" OnClick="BT_zobrazit_Click" Text="Zobrazit" />
-    <br />
+    &nbsp;<asp:Button ID="BT_delete" runat="server" OnClick="BT_delete_Click" Text="Smazat" />
+&nbsp;<br />
 &nbsp;&nbsp;&nbsp; Text ticketu<br />
 &nbsp;&nbsp;&nbsp;
     <asp:TextBox ID="TB_text" runat="server" Height="70px" ReadOnly="True" TextMode="MultiLine" Width="900px"></asp:TextBox>

@@ -116,6 +116,11 @@ public partial class odpovedTicket : System.Web.UI.Page
 
     protected void BT_reply_Click(object sender, EventArgs e)
     {
+        if (TB_odp.Text == "")
+        {
+            LB_msg.Text = "Prázdná odpověď";
+            return;
+        }
         selectedTicket = LB_ticket.SelectedIndex;
 
         tickets[selectedTicket].odpoved = TB_odp.Text;
@@ -126,7 +131,7 @@ public partial class odpovedTicket : System.Web.UI.Page
             LB_msg.Text = "Odpověď odeslána";
             LB_ticket.Items.Clear();
             reloadLB();
-            Page.Response.Redirect(Page.Request.Url.ToString(), true);
+            Page.Response.Redirect(Page.Request.Url.ToString(), false);
         }
         else
         {

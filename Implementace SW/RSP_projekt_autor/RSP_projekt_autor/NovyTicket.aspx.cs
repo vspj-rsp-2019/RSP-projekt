@@ -60,6 +60,6 @@ public partial class NovyTicket : System.Web.UI.Page
 
     protected void BT_zpet_Click(object sender, EventArgs e)
     {
-        Response.Redirect("Ticket.aspx");
+        Response.Redirect("Ticket.aspx", false);
     }
 }

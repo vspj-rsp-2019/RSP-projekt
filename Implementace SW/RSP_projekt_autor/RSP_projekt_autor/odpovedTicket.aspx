@@ -12,20 +12,50 @@
     <p>
         &nbsp;</p>
     <p>
-        Nezodpovězené tickety</p>
+        <div style="text-align:center">
+            Nezodpovězené tickety</p>
+        </div>
     <p>
-        <asp:ListBox ID="LB_ticket" runat="server" Height="166px" OnSelectedIndexChanged="LB_ticket_SelectedIndexChanged" Width="153px"></asp:ListBox>
-        <asp:Label ID="Label4" runat="server" style="z-index: 1; left: 264px; top: 220px; position: absolute; height: 25px" Text="Autor Ticketu"></asp:Label>
-        <asp:TextBox ID="TB_autor" runat="server" ReadOnly="True" style="z-index: 1; left: 371px; top: 226px; position: absolute"></asp:TextBox>
-        <asp:TextBox ID="TB_odp" runat="server" style="z-index: 1; left: 649px; top: 290px; position: absolute; height: 86px; width: 361px" TextMode="MultiLine"></asp:TextBox>
-        <asp:Label ID="Label2" runat="server" style="z-index: 1; left: 260px; top: 255px; position: absolute; height: 17px" Text="Text Ticketu"></asp:Label>
-        <asp:Label ID="Label3" runat="server" style="z-index: 1; left: 651px; top: 262px; position: absolute" Text="Odpověď"></asp:Label>
-        <asp:TextBox ID="TB_text" runat="server" ReadOnly="True" style="z-index: 1; left: 255px; top: 285px; position: absolute; height: 98px; width: 373px" TextMode="MultiLine"></asp:TextBox>
+        <div>
+            <div style="position:relative; top:6em; left:11em;  width:100px; ;">
+                <asp:Label ID="lb_autor" runat="server" Text="Autor ticketu"></asp:Label>
+            </div>
+            <div style="position:relative; top:6em; left:11em; width:200px;">
+                <asp:TextBox ID="TB_autor" runat="server" ReadOnly="True" Width="200px"></asp:TextBox>
+            </div>
+        </div>
+        <div>
+            <asp:ListBox ID="LB_ticket" runat="server" Height="200px" OnSelectedIndexChanged="LB_ticket_SelectedIndexChanged" Width="153px"></asp:ListBox>
+            <div style="position:relative; left:180px; top:-70px;">
+
+                <asp:TextBox ID="TB_text" runat="server" TextMode="MultiLine" Height="60px" Width="380px" ReadOnly="True"></asp:TextBox>
+
+                <asp:TextBox ID="TB_odp" runat="server" TextMode="MultiLine" Height="60px" Width="380px"></asp:TextBox>      
+            </div>
+        </div>
+       
+        
+        <div style="position:relative; top:-160px; left:180px;">
+            <asp:Label ID="lb_text" runat="server" Text="Text ticketu"></asp:Label>
+            <div style="position:relative; left:390px; top:-20px;">
+                <asp:Label ID="lb_odpov" runat="server" Text="Odpověď"></asp:Label>
+            </div>
+        </div>
+         <div style="position:relative; top:-100px;">
+            <asp:Button ID="BT_select" runat="server" OnClick="BT_select_Click" Text="Vybrat" />
+            <div style="position:relative; left:750px; top:-25px;">
+                   
+                <asp:Button ID="BT_reply" runat="server" OnClick="BT_reply_Click" Text="Odpovědět" />
+                <br />
+                <asp:Label ID="LB_msg" runat="server" ForeColor="Red"></asp:Label>
+            </div>
+        </div>
+       
+        
+
     </p>
     <p>
-        <asp:Button ID="BT_select" runat="server" OnClick="BT_select_Click" Text="Vybrat" />
-        <asp:Button ID="BT_reply" runat="server" style="z-index: 1; left: 916px; top: 390px; position: absolute; right: 111px" Text="Odpovědět" OnClick="BT_reply_Click" />
-        <asp:Label ID="LB_msg" runat="server" style="z-index: 1; left: 649px; top: 337px; position: absolute" ForeColor="Red"></asp:Label>
+       
     </p>
 </asp:Content>
 

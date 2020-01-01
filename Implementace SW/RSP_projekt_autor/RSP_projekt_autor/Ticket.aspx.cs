@@ -35,7 +35,8 @@ public partial class Ticket : System.Web.UI.Page
             {
                 while (dr.Read())
                 {
-                    int id = dr.GetInt32(1);
+                    int id = dr.GetInt32(0);
+                    int autor_id = dr.GetInt32(1);
                     String cil = dr.GetString(2);
                     String titul = dr.GetString(3);
                     bool odp = dr.GetBoolean(4);
@@ -49,7 +50,8 @@ public partial class Ticket : System.Web.UI.Page
                     {
                         reply = "";
                     }
-                    TicketClass tmp = new TicketClass(id, titul, text, reply, cil, odp);
+                    TicketClass tmp = new TicketClass(autor_id, titul, text, reply, cil, odp);
+                    tmp.id = id;
                     tickets.Add(tmp);
                 }
             }
@@ -60,17 +62,14 @@ public partial class Ticket : System.Web.UI.Page
 
         if (LB_ticket.Items.Count == 0)
         {
-            foreach (var tick in tickets)
-            {
-                LB_ticket.Items.Add(tick.ToString());
-            }
+            reloadLB();
         }
         
     }
 
     protected void BT_novyTicket_Click(object sender, EventArgs e)
     {
-        Response.Redirect("NovyTicket.aspx");
+        Response.Redirect("NovyTicket.aspx", false);
     }
 
     protected void BT_zobrazit_Click(object sender, EventArgs e)
@@ -81,4 +80,34 @@ public partial class Ticket : System.Web.UI.Page
     }
 
 
+
+    protected void BT_delete_Click(object sender, EventArgs e)
+    {
+        int i = LB_ticket.SelectedIndex;
+
+        string query = "DELETE FROM Tickets WHERE id = @id;";
+        try
+        {
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+            cmd = new SqlCommand(query, con);
+            cmd.Parameters.AddWithValue("@id", tickets[i].id);
+            cmd.ExecuteNonQuery();
+            LB_ticket.Items.Clear();
+            tickets.RemoveAt(i);
+            reloadLB();
+
+        }catch(Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine(ex.Message);
+        }
+    }
+
+    protected void reloadLB()
+    {
+        foreach (var tick in tickets)
+        {
+            LB_ticket.Items.Add(tick.ToString());
+        }
+    }
 }

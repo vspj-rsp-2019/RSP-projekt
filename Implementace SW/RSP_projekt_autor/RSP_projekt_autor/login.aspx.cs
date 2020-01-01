@@ -34,7 +34,7 @@ public partial class Login : System.Web.UI.Page
 
         if (user != null)
         {
-            Response.Write("<script>alert('login probehl uspesne')</script>");
+            //Response.Write("<script>alert('login probehl uspesne')</script>");
             Session["userObject"] = user;
             Session["UserId"] = user.id;
             if(user.Role == "autor") {
@@ -44,6 +44,7 @@ public partial class Login : System.Web.UI.Page
                 //v pripade role redaktora - presmerovani na NoveClanky ke zpracovani.
             if (user.Role == "redaktor")
             {
+                Response.Write("<script>alert('test')</script>");
                 Response.Redirect("NoveClanky.aspx");
             }
             
