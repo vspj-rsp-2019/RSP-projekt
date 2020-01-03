@@ -43,8 +43,20 @@ public partial class VyhledatClanek : System.Web.UI.Page
 
         try
         {
-            GridView1.Visible = true;
+            int id;
+            bool isValidNumber = int.TryParse(tb_IDclanek.Text, out id);
+
+            if (isValidNumber)
+            {
+                lb_vstup.Visible = false;
+                GridView1.Visible = true;
+            }
             //  tb_IDclanek.Text = "";
+            else
+            {
+                lb_vstup.Text = tb_IDclanek.Text + " není validní id";
+                lb_vstup.Visible = true;
+            }
                      
         }
 

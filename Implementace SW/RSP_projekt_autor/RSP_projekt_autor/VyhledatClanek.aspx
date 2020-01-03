@@ -45,7 +45,9 @@
 
     <table>
         <tr><td class="auto-style7"></td><td class="auto-style8"></td><td class="auto-style9"></td>
-            <td class="auto-style8"><asp:TextBox ID="tb_IDclanek" runat="server" Width="213px"></asp:TextBox></td>
+            <td class="auto-style8"><asp:TextBox ID="tb_IDclanek" runat="server" Width="213px"></asp:TextBox>
+                <asp:Label ID="lb_vstup" runat="server" ForeColor="Red" Visible="False"></asp:Label>
+            </td>
             <tr><td class="auto-style11"></td><td></td><td class="auto-style6"></td>
                 <td>
                     <asp:Button ID="btn_vyhledat" runat="server" Text="Vyhledat" Width="213px" OnClick="btn_vyhledat_Click" /></td>
