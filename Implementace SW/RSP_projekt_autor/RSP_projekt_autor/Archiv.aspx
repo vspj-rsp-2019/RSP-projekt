@@ -22,15 +22,20 @@
             width: 80px;
             height: 25px;
         }
+         .tabulka_archiv{
+            margin:auto;
+        }
     </style>
     </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" Runat="Server" EnableViewState="True">
-    <h2 class="auto-style1">Archiv aktuálního roku časopisu</h2>
+    <br />
+        <h2 class="auto-style1">Archiv aktuálního roku časopisu</h2>
     <br />
     
-    <div align="center">
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" DataSourceID="SqlDataSource1" EmptyDataText="Žádné datové záznamy k zobrazení." ForeColor="#333333" GridLines="None" AllowPaging="True" AllowSorting="True">
+    <div>
+        <!-- tabulka nastavena tak, že hlavička zarovnána na střed a ostatní řádky vlevo -->
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" DataSourceID="SqlDataSource1" EmptyDataText="Žádné datové záznamy k zobrazení." ForeColor="#333333" GridLines="None" AllowPaging="True" AllowSorting="True" HorizontalAlign="Center">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="Name" HeaderText="Název vydání" SortExpression="Name" />
@@ -38,9 +43,9 @@
                 <asp:HyperLinkField DataNavigateUrlFields="filePath" DataTextField="filePath" DataTextFormatString="Otevřít" HeaderText="Vydání" NavigateUrl="filePath" Target="_blank" />
             </Columns>
             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
-            <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" HorizontalAlign="Center"/>           
+            <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />            
+            <RowStyle BackColor="#FFFBD6" ForeColor="#333333" HorizontalAlign="Left" />  
             <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
             <SortedAscendingCellStyle BackColor="#FDF5AC" />
             <SortedAscendingHeaderStyle BackColor="#4D0000" />
@@ -67,26 +72,10 @@
         </asp:SqlDataSource>
         </div>
         <br />
-
-        <div align="center">
-               <!-- <table>                    
-                        <caption>
-                               <h1 class="auto-style6">Aktuální ročník časopisu</h1>
-                        </caption>
-                        <tr>
-                            <td><strong>Ročník 10</strong></td>
-                            <td><a href="https://www.vspj.cz/soubory/download/id/7354">Číslo 1</a></td>
-                            <td><a href="https://www.vspj.cz/soubory/download/id/7454">Číslo 2</a></td>
-                            <td><a href="https://www.vspj.cz/soubory/download/id/7634">Číslo 3</a></td>
-                            <td><a href=""></a></td>
-                        </tr>
-                </table>
-                <br /><br />
-            -->
-                <table >
+        <div >
+                <table class="tabulka_archiv"> <!-- umístění tabulky na střed -->
                         <caption>
                             <h2>Archiv dalších ročníků</h2>
-
                         </caption>
                     <tr>
                         <td class="auto-style10"><strong>2018</strong></td>

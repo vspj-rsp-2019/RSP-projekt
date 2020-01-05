@@ -11,30 +11,23 @@ public partial class Login : System.Web.UI.Page
     {
         DBHandler dbHandler = new DBHandler(@"Data Source = SQL5044.site4now.net; Initial Catalog = DB_A50E52_rsp019; User Id = DB_A50E52_rsp019_admin; Password=Voracek2019;");
         User user = dbHandler.loginUser(TB_email.Text, TB_heslo.Text);
-
         if (Session["UserId"] != null)
         {
             //v pripade prihlaseneho uzivatele neni k dispozici nove prihlaseni
-            Ibl_User.Text = "Aktuálně jste přihlášen. Pro nové přihlášení se nejprve odhlaště!";
-            
+            Ibl_User.Text = "Aktuálně jste přihlášen. Pro nové přihlášení se nejprve odhlašte!";
             TB_email.Enabled = false;
             TB_heslo.Enabled = false;
             BT_login.Enabled = false;
-            
-
         }
-
     }
 
     protected void BT_login_Click(object sender, EventArgs e)
     {
-     
         DBHandler dbHandler = new DBHandler(@"Data Source = SQL5044.site4now.net; Initial Catalog = DB_A50E52_rsp019; User Id = DB_A50E52_rsp019_admin; Password=Voracek2019;");
         User user = dbHandler.loginUser(TB_email.Text, TB_heslo.Text);
 
         if (user != null)
         {
-            //Response.Write("<script>alert('login probehl uspesne')</script>");
             Session["userObject"] = user;
             Session["UserId"] = user.id;
             if(user.Role == "autor") {
@@ -58,11 +51,8 @@ public partial class Login : System.Web.UI.Page
             {
                 Response.Redirect("adminPage.aspx");
             }
-
             // ostatni na default stranku
             else Response.Redirect("Default.aspx");
-
-
         }
         else
         {

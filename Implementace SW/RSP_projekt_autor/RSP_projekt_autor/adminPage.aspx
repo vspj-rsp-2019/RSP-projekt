@@ -5,21 +5,22 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" Runat="Server">
-    <h1 align="center"> Welcome in Admin page</h1>
-    <p align="center"> 
+    <br /><h1 style="text-align: center">Welcome in Admin page</h1>
+    <p style="text-align: center"> 
         <asp:Label ID="lb_premission" runat="server" Font-Bold="True" Font-Size="XX-Large" ForeColor="Red"></asp:Label>
     </p>
+    <br />
     <p> 
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Visible="False" AllowPaging="True">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowSelectButton="True" />
-                <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" />
-                <asp:BoundField DataField="role" HeaderText="role" SortExpression="role" />
-                <asp:BoundField DataField="email" HeaderText="email" SortExpression="email" />
-                <asp:BoundField DataField="jmeno" HeaderText="jmeno" SortExpression="jmeno" />
-                <asp:BoundField DataField="prijmeni" HeaderText="prijmeni" SortExpression="prijmeni" />
-                <asp:BoundField DataField="hesloHash" HeaderText="hesloHash" SortExpression="hesloHash" />
+                <asp:BoundField DataField="id" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="id" />
+                <asp:BoundField DataField="role" HeaderText="Role" SortExpression="role" />
+                <asp:BoundField DataField="email" HeaderText="E-mail" SortExpression="email" />
+                <asp:BoundField DataField="jmeno" HeaderText="Jméno" SortExpression="jmeno" />
+                <asp:BoundField DataField="prijmeni" HeaderText="Příjmení" SortExpression="prijmeni" />
+                <asp:BoundField DataField="hesloHash" HeaderText="Heslo_Hash" SortExpression="hesloHash" />
             </Columns>
             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />

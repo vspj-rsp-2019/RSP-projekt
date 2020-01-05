@@ -11,22 +11,21 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" runat="server">
-    <div align="center">    <strong><span class="auto-style6">Nahrát nový článek</span></strong><br />
+    <div style="text-align:center"><br />
+        <strong><span class="auto-style6">Nahrát nový článek</span></strong><br />
         Vydání:
         <asp:DropDownList ID="DDL_vyberVydani" runat="server" AutoPostBack="True" DataTextField="Name" DataValueField="Id" OnSelectedIndexChanged="DDL_vyberVydani_SelectedIndexChanged">
         </asp:DropDownList>
         <asp:FileUpload ID="FileUpload" runat="server" />
-        <asp:Button ID="BTN_uploadFile" runat="server" Text="Potvrdit" OnClick="Upload" />
-        <br />
-        K vámi vybranému vydání evidujeme: <asp:Label ID="LB_counterClanku" runat="server"></asp:Label>
-&nbsp;podaných článků</div>    
-
-        <br />
-        <br />
-    <div align="center">
+        <asp:Button ID="BTN_uploadFile" runat="server" Text="Potvrdit" OnClick="Upload" /> 
+        <br /> K vámi vybranému vydání evidujeme: 
+        <asp:Label ID="LB_counterClanku" runat="server"></asp:Label>
+        &nbsp;podaných článků</div><br /><br />
+    <div >
+        <p style="text-align:center">
         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/RecenzeClankuAutora.aspx">Recenze mých článků</asp:HyperLink> <br />
-        <strong>Moje články</strong>
-        <asp:GridView ID="GV_clanky" runat="server" DataSourceID="SqlDataSource1" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="511px" DataKeyNames="Id">
+        <strong>Moje články</strong></p>
+        <asp:GridView ID="GV_clanky" runat="server" DataSourceID="SqlDataSource1" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="511px" DataKeyNames="Id" HorizontalAlign="Center">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="Id" HeaderText="Id článku" SortExpression="Id" ReadOnly="True" />
@@ -35,7 +34,7 @@
                 <asp:BoundField DataField="Name" HeaderText="Vydání" SortExpression="Name" />
             </Columns>
             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
             <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
             <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
             <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
@@ -50,10 +49,10 @@
             </SelectParameters>
         </asp:SqlDataSource>
         <br />
-        <span class="auto-style6">
-        <strong>Přijaté články od redaktora</strong></span>
-        <br />
-        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" DataSourceID="SqlDataSource2" EmptyDataText="Neevidujeme žádné články." ForeColor="#333333" GridLines="None">
+        <div style="text-align:center" >
+            <strong>Přijaté články od redaktora</strong>
+        </div>        
+        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" DataSourceID="SqlDataSource2" EmptyDataText="Neevidujeme žádné články." ForeColor="#333333" GridLines="None" HorizontalAlign="Center">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="Id" HeaderText="ID článku" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
@@ -62,7 +61,7 @@
                 <asp:BoundField DataField="Expr1" HeaderText="Status článku" SortExpression="Expr1" />
             </Columns>
             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
             <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
             <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
             <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
@@ -82,7 +81,5 @@ WHERE  (autor_id = @autor_id) AND (Clanky_Status.Id_cl_status = 2) ">
             </SelectParameters>
         </asp:SqlDataSource>
         <br />
-
         </div>
-        
 </asp:Content>
