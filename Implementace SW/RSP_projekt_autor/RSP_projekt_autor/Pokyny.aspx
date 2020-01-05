@@ -1,39 +1,29 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Pokyny.aspx.cs" Inherits="Pokyny" %>
-
-<asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
-    Pokyny pro autory
-</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">Pokyny pro autory</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
-    <style type="text/css">
-                        
+<style type="text/css">
         .auto-style2 {
             margin-left: 7px;
             margin-right: 7px;
         }
-   
         .auto-style3 {
             margin-left: 20px;
             margin-right: 20px;
             text-align: left;
-            table-layout:auto
+            table-layout:auto;
         }
-   
-    </style>
+</style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" Runat="Server">
-    <h3 class="auto-style2"> Pokyny pro autory</h3>
-    <p> &nbsp;</p>
-    <p class="auto-style2"> 
-        <asp:LinkButton ID="liB_pokynyAutor" runat="server" OnClick="liB_pokynyAutor_Click">Pokyny pro přispěvatele</asp:LinkButton>
-    </p>
-    <p class="auto-style2"> 
-        <asp:LinkButton ID="liB_sablona" runat="server" OnClick="liB_sablona_Click">Šablona</asp:LinkButton>
-    </p>
-    <p class="auto-style2"> 
-        <asp:LinkButton ID="liB_recenRizeni" runat="server" OnClick="liB_recenRizeni_Click">Recenzní řízení</asp:LinkButton>
-    </p>
-    <p class="auto-style2"> 
-        &nbsp;</p>
+    <br />
+    <div class="auto-style2">
+    <h3> Pokyny pro autory</h3>
+    <br />
+        <p><asp:LinkButton ID="liB_pokynyAutor" runat="server" OnClick="liB_pokynyAutor_Click">Pokyny pro přispěvatele</asp:LinkButton></p>
+        <p><asp:LinkButton ID="liB_sablona" runat="server" OnClick="liB_sablona_Click">Šablona</asp:LinkButton></p>
+        <p><asp:LinkButton ID="liB_recenRizeni" runat="server" OnClick="liB_recenRizeni_Click">Recenzní řízení</asp:LinkButton></p>
+    <br />
+    </div>
     <p class="auto-style3"> 
         <%--tabulka zobrazujici aktualni cisla casopisu a jejich zamereni a uzaverky--%>
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SQL_temataZamereni" ForeColor="#333333" GridLines="None">
@@ -56,7 +46,5 @@
         </asp:GridView>
         <asp:SqlDataSource ID="SQL_temataZamereni" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT Vydani.Name, Vydani.Popis, Uzaverka.Termin_uzaverky, Uzaverka.Vychazi FROM Uzaverka INNER JOIN Vydani ON Uzaverka.ID_vydani = Vydani.Id"></asp:SqlDataSource>
     </p> 
-
-
 </asp:Content>
 

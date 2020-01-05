@@ -22,11 +22,6 @@ public partial class NovyTicket : System.Web.UI.Page
         }
     }
 
-    protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
-    {
-
-    }
-
     protected void BTN_odeslat_Click(object sender, EventArgs e)
     {
         if (TB_textTicket.Text.Equals("") || TB_title.Text.Equals(""))
@@ -37,7 +32,6 @@ public partial class NovyTicket : System.Web.UI.Page
         {
             TicketClass ticket = new TicketClass(user.id, TB_title.Text, TB_textTicket.Text, "",
                                         DDL_cil.SelectedValue.ToString());
-
             String query = "INSERT INTO Tickets(id_autor, role_cil, titul, text) VALUES(@id, @cil,@titul, @text);";
             try
             {
@@ -47,7 +41,6 @@ public partial class NovyTicket : System.Web.UI.Page
                 cmd.Parameters.AddWithValue("@text", ticket.text);
                 cmd.Parameters.AddWithValue("@cil", ticket.cil);
                 cmd.Parameters.AddWithValue("@titul", ticket.titulek);
-
                 cmd.ExecuteNonQuery();
                 lb_error.Text = "Ticket odeslán";
             }
