@@ -17,10 +17,12 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" Runat="Server">
-    <h3 class="auto-style5">Aktuální číslo časopisu</h3>
-    <p class="auto-style1">&nbsp;</p>
-    <div align="center">
-        <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1">
+    <br />
+        <h3 class="auto-style5">Aktuální číslo časopisu</h3>
+    <br />
+    <div>
+      <!-- vložení a zarovnání GriedView1 na střed stránky -->
+        <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" HorizontalAlign="Center">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="Name" HeaderText="Název vydání" SortExpression="Name" />

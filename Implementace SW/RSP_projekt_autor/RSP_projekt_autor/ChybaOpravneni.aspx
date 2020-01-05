@@ -11,14 +11,11 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" Runat="Server">
-
-    <h1 class="auto-style1">Došlo k chybě!</h1>
+    <h1 class="auto-style1" style="color:red">Došlo k chybě!</h1>
     <div class="auto-style1">
     Pro zobrazení této stránky nemáta příslušná oprávnění.
     <br /><br />
         <asp:Button ID="Button1" runat="server" Text="Zpět na hlavní stránku" OnClick="Button1_Click" />
     </div>
-
-
 </asp:Content>
 

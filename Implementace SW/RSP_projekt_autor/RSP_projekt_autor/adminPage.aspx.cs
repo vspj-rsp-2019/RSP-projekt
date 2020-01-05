@@ -12,16 +12,12 @@ public partial class adminPage : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-       
-       
-                                        
+        // načte aktuálně přihlášeného uživetele
         user = (User)Session["userObject"];
-
         if (user.Role == "admin")
-            //lb_premission.Text = "Nemáte adminstrátorské oprávnění";
+            // pokud uživatel "Admin" pak vidí obsah stránky
             GridView1.Visible = true;
         else
             lb_premission.Text = "Nemáte adminstrátorské oprávnění";
     }  
-
 }

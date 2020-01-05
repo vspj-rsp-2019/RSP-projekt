@@ -17,21 +17,12 @@ public partial class mojeClanky : System.Web.UI.Page
     {
         // pokud neni uzivatel prihlasen, dojde k presmerovani na prihlaseni
         user = (User)Session["userObject"];
-
-        
-
-        if (user == null)
-        {
-            Response.Redirect("login.aspx");
-        }
-
-        if (user.Role == "redaktor")
-        {
-            Response.Redirect("NoveClanky.aspx");
-        }
+        if (user == null) { Response.Redirect("login.aspx"); }
+        // pokud role "Redaktor" pak se zobrazí NoveClanky.aspx
+        if (user.Role == "redaktor") { Response.Redirect("NoveClanky.aspx"); }
         //nacteni vsech vydani pro naplneni dropdown listu
         vydaniList = dbHandler.getAllVydani();
-        naplnitDDL();
+        NaplnitDDL();
     }
 
     /**
@@ -45,7 +36,7 @@ public partial class mojeClanky : System.Web.UI.Page
             string fileName = System.IO.Path.GetFileName(FileUpload.PostedFile.FileName);
             string saveLocation = "~/Clanky/" + fileName;
 
-            if (!isValidType(fileType))
+            if (!IsValidType(fileType))
             {
                 Response.Write("<script>alert('Zvolte soubor typu pdf nebo doc/docx')</script>");
                 return;
@@ -55,14 +46,12 @@ public partial class mojeClanky : System.Web.UI.Page
                 Response.Write("<script>alert('Zvolte vydani')</script>");
                 return;
             }
-
             try
             {
                 FileUpload.PostedFile.SaveAs(Server.MapPath(saveLocation));
                 dbHandler.uploadFile(user.id, Convert.ToInt32(DDL_vyberVydani.SelectedValue), fileName, saveLocation);
                 Response.Write("Článek byl nahrán");
                 GV_clanky.DataBind();
-
             }
             catch (Exception ex)
             {
@@ -81,28 +70,25 @@ public partial class mojeClanky : System.Web.UI.Page
     /**
      * naplneni dropdown listu aktivnimi vydani casopisu na 0 index se vlozi prazdny vyber 
      */
-    protected void naplnitDDL()
+    protected void NaplnitDDL()
     {
         if (DDL_vyberVydani.Items.Count != 0)
             return;
-
         DDL_vyberVydani.Items.Insert(0, "-"); //prazdny vyber
-
         for (int i = 0; i < vydaniList.Count; ++i)
         {
             DDL_vyberVydani.Items.Insert(i + 1, new ListItem(vydaniList[i].Value, vydaniList[i].Key.ToString()));
         }
     }
 
-
     protected void DDL_vyberVydani_SelectedIndexChanged(object sender, EventArgs e)
     {
-        updateCounter(DDL_vyberVydani.SelectedItem.Value);
+        UpdateCounter(DDL_vyberVydani.SelectedItem.Value);
     }
     /*
      * update labelu se zobrazenim kolik clanku je k danemu vydani v DB
      */
-    protected void updateCounter(string vydani)
+    protected void UpdateCounter(string vydani)
     {
         if(DDL_vyberVydani.SelectedIndex == 0)
         {
@@ -113,15 +99,13 @@ public partial class mojeClanky : System.Web.UI.Page
     }
 
     //kontrola zda soubor je formatu pdf doc nebo docx
-    protected Boolean isValidType(string extension)
+    protected Boolean IsValidType(string extension)
     {
         Boolean isValid = false;
-
         if(extension.ToLower().Equals(".pdf") || extension.ToLower().Equals(".doc") || extension.ToLower().Equals(".docx"))
         {
             isValid = true;
         }
-
         return isValid;
     }
 }

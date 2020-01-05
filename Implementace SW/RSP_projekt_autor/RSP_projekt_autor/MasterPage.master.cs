@@ -9,8 +9,6 @@ using System.Configuration;
 using System.Data;
 
 public partial class MasterPage : System.Web.UI.MasterPage
-
-
 {
     User user;
     DBHandler dbHandler = new DBHandler(@"Data Source = SQL5044.site4now.net; Initial Catalog = DB_A50E52_rsp019; User Id = DB_A50E52_rsp019_admin; Password=Voracek2019;");
@@ -30,7 +28,6 @@ public partial class MasterPage : System.Web.UI.MasterPage
         {
             //lb_userName.Text = "přihlášený uživatel";
             lb_userName.Text = " Login:  " + user.Prijmeni + " " + user.Jmeno;
-
             if (user.Role == "redaktor" || user.Role == "admin" || user.Role == "recenzent")
             {
                 try
@@ -73,7 +70,6 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 if (user.Role != "redaktor")
                 {
                     // v pripade prihlaseni uzivatele s roli vyse, nebudou dostupne a viditelne polozky menu
-
                     // schovani podmenu nove clanky
                     Menu1.Items[0].ChildItems[1].Enabled = false;
                     Menu1.Items[0].ChildItems[1].Text = "";
@@ -82,22 +78,18 @@ public partial class MasterPage : System.Web.UI.MasterPage
                     Menu1.Items[0].ChildItems[2].Enabled = false;
                     Menu1.Items[0].ChildItems[2].Text = "";
 
-                    // schvoani v podmenu prideleni recenzi
+                    // schovani v podmenu prideleni recenzi
                     Menu1.Items[1].ChildItems[2].Enabled = false;
                     Menu1.Items[1].ChildItems[2].Text = ""; // 
-
-
 
                     // schovani v podmenu zpravy od redaktora
                     Menu1.Items[2].ChildItems[0].Enabled = false;
                     Menu1.Items[2].ChildItems[0].Text = ""; // 
-
                 }
                 // v pripade prihlaseni uzivatele s roli vyse, nebudou dostupne a viditelne polozky menu
 
                 if (user.Role == "redaktor")
                 {
-
                     // schovani podmenu moje články
                     Menu1.Items[0].ChildItems[0].Enabled = false;
                     Menu1.Items[0].ChildItems[0].Text = "";
@@ -125,14 +117,10 @@ public partial class MasterPage : System.Web.UI.MasterPage
                     //schovani v menu sekce admin
                     Menu1.Items[4].Enabled = false;
                     Menu1.Items[4].Text = "";
-
                 }
 
-
-
-                if (user.Role == "autor")
+            if (user.Role == "autor")
                 {
-
                     // schovani podmenu zamitnute clanky
                     Menu1.Items[0].ChildItems[4].Enabled = false;
                     Menu1.Items[0].ChildItems[4].Text = "";
@@ -146,10 +134,8 @@ public partial class MasterPage : System.Web.UI.MasterPage
                     Menu1.Items[0].ChildItems[8].Text = "";
 
                     //schovani v menu sekce terminy
-
                     Menu1.Items[3].Enabled = false;
                     Menu1.Items[3].Text = "";
-
 
                     //schovani v menu sekce admin
                     Menu1.Items[4].Enabled = false;
@@ -174,7 +160,6 @@ public partial class MasterPage : System.Web.UI.MasterPage
                     // schovani v podmenu recenze recenzni rizeni
                     Menu1.Items[1].ChildItems[0].Enabled = false;
                     Menu1.Items[1].ChildItems[0].Text = ""; //
-
                 }
 
                 if (user.Role == "admin")
@@ -245,7 +230,6 @@ public partial class MasterPage : System.Web.UI.MasterPage
                     Menu1.Items[4].Enabled = false;
                     Menu1.Items[4].Text = "";
                 }
-
             }
         }
     }

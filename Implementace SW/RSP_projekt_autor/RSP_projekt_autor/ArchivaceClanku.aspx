@@ -19,7 +19,7 @@
     <h2 class="auto-style5">Archivace článků </h2>
     <br />
 
-        <table align="center" border="1">
+        <table style="margin:auto" border="1">
             <tr>
                 <td class="auto-style6">Vydání:</td>
                 <td>
@@ -50,8 +50,8 @@
     <br /><br />
     <h3 class="auto-style5">Články ve vydání</h3>
     <p class="auto-style5">(pro zobrazení verzí článku vyberte konkrétní článek)</p>
-        <div align="center">
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" EmptyDataText="Žádné datové záznamy k zobrazení." DataKeyNames="Id" AllowPaging="True" AllowSorting="True" CellPadding="4" ForeColor="#333333" GridLines="None">
+        <div class="auto-style5">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" EmptyDataText="Žádné datové záznamy k zobrazení." DataKeyNames="Id" AllowPaging="True" AllowSorting="True" CellPadding="4" ForeColor="#333333" GridLines="None" HorizontalAlign="Center">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:CommandField ShowSelectButton="True" />
@@ -75,7 +75,7 @@
         <SortedDescendingHeaderStyle BackColor="#820000" />
     </asp:GridView>
              <br />
-            <table align="center" class="auto-style7">
+            <table style="margin:auto" class="auto-style7">
                 <tr>
                     <td>
              <asp:Button ID="Btn_archivovatClanky" runat="server" Text="Archivovat schválené články" BackColor="#CCFF33" ForeColor="Black" OnClick="Btn_archivovatClanky_Click" Width="253px" />
@@ -117,8 +117,8 @@
     <br />
 
     <h3 class="auto-style5">Verze článku</h3>
-    <div align="center">
-        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="ClanekId,VerzeId" DataSourceID="SqlDataSource4" EmptyDataText="Žádné datové záznamy k zobrazení." ForeColor="#333333" GridLines="None" AllowPaging="True" AllowSorting="True">
+    <div>
+        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="ClanekId,VerzeId" DataSourceID="SqlDataSource4" EmptyDataText="Žádné datové záznamy k zobrazení." ForeColor="#333333" GridLines="None" AllowPaging="True" AllowSorting="True" HorizontalAlign="Center">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="ClanekId" HeaderText="Id článku" ReadOnly="True" SortExpression="ClanekId" />
