@@ -1,31 +1,26 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="UkoncenaRR2.aspx.cs" Inherits="UkoncenaRR2" %>
-
-<asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
-    Ukončená recenzní řízení</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">Ukončená recenzní řízení</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
     <style>
         .auto-style1 {
-            margin-left: 7px;
-            margin-right: 7px;
+            text-align: center;
         }
     </style>
-    
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="contentBody" Runat="Server">
-    <h4 class="auto-style1">Ukončená recenzní řízení</h4>
-<p class="auto-style1">&nbsp;</p>
-<p class="auto-style1">
-    <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" EmptyDataText="Aktuálně neevidujeme žádné data.">
+<asp:Content ID="Content3" ContentPlaceHolderID="contentBody" Runat="Server"><br />
+    <h3 class="auto-style1">Ukončená recenzní řízení</h3><br />
+    <p class="auto-style1">
+    <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" EmptyDataText="Aktuálně neevidujeme žádné data." HorizontalAlign="Center">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
-            <asp:BoundField DataField="Id" HeaderText="Id Článku" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
+            <asp:BoundField DataField="Id" HeaderText="ID Článku" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
             <asp:BoundField DataField="autor_id" HeaderText="ID autora" SortExpression="autor_id" />
             <asp:BoundField DataField="vydani_id" HeaderText="ID vydání" SortExpression="vydani_id" />
             <asp:BoundField DataField="nazev" HeaderText="Název článku" SortExpression="nazev" />
             <asp:BoundField DataField="Datum" HeaderText="Datum" SortExpression="Datum" />
             <asp:BoundField DataField="status_clanek" HeaderText="Stav článku" SortExpression="status_clanek" />
-            <asp:BoundField DataField="datum_zah_rec_riz" HeaderText="Datum zahájení RR" SortExpression="datum_zah_rec_riz" />
-            <asp:BoundField DataField="datum_uk_rec_riz" HeaderText="Datum ukončení RR" SortExpression="datum_uk_rec_riz" />
+            <asp:BoundField DataField="datum_zah_rec_riz" HeaderText="Datum zahájení RŘ" SortExpression="datum_zah_rec_riz" />
+            <asp:BoundField DataField="datum_uk_rec_riz" HeaderText="Datum ukončení RŘ" SortExpression="datum_uk_rec_riz" />
         </Columns>
         <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
         <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -38,8 +33,6 @@
         <SortedDescendingHeaderStyle BackColor="#820000" />
     </asp:GridView>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Clanky] WHERE ([datum_uk_rec_riz] IS NOT NULL)"></asp:SqlDataSource>
-</p>
-<p class="auto-style1">&nbsp;</p>
-
+    </p><br />
 </asp:Content>
 

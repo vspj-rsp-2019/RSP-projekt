@@ -78,6 +78,7 @@ public partial class odpovedTicket : System.Web.UI.Page
             selectedTicket = LB_ticket.SelectedIndex;
             TB_text.Text = tickets[selectedTicket].text;
             TB_autor.Text = getJmenoAutora(tickets[selectedTicket]);
+            LB_msg0.Text = "";
         } else LB_msg0.Text = "Není vybrán žádný ticket";
     }
 

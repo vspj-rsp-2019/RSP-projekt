@@ -1,8 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="VyhledatClanek.aspx.cs" Inherits="VyhledatClanek" %>
-
-<asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
-    Vyhledat článek
-</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">Vyhledat článek</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
         .auto-style5 {
@@ -23,42 +20,35 @@
             width: 4px;
             height: 26px;
         }
-    .auto-style10 {
-        margin-left: 7px;
-        margin-right: 7px;
-        text-align: center;
-    }
-    .auto-style11 {
-        width: 333px;
-    }
+        .auto-style10 {
+            margin-left: 7px;
+            margin-right: 7px;
+            text-align: center;
+        }
+        .auto-style11 {
+            width: 333px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" Runat="Server">
-
-
-    <p class="auto-style5"></p>
-    <h4 class="auto-style10">Vyhledání článku</h4>
-<p class="auto-style10">&nbsp;</p>
-    <p class="auto-style10">
-        <asp:Label ID="lbl_zadejID" runat="server" Text="Zadejte ID článku:"></asp:Label>
-</p>
-
+    <br /><h4 class="auto-style10">Vyhledání článku</h4><br />
+    <p class="auto-style10"><asp:Label ID="lbl_zadejID" runat="server" Text="Zadejte ID článku:"></asp:Label></p>
     <table>
-        <tr><td class="auto-style7"></td><td class="auto-style8"></td><td class="auto-style9"></td>
+        <tr><td class="auto-style7"></td>
+            <td class="auto-style8"></td><td class="auto-style9"></td>
             <td class="auto-style8"><asp:TextBox ID="tb_IDclanek" runat="server" Width="213px"></asp:TextBox>
                 <asp:Label ID="lb_vstup" runat="server" ForeColor="Red" Visible="False"></asp:Label>
             </td>
-            <tr><td class="auto-style11"></td><td></td><td class="auto-style6"></td>
-                <td>
-                    <asp:Button ID="btn_vyhledat" runat="server" Text="Vyhledat" Width="213px" OnClick="btn_vyhledat_Click" /></td>
-            </tr>
         </tr>
-
+        <tr>
+            <td class="auto-style11"></td>
+            <td></td>
+            <td class="auto-style6"></td>
+            <td><asp:Button ID="btn_vyhledat" runat="server" Text="Vyhledat" Width="213px" OnClick="btn_vyhledat_Click" /></td>
+        </tr>
     </table>
-   
-    <p class="auto-style5"></p>
-<p class="auto-style5"></p>
-<p class="auto-style10">
+    <br /><br />
+    <p class="auto-style10">
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" DataSourceID="VyhledatClanekdleID" EmptyDataText="Článek nenalezen." ForeColor="#333333" GridLines="None" HorizontalAlign="Center" Visible="False">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
@@ -96,14 +86,12 @@ WHERE (Clanky.Id = @Id)">
             <asp:ControlParameter ControlID="tb_IDclanek" Name="Id" PropertyName="Text" />
         </SelectParameters>
     </asp:SqlDataSource>
-</p>
-<p class="auto-style10">
+    </p>
+    <p class="auto-style10">
     <asp:Label ID="lbl_chyba" runat="server" ForeColor="Red" Text="Nastala chyba. Kontaktujte helpdesk." Visible="False"></asp:Label>
-</p>
+    </p><br />
     <p class="auto-style10">
-        &nbsp;</p>
-    <p class="auto-style10">
-        <asp:GridView ID="GridView2" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="ClanekId,VerzeId" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Visible="False" Width="930px">
+        <asp:GridView ID="GridView2" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="ClanekId,VerzeId" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Visible="False" Width="930px" HorizontalAlign="Center">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="ClanekId" HeaderText="Id článku" ReadOnly="True" SortExpression="ClanekId" />
@@ -132,15 +120,6 @@ WHERE ([ClanekId] = @ClanekId)">
                 <asp:ControlParameter ControlID="GridView1" Name="ClanekId" PropertyName="SelectedValue" />
             </SelectParameters>
         </asp:SqlDataSource>
-    </p>
-    <p class="auto-style10">
-        &nbsp;</p>
-    <p class="auto-style10">
-        &nbsp;</p>
-
-   
-
-   
-
+        </p>
+    <br /><br />
 </asp:Content>
-

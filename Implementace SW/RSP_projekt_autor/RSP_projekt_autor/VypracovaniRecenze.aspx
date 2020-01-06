@@ -1,8 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" MaintainScrollPositionOnPostback="true" AutoEventWireup="true" CodeFile="VypracovaniRecenze.aspx.cs" Inherits="VypracovaniRecenze" %>
-
-<asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
-    Vypracování recenze
-</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">Vypracování recenze</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
      <style type="text/css">
         .auto-style5 {
@@ -18,7 +15,7 @@
         }
          .auto-style7 {
              text-align: justify;
-             margin-left: 125;
+             margin-left: 7px;
          }
          .auto-style8 {
              text-align: left;
@@ -38,19 +35,19 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" Runat="Server">
     <h3 class="auto-style5">Ke zpracování:</h3>
     <p class="auto-style6">
-        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Aktualizovat</asp:LinkButton>
+        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Aktualizovat</asp:LinkButton></p>
      <div class="auto-style10"><asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" DataKeyNames="Id_Clanku,Id_Recenzenta" EmptyDataText="Aktuálně neevidujeme žádné záznamy.">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:CommandField ShowSelectButton="True" />
-                <asp:BoundField DataField="Id_Clanku" HeaderText="Id_Clanku" SortExpression="Id_Clanku" ReadOnly="True" />
-                <asp:BoundField DataField="Datum_vypracovani" HeaderText="Datum_vypracovani" SortExpression="Datum_vypracovani" />
-                <asp:BoundField DataField="Id_Recenzenta" HeaderText="Id_Recenzenta" ReadOnly="True" SortExpression="Id_Recenzenta" />
+                <asp:BoundField DataField="Id_Clanku" HeaderText="ID Článku" SortExpression="Id_Clanku" ReadOnly="True" />
+                <asp:BoundField DataField="Datum_vypracovani" HeaderText="Datum vypracováni" SortExpression="Datum_vypracovani" />
+                <asp:BoundField DataField="Id_Recenzenta" HeaderText="ID Recenzenta" ReadOnly="True" SortExpression="Id_Recenzenta" />
             </Columns>
             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
             <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
-            <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+            <RowStyle BackColor="#FFFBD6" ForeColor="#333333" HorizontalAlign="Center" />
             <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
             <SortedAscendingCellStyle BackColor="#FDF5AC" />
             <SortedAscendingHeaderStyle BackColor="#4D0000" />
@@ -132,27 +129,27 @@ WHERE ([Id_Recenzenta] = @Id_Recenzenta AND Zpracovano = 0)">
              </div>
          </asp:Panel>
          <div class="auto-style8">
-            <h4>Zpracované recenze:</h4>
+            <h3>Zpracované recenze:</h3>
              <br />
-             <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" DataSourceID="SqlDataSource2" ForeColor="#333333" GridLines="None" AllowPaging="True" AllowSorting="True" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
+             <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" DataSourceID="SqlDataSource2" ForeColor="#333333" GridLines="None" AllowPaging="True" AllowSorting="True" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" HorizontalAlign="Center">
                  <AlternatingRowStyle BackColor="White" />
                  <Columns>
                      <asp:CommandField ShowSelectButton="True" />
-                     <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
-                     <asp:BoundField DataField="Clanek_id" HeaderText="Clanek_id" SortExpression="Clanek_id" />
+                     <asp:BoundField DataField="Id" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
+                     <asp:BoundField DataField="Clanek_id" HeaderText="Článek ID" SortExpression="Clanek_id" />
                      <asp:BoundField DataField="Datum" HeaderText="Datum" SortExpression="Datum" />
-                     <asp:CheckBoxField DataField="Zverejneno" HeaderText="Zverejneno" SortExpression="Zverejneno" />
-                     <asp:BoundField DataField="Aktualnost" HeaderText="Aktualnost" SortExpression="Aktualnost" />
+                     <asp:CheckBoxField DataField="Zverejneno" HeaderText="Zveřejněno" SortExpression="Zverejneno" />
+                     <asp:BoundField DataField="Aktualnost" HeaderText="Aktuálnost" SortExpression="Aktualnost" />
                      <asp:BoundField DataField="Originalita" HeaderText="Originalita" SortExpression="Originalita" />
-                     <asp:BoundField DataField="OdbornaUroven" HeaderText="OdbornaUroven" SortExpression="OdbornaUroven" />
-                     <asp:BoundField DataField="JazykovaUroven" HeaderText="JazykovaUroven" SortExpression="JazykovaUroven" />
+                     <asp:BoundField DataField="OdbornaUroven" HeaderText="OdbornáÚroveň" SortExpression="OdbornaUroven" />
+                     <asp:BoundField DataField="JazykovaUroven" HeaderText="JazykováÚroveň" SortExpression="JazykovaUroven" />
                      <asp:BoundField DataField="filePath" HeaderText="filePath" SortExpression="filePath" />
-                     <asp:BoundField DataField="Zaver" HeaderText="Zaver" SortExpression="Zaver" />
+                     <asp:BoundField DataField="Zaver" HeaderText="Závěr" SortExpression="Zaver" />
                  </Columns>
                  <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                  <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                  <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
-                 <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+                 <RowStyle BackColor="#FFFBD6" ForeColor="#333333" HorizontalAlign="Center" />
                  <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
                  <SortedAscendingCellStyle BackColor="#FDF5AC" />
                  <SortedAscendingHeaderStyle BackColor="#4D0000" />
@@ -165,15 +162,11 @@ WHERE ([Id_Recenzenta] = @Id_Recenzenta AND Zpracovano = 0)">
                  </SelectParameters>
              </asp:SqlDataSource>
              <br />
-             <br />
-             <h4>Text recenze </h4>
-        (Vyberte recenzi pro zobrazení textu)<br />
-        <asp:TextBox ID="TB_textRecenze" runat="server" Height="111px" TextMode="MultiLine" Width="500px"></asp:TextBox>
-             <br />
-        <br />
+             <h3 style="text-align:center">Text recenze <br />
+        (Vyberte recenzi pro zobrazení textu)<br /></h3>
+        <div style="text-align:center"><asp:TextBox ID="TB_textRecenze" runat="server" Height="111px" TextMode="MultiLine" Width="500px"></asp:TextBox>
+        </div><br />
          </div>
-  
- 
         </div>
 </asp:Content>
 

@@ -17,7 +17,6 @@ public partial class Recenze_ZpravyRecenzentum : System.Web.UI.Page
     DataSet ds = new DataSet();
     string sql = null;
 
-
     User user;
 
     /*
@@ -64,18 +63,14 @@ public partial class Recenze_ZpravyRecenzentum : System.Web.UI.Page
                 con.Open();
                 sqlCmd = new SqlCommand(sql, con);
                 string aktualniDatum = DateTime.Now.ToString("yyyy-MM-dd");
-
                 sqlCmd.Parameters.AddWithValue("@zpravaRedaktora", Tb_zpravaRedaktora.Text);
                 sqlCmd.Parameters.AddWithValue("@zpravaRedaktoraDatum", aktualniDatum);
                 sqlCmd.Parameters.AddWithValue("@recenzentId", GridView2.SelectedRow.Cells[0].Text);
-
                 sqlCmd.ExecuteNonQuery();
-
                 sqlCmd.Dispose();
                 con.Close();
                 Lbl_status.Text = "Zpráva poslána.";
                 Tb_zpravaRedaktora.Text = "";
-
             }
             catch (Exception)
             {

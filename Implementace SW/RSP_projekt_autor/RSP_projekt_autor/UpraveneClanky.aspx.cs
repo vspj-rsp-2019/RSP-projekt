@@ -152,7 +152,6 @@ public partial class UpraveneClanky : System.Web.UI.Page
         {
             isValid = true;
         }
-
         return isValid;
     }
 

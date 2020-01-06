@@ -84,15 +84,12 @@ public partial class ZpravyOdRedaktora : System.Web.UI.Page
                     sqlCmd.Parameters.AddWithValue("@zpravaRecenzenta", TB_textRecenzenta.Text);
                     sqlCmd.Parameters.AddWithValue("@zpravaRecenzentaDatum", aktualniDatum);
                     sqlCmd.Parameters.AddWithValue("@Id", GV_zpravyRedaktora.SelectedRow.Cells[0].Text);
-
                     sqlCmd.ExecuteNonQuery();
-
                     sqlCmd.Dispose();
                     con.Close();
                     Lbl_status.Text = "Zpráva poslána.";
                     TB_textRecenzenta.ReadOnly = true;
                     GV_zpravyRedaktora.DataBind();
-
                 }
                 catch (Exception ex)
                 {
