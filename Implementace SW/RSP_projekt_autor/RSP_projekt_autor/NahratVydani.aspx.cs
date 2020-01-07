@@ -17,7 +17,6 @@ public partial class NahratVydani : System.Web.UI.Page
     DataSet ds = new DataSet();
 
     User user;
-
     /*
      * Při načtení stránky dojde ke kontrole, jestli je uživatel přihlášen a má oprávnění pro zobrazení stránky.
      * Pokud není příhlášen nebo nemá oprávnění, dojde k přesměrování stránky.
@@ -34,7 +33,6 @@ public partial class NahratVydani : System.Web.UI.Page
             Response.Redirect("ChybaOpravneni.aspx");
         }
     }
-
     /*
      * Vlozeni souboru na server, zkontroluje typ souboru a do databaze vlozi cestu k souboru a nastavi vydani na archivovane 
      */
@@ -46,7 +44,7 @@ public partial class NahratVydani : System.Web.UI.Page
                 string fileName = System.IO.Path.GetFileName(FileUpload.PostedFile.FileName);
                 string saveLocation = "~/Vydani/" + fileName;
 
-                if (!isValidType(fileType))
+                if (!IsValidType(fileType))
                 {
                     Lb_status.Text = "Zvolte soubor typu pdf";
                 }
@@ -65,7 +63,6 @@ public partial class NahratVydani : System.Web.UI.Page
                         {
                             FileUpload.PostedFile.SaveAs(Server.MapPath(saveLocation));                    
                             SqlCommand cmd;
-                        // string query = "update Vydani set Archiv='1', filePath=@path where Id=@vydaniId";
                         string query = "update Vydani set filePath=@path where Id=@vydaniId";
                         if (con.State == System.Data.ConnectionState.Closed)
                             {
@@ -96,20 +93,16 @@ public partial class NahratVydani : System.Web.UI.Page
                 Lb_status.Text = "Prosím zvolte soubor pro nahrání.";
             }
     }
-
-
     /*
  * Provede kontrolu jestli je soubor ve formatu pdf
  */
-    protected Boolean isValidType(string extension)
+    protected Boolean IsValidType(string extension)
     {
         Boolean isValid = false;
-
         if (extension.ToLower().Equals(".pdf"))
         {
             isValid = true;
         }
-
         return isValid;
     }
 

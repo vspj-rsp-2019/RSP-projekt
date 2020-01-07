@@ -9,7 +9,6 @@ public partial class Pokyny : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-      
     }
 
     protected void liB_pokynyAutor_Click(object sender, EventArgs e)
@@ -36,7 +35,6 @@ public partial class Pokyny : System.Web.UI.Page
 
     protected void liB_sablona_Click(object sender, EventArgs e)
     {
-        
      //Word nacteni
         Response.ContentType = "Application/msword";
         //cesta

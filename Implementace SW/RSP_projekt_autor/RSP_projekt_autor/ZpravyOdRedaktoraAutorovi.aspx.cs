@@ -63,9 +63,6 @@ public partial class ZpravyOdRedaktoraAutorovi : System.Web.UI.Page
     /*
      * Zkontroluje vyplnění a výběr potřebných  údajů a pošle odpověď redaktorovi na jeho zprávu.
      */
-
-
-
     protected void Btn_poslatOdpoved_Click(object sender, EventArgs e)
     {
         if (Lbl_zpravaOdpovezena.Text == "True")
@@ -82,19 +79,15 @@ public partial class ZpravyOdRedaktoraAutorovi : System.Web.UI.Page
                     con.Open();
                     sqlCmd = new SqlCommand(sql, con);
                     string aktualniDatum = DateTime.Now.ToString("yyyy-MM-dd");
-
                     sqlCmd.Parameters.AddWithValue("@zpravaAutora", TB_textRecenzenta.Text);
                     sqlCmd.Parameters.AddWithValue("@zpravaAutoraDatum", aktualniDatum);
                     sqlCmd.Parameters.AddWithValue("@Id", GridView1.SelectedRow.Cells[0].Text);
-
                     sqlCmd.ExecuteNonQuery();
-
                     sqlCmd.Dispose();
                     con.Close();
                     Lbl_status.Text = "Zpráva poslána.";
                     TB_textRecenzenta.ReadOnly = true;
                     GridView1.DataBind();
-
                 }
                 catch (Exception ex)
                 {
@@ -105,7 +98,6 @@ public partial class ZpravyOdRedaktoraAutorovi : System.Web.UI.Page
             {
                 Lbl_status.Text = "Některá z hodnot nebyla vybrána!";
             }
-        
     }
 }
 }

@@ -8,6 +8,7 @@
         .auto-style5 {
             margin-left: 7px;
             margin-right: 7px;
+            text-align:center;
         }
         .auto-style6 {
             margin-left: 7px;
@@ -17,14 +18,11 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" Runat="Server">
-    
-    <p class="auto-style6">
-        <asp:Label ID="lbl_akt_date" runat="server"></asp:Label>
-    </p>
-    <h4 class="auto-style5">Kontrola termínů - Upozornění na končící datum vypracování posudku od recenzentů</h4>
-    <p class="auto-style5">&nbsp;</p>
+    <p class="auto-style6"><asp:Label ID="lbl_akt_date" runat="server"></asp:Label></p>
+    <h3 class="auto-style5">Kontrola termínů - Upozornění na končící datum vypracování posudku od recenzentů</h3>
+    <br />
     <p class="auto-style5">
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="CheckTerminy2" ForeColor="#333333" GridLines="None" EmptyDataText="Aktuálně neevidujeme končící termíny." AllowPaging="True" AllowSorting="True">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="CheckTerminy2" ForeColor="#333333" GridLines="None" EmptyDataText="Aktuálně neevidujeme končící termíny." AllowPaging="True" AllowSorting="True" HorizontalAlign="Center">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="Datum_vypracovani" HeaderText="Datum vypracování" SortExpression="Datum_vypracovani" />
@@ -50,16 +48,12 @@ FROM PrideleneClanky
 INNER JOIN Users ON PrideleneClanky.Id_Recenzenta = Users.id 
 INNER JOIN Clanky ON PrideleneClanky.ID_Clanku = Clanky.Id
 WHERE (Users.role = 'recenzent') AND Zpracovano = 0 AND DATEDIFF (DAY, GETDATE(), PrideleneClanky.Datum_vypracovani) &lt;= 3;"></asp:SqlDataSource>
-    </p>
+    </p><br />
+    <p class="auto-style5"><asp:Button ID="btn_zobrPos" runat="server" OnClick="btn_zobrPos_Click" Text="Zobrazit všechny posudky" Width="280px" /></p>
+    <p class="auto-style5"><asp:Button ID="btn_skryt" runat="server" OnClick="btn_skryt_Click" Text="Skrýt všechny posudky" Width="280px" Visible="False" /></p>
+    <br />
     <p class="auto-style5">
-        <asp:Button ID="btn_zobrPos" runat="server" OnClick="btn_zobrPos_Click" Text="Zobrazit všechny posudky" Width="280px" />
-    </p>
-    <p class="auto-style5">
-        <asp:Button ID="btn_skryt" runat="server" OnClick="btn_skryt_Click" Text="Skrýt všechny posudky" Width="280px" Visible="False" />
-    </p>
-    <p class="auto-style5">&nbsp;</p>
-    <p class="auto-style5">
-        <asp:GridView ID="GridView2_VsechnyPos" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="vsechnyposudky" ForeColor="#333333" GridLines="None" Visible="False" AllowPaging="True" AllowSorting="True">
+        <asp:GridView ID="GridView2_VsechnyPos" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="vsechnyposudky" ForeColor="#333333" GridLines="None" Visible="False" AllowPaging="True" AllowSorting="True" HorizontalAlign="Center">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="Datum_vypracovani" HeaderText="Datum vypracování" SortExpression="Datum_vypracovani" />
@@ -88,4 +82,3 @@ INNER JOIN Clanky ON PrideleneClanky.ID_Clanku = Clanky.Id
 WHERE (Users.role = 'recenzent')"></asp:SqlDataSource>
     </p>
 </asp:Content>
-

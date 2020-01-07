@@ -23,7 +23,6 @@ public partial class Ticket : System.Web.UI.Page
         {
             Response.Redirect("login.aspx");
         }
-        
         try
         {
             String query = "SELECT * FROM Tickets WHERE Id_autor = @id";
@@ -64,7 +63,6 @@ public partial class Ticket : System.Web.UI.Page
         {
             reloadLB();
         }
-        
     }
 
     protected void BT_novyTicket_Click(object sender, EventArgs e)
@@ -74,17 +72,21 @@ public partial class Ticket : System.Web.UI.Page
 
     protected void BT_zobrazit_Click(object sender, EventArgs e)
     {
-        int i = LB_ticket.SelectedIndex;
-        TB_text.Text = tickets[i].text;
-        TB_reply.Text = tickets[i].odpoved;
+        if (LB_ticket.SelectedIndex != -1)
+        {
+            int i = LB_ticket.SelectedIndex;
+            TB_text.Text = tickets[i].text;
+            TB_reply.Text = tickets[i].odpoved;
+            LB_msg0.Text = "";
+        } else LB_msg0.Text = "Není vybrán žádný ticket";
     }
-
-
 
     protected void BT_delete_Click(object sender, EventArgs e)
     {
+      if (LB_ticket.SelectedIndex != -1)
+        {
+        LB_msg0.Text = "";
         int i = LB_ticket.SelectedIndex;
-
         string query = "DELETE FROM Tickets WHERE id = @id;";
         try
         {
@@ -96,11 +98,12 @@ public partial class Ticket : System.Web.UI.Page
             LB_ticket.Items.Clear();
             tickets.RemoveAt(i);
             reloadLB();
-
-        }catch(Exception ex)
+        }
+        catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine(ex.Message);
         }
+        } else LB_msg0.Text = "Není vybrán žádný ticket";
     }
 
     protected void reloadLB()

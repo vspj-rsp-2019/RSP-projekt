@@ -30,12 +30,11 @@
         }
     </style>
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="contentBody" Runat="Server">
+<asp:Content ID="Content3" ContentPlaceHolderID="contentBody" Runat="Server"><br />
     <h2 class="auto-style5">Nahrání vydání časopisu do archivu</h2>
     <br /><br />
-
     <h4 class="auto-style5">Seznam nearchivovaných vydání bez PDF</h4>
-            <table align="center" border="1" class="auto-style7">
+            <table style="margin:auto" border="1" class="auto-style7">
             <tr>
                 <td class="auto-style6">Vydání:</td>
                 <td>
@@ -49,12 +48,11 @@
         </table>
         <br />
         <h3 class="auto-style5">Nahrát vydání v PDF</h3>
-                <table align="center" border="1" class="auto-style7">
+                <table style="margin:auto" border="1" class="auto-style7">
                 <tr>
                     <td class="auto-style9">
                         <asp:Label ID="Lb_status" runat="server" ForeColor="Red"></asp:Label>
                     </td>
-                    </strong>
                     <td class="auto-style12">&nbsp;</td>
                 </tr>
                 <tr>
@@ -66,37 +64,25 @@
                                 </td>
                 </tr>
             </table>
-
     <br />
-    <div align="center">
-            <asp:Label ID="Lb_upravaVydani" runat="server" ForeColor="Red"></asp:Label>
-    </div>
-
+    <div class="auto-style5"><asp:Label ID="Lb_upravaVydani" runat="server" ForeColor="Red"></asp:Label></div>
     <br />
-    <table align="center" class="auto-style11">
+    <table style="margin:auto" class="auto-style11">
         <tr>
             <td class="auto-style13">Nearchivovaná vydání s PDF:</td>
             <td class="auto-style10">
-                <asp:DropDownList ID="DDL_nearchivovane" runat="server" DataSourceID="SqlDataSource4" DataTextField="Name" DataValueField="Id" OnSelectedIndexChanged="DDL_nearchivovane_SelectedIndexChanged">
-                </asp:DropDownList>
+                <asp:DropDownList ID="DDL_nearchivovane" runat="server" DataSourceID="SqlDataSource4" DataTextField="Name" DataValueField="Id" OnSelectedIndexChanged="DDL_nearchivovane_SelectedIndexChanged"></asp:DropDownList>
                 <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Vydani] WHERE Archiv = 0 AND filePath IS NOT NULL"></asp:SqlDataSource>
             </td>
-            <td>
-                <asp:Button ID="Btn_archivujVydani" runat="server" OnClick="Btn_archivujVydani_Click" Text="Archivuj vydání" />
-            </td>
+            <td><asp:Button ID="Btn_archivujVydani" runat="server" OnClick="Btn_archivujVydani_Click" Text="Archivuj vydání" /></td>
         </tr>
         <tr>
             <td class="auto-style13">Archivovaná vydání s PDF:</td>
             <td class="auto-style10">
-                <asp:DropDownList ID="DDL_archivovane" runat="server" DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="Id" OnSelectedIndexChanged="DDL_archivovane_SelectedIndexChanged">
-                </asp:DropDownList>
+                <asp:DropDownList ID="DDL_archivovane" runat="server" DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="Id" OnSelectedIndexChanged="DDL_archivovane_SelectedIndexChanged"></asp:DropDownList>
                 <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Vydani] WHERE Archiv = 1 AND filePath IS NOT NULL"></asp:SqlDataSource>
             </td>
-            <td>
-                <asp:Button ID="Btn_odarchivujVydani" runat="server" OnClick="Btn_odarchivujVydani_Click" Text="Odarchivuj vydání" />
-            </td>
+            <td><asp:Button ID="Btn_odarchivujVydani" runat="server" OnClick="Btn_odarchivujVydani_Click" Text="Odarchivuj vydání" /></td>
         </tr>
     </table>
-
 </asp:Content>
-

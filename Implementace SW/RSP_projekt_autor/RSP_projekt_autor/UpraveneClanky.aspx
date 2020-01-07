@@ -1,7 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="UpraveneClanky.aspx.cs" Inherits="UpraveneClanky" %>
-
-<asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
-</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
         .auto-style5 {
@@ -25,42 +23,40 @@
         }
     </style>
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="contentBody" Runat="Server">
-    <h2 class="auto-style5">Nahrání upraveného článku</h2>
+<asp:Content ID="Content3" ContentPlaceHolderID="contentBody" Runat="Server"><br />
+    <h2 class="auto-style5">Nahrání upraveného článku - TEST</h2>
     <br /><br />
-        <div align="center">    <strong><span class="auto-style6"><span class="auto-style11">Nahrát upravený článek</span><br />
+        <div class="auto-style5"><strong><span class="auto-style6"><span class="auto-style11">Nahrát upravený článek</span><br />
             </span></strong>
-            <table align="center" border="1" class="auto-style7">
+            <table style="margin:auto" border="1" class="auto-style7">
                 <tr>
-                    <td class="auto-style9">Název článku:<strong>
-                        <asp:Label ID="Lb_nazevClanku" runat="server"></asp:Label>
-&nbsp;</td>
-                    </strong>
-                    <td class="auto-style12">Verze:<strong>
-                        <asp:Label ID="Lb_verze" runat="server"></asp:Label>
+                    <td class="auto-style9">
+                        Název článku: <asp:Label ID="Lb_nazevClanku" runat="server"></asp:Label>
+                    </td>
+                    <td class="auto-style12">
+                        Verze: <asp:Label ID="Lb_verze" runat="server"></asp:Label>
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style9">    <strong>
-        <asp:FileUpload ID="FileUpload" runat="server" />
-                        </strong></td>
+                    <td class="auto-style9">   
+                        <asp:FileUpload ID="FileUpload" runat="server" />
+                    </td>
                     <td class="auto-style5">
-        <asp:Button ID="BTN_uploadFile" runat="server" Text="Potvrdit" OnClick="Upload" Width="119px" />
+                        <asp:Button ID="BTN_uploadFile" runat="server" Text="Potvrdit" OnClick="Upload" Width="119px" />
                     </td>
                 </tr>
             </table>
-            </strong>
             <asp:Label ID="Lb_status" runat="server" ForeColor="Red"></asp:Label>
             <br />
             <asp:Label ID="Lb_datum" runat="server" Visible="False"></asp:Label>
-            <br /><strong><span class="auto-style11">Články k upravení</span><span class="auto-style6"><br />
+            <br /><strong><br /><span class="auto-style11">Články k upravení</span><span class="auto-style6"><br />
             </span></strong>
-            <asp:GridView ID="GV_clanky" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id,Id_cl_status" DataSourceID="SqlDataSource1" EmptyDataText="Žádné datové záznamy k zobrazení." ForeColor="#333333" GridLines="None" AllowPaging="True" AllowSorting="True" OnSelectedIndexChanged="GV_clanky_SelectedIndexChanged">
+            <asp:GridView ID="GV_clanky" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id,Id_cl_status" DataSourceID="SqlDataSource1" EmptyDataText="Žádné datové záznamy k zobrazení." ForeColor="#333333" GridLines="None" AllowPaging="True" AllowSorting="True" OnSelectedIndexChanged="GV_clanky_SelectedIndexChanged" HorizontalAlign="Center">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:CommandField ShowSelectButton="True" />
-                    <asp:BoundField DataField="Id" HeaderText="Id článku" ReadOnly="True" SortExpression="Id" InsertVisible="False" />
-                    <asp:BoundField DataField="vydani_id" HeaderText="vydani_id" SortExpression="vydani_id" />
+                    <asp:BoundField DataField="Id" HeaderText="ID článku" ReadOnly="True" SortExpression="Id" InsertVisible="False" />
+                    <asp:BoundField DataField="vydani_id" HeaderText="vydani_ID" SortExpression="vydani_id" />
                     <asp:BoundField DataField="Expr1" HeaderText="Název článku" SortExpression="Expr1" />
                     <asp:BoundField DataField="Datum" HeaderText="Datum vložení" SortExpression="Datum" DataFormatString="{0:d}" />
                     <asp:BoundField DataField="nazev" HeaderText="Stav článku" SortExpression="nazev" />
@@ -105,8 +101,6 @@
                 </SelectParameters>
             </asp:SqlDataSource>
             <br />
-
-</div>
-
+    </div>
 </asp:Content>
 

@@ -1,7 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" MaintainScrollPositionOnPostback="true" AutoEventWireup="true" CodeFile="PrideleniRecenzi.aspx.cs" Inherits="PrideleniRecenzi" %>
-
-<asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
-    Přidělení recenzí</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">Přidělení recenzí</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
         .auto-style1 {
@@ -10,6 +8,7 @@
         .auto-style2 {
             width: 51%;
             border-style: solid;
+            margin: auto;
         }
         .auto-style3 {
             width: 79px;
@@ -23,6 +22,7 @@
         }
         .auto-style7 {
             width: 69%;
+            margin: auto;
         }
         .auto-style9 {
             width: 389px;
@@ -37,11 +37,9 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" Runat="Server">
-    <div align="center">
+    <div><br />
     <h2 class="auto-style1">Přidělení recenzí</h2>
-
-
-    <table align="center" class="auto-style2">
+    <table class="auto-style2">
         <tr>
             <td class="auto-style6">Vydání:</td>
             <td>
@@ -63,13 +61,10 @@
             </td>
         </tr>
     </table>
-         <br />
-        <strong>ČLÁNKY</strong><br />
     <br />
+    <h4 style="text-align:center">ČLÁNKY</h4><br />
     <div>
-
-
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" EmptyDataText="Žádné datové záznamy k zobrazení." AllowPaging="True" AllowSorting="True" CellPadding="4" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" EmptyDataText="Žádné datové záznamy k zobrazení." AllowPaging="True" AllowSorting="True" CellPadding="4" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" HorizontalAlign="Center">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:BoundField DataField="Id" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
@@ -90,7 +85,6 @@
         <SortedAscendingHeaderStyle BackColor="#4D0000" />
         <SortedDescendingCellStyle BackColor="#FCF6C0" />
         <SortedDescendingHeaderStyle BackColor="#820000" />
-
     </asp:GridView>
     </div>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM [Clanky] WHERE [Id] = @Id" InsertCommand="INSERT INTO [Clanky] ([autor_id], [vydani_id], [nazev], [filePath], [Datum], [status_clanek]) VALUES (@autor_id, @vydani_id, @nazev, @filePath, @Datum, @status_clanek)" SelectCommand="SELECT Clanky.Id, Clanky.autor_id, Clanky.vydani_id, Clanky.nazev, Clanky.filePath, Clanky.Datum, Clanky.status_clanek, Vydani.Name, Users.jmeno, Users.prijmeni, Users.role FROM Vydani INNER JOIN Clanky ON Clanky.vydani_id = Vydani.Id INNER JOIN Users ON Clanky.autor_id = Users.id
@@ -119,17 +113,12 @@ WHERE ([Name] = @Name AND Clanky.status_clanek = 3)" UpdateCommand="UPDATE [Clan
             <asp:Parameter Name="Id" Type="Int32" />
         </UpdateParameters>
     </asp:SqlDataSource>
-        Počet přidělených recenzentů:
-        <asp:Label ID="Lbl_pocPridRecenzentu" runat="server"></asp:Label>
-    <br />
-        <strong>
-        <br />
-        RECENZENTI</strong><br />
-
-        <br />
-        <table class="auto-style7">
+    <p style="text-align:center">Počet přidělených recenzentů:
+    <asp:Label ID="Lbl_pocPridRecenzentu" runat="server"></asp:Label></p>
+    <br /><br />
+    <h4 style="text-align:center">RECENZENTI</h4><br />
+    <table class="auto-style7">
             <tr>
- 
                 <td class="auto-style9">
                     <div class="auto-style5">
     <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSource2" EmptyDataText="Žádné datové záznamy k zobrazení." AllowPaging="True" AllowSorting="True" CellPadding="4" ForeColor="#333333" GridLines="None" Width="423px">
@@ -151,7 +140,7 @@ WHERE ([Name] = @Name AND Clanky.status_clanek = 3)" UpdateCommand="UPDATE [Clan
         <SortedDescendingCellStyle BackColor="#FCF6C0" />
         <SortedDescendingHeaderStyle BackColor="#820000" />
     </asp:GridView>
-                    </div>
+    </div>
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM [Users] WHERE [id] = @id" InsertCommand="INSERT INTO [Users] ([role], [email], [jmeno], [prijmeni], [hesloHash]) VALUES (@role, @email, @jmeno, @prijmeni, @hesloHash)" SelectCommand="SELECT id, role, email, jmeno, prijmeni, hesloHash FROM Users WHERE (role = 'recenzent')" UpdateCommand="UPDATE [Users] SET [role] = @role, [email] = @email, [jmeno] = @jmeno, [prijmeni] = @prijmeni, [hesloHash] = @hesloHash WHERE [id] = @id">
         <DeleteParameters>
             <asp:Parameter Name="id" Type="Int32" />
@@ -186,25 +175,15 @@ WHERE ([Name] = @Name AND Clanky.status_clanek = 3)" UpdateCommand="UPDATE [Clan
                 </td>
             </tr>
             <tr>
-               
                 <td class="auto-style10"><strong>Datum vypracování posudku:</strong></td>
-                <td class="auto-style11">
-                    <asp:Label ID="Lbl_datum" runat="server"></asp:Label>
-                </td>
+                <td class="auto-style11"><asp:Label ID="Lbl_datum" runat="server"></asp:Label></td>
             </tr>
             <tr>
-                
-                <td class="auto-style10">
-                    <asp:Label ID="Lbl_zprava" runat="server" ForeColor="Red"></asp:Label>
-                </td>
-                <td class="auto-style11">
-                    <asp:Button ID="Btn_priradRecenzenta" runat="server" Text="Přiřaď recenzenta" OnClick="Btn_priradRecenzenta_Click" />
-                </td>
+                <td class="auto-style10"><asp:Label ID="Lbl_zprava" runat="server" ForeColor="Red"></asp:Label></td>
+                <td class="auto-style11"><asp:Button ID="Btn_priradRecenzenta" runat="server" Text="Přiřaď recenzenta" OnClick="Btn_priradRecenzenta_Click" /></td>
             </tr>
-        </table>
+    </table>
     <br />
     <br />
 </div>
-
 </asp:Content>
-

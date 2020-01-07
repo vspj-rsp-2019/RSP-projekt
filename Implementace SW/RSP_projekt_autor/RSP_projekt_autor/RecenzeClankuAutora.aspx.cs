@@ -10,7 +10,6 @@ using System.Configuration;
 
 public partial class Default2 : System.Web.UI.Page
 {
-
     // Vytvori pripojeni k databazi 
     SqlCommand cmd = new SqlCommand();
     //  SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Databaze.mdf;Integrated Security=True;Connect Timeout=30");
@@ -40,7 +39,6 @@ public partial class Default2 : System.Web.UI.Page
         gv_recenze.DataBind();
     }
 
-
     /*
      * Vyhleda odpovidajici clanky podle zadaneho nazvu clanku a nazvu vydani
      */
@@ -62,7 +60,6 @@ public partial class Default2 : System.Web.UI.Page
         zobrazVsechnyClanky();
         Tb1_nazevClanku.Text = "";
     }
-
 
     // V tuto chvíli nevyužito //
     /*

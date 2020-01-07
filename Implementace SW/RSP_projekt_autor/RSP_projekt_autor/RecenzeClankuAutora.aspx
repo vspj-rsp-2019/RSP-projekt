@@ -1,54 +1,50 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="RecenzeClankuAutora.aspx.cs" Inherits="Default2" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
     Recenze článku autora</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
         .auto-style1 {
             width: 51%;
+            margin: auto;
         }
         .auto-style2 {
             width: 324px;
+            text-align: left;
         }
         .auto-style3 {
             margin-left: 0px;
         }
         .auto-style4 {
             width: 651px;
+            text-align: left;
         }
     </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" Runat="Server">
-    <div align="center"> 
-    <br />
-    <br />
+    <div style="text-align:center"> <br /><br />
     <h2>Vyhledávání článků</h2>
     <br />
     <table class="auto-style1" >
         <tr>
-            <td class="auto-style2" align="left">Název článku:</td>
-            <td class="auto-style4" align="left"><asp:TextBox ID="Tb1_nazevClanku" runat="server" CssClass="auto-style3" Width="228px"></asp:TextBox></td>
+            <td class="auto-style2">Název článku:</td>
+            <td class="auto-style4"><asp:TextBox ID="Tb1_nazevClanku" runat="server" CssClass="auto-style3" Width="228px"></asp:TextBox></td>
         </tr>
         <tr>
-            <td class="auto-style2" align="left">Název vydání:</td>
-            <td class="auto-style4" align="left">
+            <td class="auto-style2">Název vydání:</td>
+            <td class="auto-style4">
                 <asp:DropDownList ID="DDL1_vydani" runat="server" DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="Name">
                 </asp:DropDownList>
                 <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [Id], [Name] FROM [Vydani]"></asp:SqlDataSource>
             </td>
         </tr>
         <tr>
-            <td class="auto-style2" align="left">&nbsp;</td>
-            <td class="auto-style4" align="left"><asp:Button ID="Btn1_hledat" runat="server" OnClick="Btn1_hledat_Click" Text="Hledat" /> &nbsp; <asp:Button ID="Btn2_resetHledani" runat="server" OnClick="Btn2_resetHledani_Click" Text="Reset hledání" /></td>
+            <td class="auto-style2">&nbsp;</td>
+            <td class="auto-style4"><asp:Button ID="Btn1_hledat" runat="server" OnClick="Btn1_hledat_Click" Text="Hledat" /> &nbsp; <asp:Button ID="Btn2_resetHledani" runat="server" OnClick="Btn2_resetHledani_Click" Text="Reset hledání" /></td>
         </tr>
     </table>
-    <br />
-
-
-    <br />
-    <h2>Články autora</h2>
-    <br />
-                <asp:GridView ID="gv_recenze" runat="server" AllowPaging="True" PageSize="5" AutoGenerateColumns="False" DataKeyNames="Id"  EmptyDataText="Žádné datové záznamy k zobrazení." CellPadding="4" ForeColor="#333333" GridLines="None">
+    <br /> <br />
+    <h2>Články autora</h2><br />
+                <asp:GridView ID="gv_recenze" runat="server" AllowPaging="True" PageSize="5" AutoGenerateColumns="False" DataKeyNames="Id"  EmptyDataText="Žádné datové záznamy k zobrazení." CellPadding="4" ForeColor="#333333" GridLines="None" HorizontalAlign="Center">
                     <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:BoundField DataField="Name" HeaderText="Název vydání" />
@@ -66,11 +62,8 @@
                 <SortedDescendingCellStyle BackColor="#FCF6C0" />
                 <SortedDescendingHeaderStyle BackColor="#820000" />
             </asp:GridView>
-    <br />
-
-    <h2>Přiřazené recenze</h2>
-    <br />
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" EmptyDataText="Žádné datové záznamy k zobrazení." CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" AllowSorting="True" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+    <br /><h2>Přiřazené recenze</h2><br />
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" EmptyDataText="Žádné datové záznamy k zobrazení." CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" AllowSorting="True" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" HorizontalAlign="Center">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
@@ -115,14 +108,9 @@ WHERE ([Clanek_id] = @Clanek_id) AND Recenze.Zverejneno = 1" UpdateCommand="UPDA
             <asp:Parameter Name="Id" Type="Int32" />
         </UpdateParameters>
     </asp:SqlDataSource>
-        <br />
-        <h2>Text recenze </h2>
+        <br /><h2>Text recenze </h2>
         (Vyberte recenzi pro zobrazení textu)<br />
         <asp:TextBox ID="TB_textRecenze" runat="server" Height="111px" TextMode="MultiLine" Width="500px"></asp:TextBox>
-        <br />
-        <br />
-    <br />
-
+        <br /><br /><br />
 </div>
-
 </asp:Content>

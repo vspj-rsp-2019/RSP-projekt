@@ -10,7 +10,6 @@ using System.Configuration;
 
 public partial class PrideleniRecenzi : System.Web.UI.Page
 {
-
     // Vytvori pripojeni k databazi 
     SqlCommand cmd = new SqlCommand();
     SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
@@ -42,8 +41,6 @@ public partial class PrideleniRecenzi : System.Web.UI.Page
     protected void Btn_priradRecenzenta_Click(object sender, EventArgs e)
     {
         Lbl_zprava.Text = " ";
-
-
         if (Lbl_pocPridRecenzentu.Text != "2") {
             if ((GridView1.SelectedIndex >= 0) && (GridView2.SelectedIndex >= 0) && (Lbl_datum.Text.Length > 1))
             {
@@ -60,18 +57,12 @@ public partial class PrideleniRecenzi : System.Web.UI.Page
                     {
                         con.Open();
                         sqlCmd = new SqlCommand(sql, con);
-                        // sqlCmd = new SqlCommand(sql2, con);
-
                         sqlCmd.Parameters.AddWithValue("@idClanku", GridView1.SelectedRow.Cells[0].Text);
                         sqlCmd.Parameters.AddWithValue("@status_clanek", 4);
                         sqlCmd.Parameters.AddWithValue("@Id", GridView1.SelectedValue);
                         sqlCmd.Parameters.AddWithValue("@idRecenzenta", GridView2.SelectedRow.Cells[0].Text);
                         sqlCmd.Parameters.AddWithValue("@datumVypracovani", Calendar1.SelectedDate.ToString("MM/dd/yyyy"));
-
-                        
-
                         sqlCmd.ExecuteNonQuery();
-
                         sqlCmd.Dispose();
                         con.Close();
                         Lbl_zprava.Text = "Recenze přiřazena.";
@@ -79,33 +70,26 @@ public partial class PrideleniRecenzi : System.Web.UI.Page
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         Lbl_pocPridRecenzentu.Text = dt.Rows[0][0].ToString();
-
                         // v připade, že jsou prirazeni dva recenzenti, tak se článek překlopí již do stavu č. 4 probiha RR
                         if (Lbl_pocPridRecenzentu.Text == "2")
                         {
-
                             try
                             {
                                 con.Open();
                             sqlCmd = new SqlCommand(sql2, con);
                             sqlCmd.Parameters.AddWithValue("@Id", GridView1.SelectedValue);
                             sqlCmd.ExecuteNonQuery();
-
                             sqlCmd.Dispose();
                             con.Close();
                             }
                             catch
                             {
-                                // Lbl_zprava.Text = ex.ToString();
                                 Lbl_zprava.Text = "Nastala chyba!";
                             }
                         }
-
-
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        // Lbl_zprava.Text = ex.ToString();
                         Lbl_zprava.Text = "Tento recenzent je již přiřazen (nelze vícekrát)!";
                     }
                 }
@@ -119,7 +103,6 @@ public partial class PrideleniRecenzi : System.Web.UI.Page
             Lbl_zprava.Text = "Článek má již přiděleny 2 recenzenty!";
         }
      }
-    
 
     /*
      * Po vybrani pozadovaneho clanku spocita a zobrazi pocet jiz pridelenych recenzentu k clanku 

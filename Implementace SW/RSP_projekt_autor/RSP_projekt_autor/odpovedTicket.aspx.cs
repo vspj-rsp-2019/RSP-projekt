@@ -59,7 +59,6 @@ public partial class odpovedTicket : System.Web.UI.Page
                         tickets.Add(tmp);
                     }
                 }
-
             }
             catch (Exception ex)
             {
@@ -74,17 +73,19 @@ public partial class odpovedTicket : System.Web.UI.Page
 
     protected void BT_select_Click(object sender, EventArgs e)
     {
-
-        selectedTicket = LB_ticket.SelectedIndex;
-
-        TB_text.Text = tickets[selectedTicket].text;
-        TB_autor.Text = getJmenoAutora(tickets[selectedTicket]);
+        if (LB_ticket.SelectedIndex != -1)
+        {
+            selectedTicket = LB_ticket.SelectedIndex;
+            TB_text.Text = tickets[selectedTicket].text;
+            TB_autor.Text = getJmenoAutora(tickets[selectedTicket]);
+            LB_msg0.Text = "";
+        } else LB_msg0.Text = "Není vybrán žádný ticket";
     }
 
     protected void TB_ticketText_TextChanged(object sender, EventArgs e)
     {
-
     }
+
     protected String getJmenoAutora(TicketClass t)
     {
         String name = "";
@@ -111,7 +112,6 @@ public partial class odpovedTicket : System.Web.UI.Page
 
     protected void LB_ticket_SelectedIndexChanged(object sender, EventArgs e)
     {
-
     }
 
     protected void BT_reply_Click(object sender, EventArgs e)
@@ -122,7 +122,6 @@ public partial class odpovedTicket : System.Web.UI.Page
             return;
         }
         selectedTicket = LB_ticket.SelectedIndex;
-
         tickets[selectedTicket].odpoved = TB_odp.Text;
         tickets[selectedTicket].odpovezeno = true;
 
@@ -137,7 +136,6 @@ public partial class odpovedTicket : System.Web.UI.Page
         {
             LB_msg.Text = "Nastala chyba";
         }
-        
     }
 
     protected bool updateTicket(TicketClass t)
@@ -161,8 +159,8 @@ public partial class odpovedTicket : System.Web.UI.Page
             System.Diagnostics.Debug.WriteLine(ex.Message);
             return false;
         }
-
     }
+
     protected void reloadLB()
     {
         foreach (var tick in tickets)

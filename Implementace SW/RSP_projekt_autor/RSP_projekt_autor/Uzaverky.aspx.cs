@@ -11,21 +11,19 @@ public partial class Uzaverky : System.Web.UI.Page
     {
         lbl_aktDatum.Text = DateTime.Now.ToShortDateString();
     }
-
-    //zobrazi tabulku vsech uzaverek casopisu, skryje tlacitko zobrazeni a zobrazi tlacitko pro skryti
+    
     protected void btn_zobrUzaverky_Click(object sender, EventArgs e)
     {
-       GridView2.Visible = true;
+        //zobrazi tabulku vsech uzaverek casopisu, skryje tlacitko zobrazeni a zobrazi tlacitko pro skryti
+        GridView2.Visible = true;
         btn_zobrUzaverky.Visible = false;
         brn_skrytUz.Visible = true;
     }
 
-    // skryje tabulku vsech uzaverek, skryje tlacitko a zobrazi zobrazujici tlacitko
-
-
     protected void brn_skrytUz_Click(object sender, EventArgs e)
     {
-       GridView2.Visible = false;
+        // skryje tabulku vsech uzaverek, skryje tlacitko a zobrazi zobrazujici tlacitko
+        GridView2.Visible = false;
         brn_skrytUz.Visible = false;
         btn_zobrUzaverky.Visible = true;
     }
